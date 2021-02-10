@@ -3,7 +3,6 @@ import { useMovies } from '../../app/context/movies/movies';
 import { MoviesRow } from './MoviesRow';
 
 export const MoviesDashboard = () => {
-  const { comedies, popular, animation } = useMovies();
 
   return (
     <main>
@@ -12,14 +11,7 @@ export const MoviesDashboard = () => {
           <p>comedies</p>
           <MoviesRow movies={comedies} />
         </div>
-        <div>
-          <p>animation</p>
-          <MoviesRow movies={animation} />
-        </div>
-        <div>
-          <p>popular</p>
-          <MoviesRow movies={popular} />
-        </div>
+
       </div>
     </main>
   );
