@@ -14,9 +14,5 @@ export const Example = () => (
     <div>11</div>
     <div>11</div>
     <div>11</div>
-    <div>11</div>
-    <div>11</div>
-    <div>11</div>
-    <div>11</div>
   </MoviesCollection>
 );
