@@ -1,9 +1,7 @@
-function App() {
-  return (
-    <div>
-      <p>Hello world</p>
-    </div>
-  );
-}
+import React from 'react';
 
-export default App;
+export const App = () => (
+  <div>
+    <p>Hello world</p>
+  </div>
+);
