@@ -5,8 +5,6 @@ const MoviesContext = createContext();
 export const useMovies = () => useContext(MoviesContext);
 
 const KEY = process.env.REACT_APP_KEY;
-const popularity =
-  'https://api.themoviedb.org/3/discover/movie?api_key=009f9976a57d0b92e9dee06122c5b4bc&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1';
 
 const genres =
   'https://api.themoviedb.org/3/genre/movie/list?api_key=009f9976a57d0b92e9dee06122c5b4bc&language=en-US';
