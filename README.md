@@ -2,7 +2,7 @@
 
 An open source project that is for all movie lovers.
 
-## Tech
+## tech
 
 - `react`
 - `styled-components`
