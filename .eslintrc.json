@@ -21,7 +21,13 @@
         "comma-dangle": "off",
         "import/prefer-default-export": "off",
         "import/no-default-export": "error",
-        "jsx-quotes": "off"
+        "jsx-quotes": "off",
+        "react/prop-types": ["off"],
+        "no-unused-vars": "off",
+        "react/jsx-curly-newline": "off",
+        "object-curly-newline": "off",
+        "camelcase":"off",
+        "operator-linebreak": "off"
     
     }
 }
