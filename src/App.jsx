@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { MoviesProvider } from './app/context/movies/movies';
 import { Footer } from './app/Footer';
+import { MovieRoute } from './app/MovieRoute';
 
 import { Navbar } from './app/Navbar';
 import { HomeBanner } from './app/HomeBanner';
@@ -14,11 +14,10 @@ export const App = () => (
     <Switch>
       <HomeBanner />
       {/* <PageBanner /> */}
-      <MoviesProvider>
-        <Route exact path='/'>
-          <MoviesDashboard />
-        </Route>
-      </MoviesProvider>
+      <Route path='/movie/:id' component={MovieRoute} />
+      <Route exact path='/'>
+        <MoviesDashboard />
+      </Route>
     </Switch>
     <Footer />
   </Router>
