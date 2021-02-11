@@ -34,5 +34,6 @@ export const MovieCard = ({
     </ImageWrapper>
 
     <p>{title}</p>
+    <p>{vote_average}</p>
   </Card>
 );
