@@ -19,6 +19,7 @@
     ],
     "rules": {
         "comma-dangle": "off",
+        "import/no-extraneous-dependencies": "off",
         "import/prefer-default-export": "off",
         "import/no-default-export": "error",
         "jsx-quotes": "off",
@@ -28,7 +29,19 @@
         "object-curly-newline": "off",
         "camelcase":"off",
         "operator-linebreak": "off",
-        "implicit-arrow-linebreak": "off"
+        "implicit-arrow-linebreak": "off",
+        "react/jsx-one-expression-per-line":"off",
+        "jsx-a11y/anchor-is-valid": [
+            "error",
+            {
+                "components": [
+                    "Link"
+                ],
+                "specialLink": [
+                    "to"
+                ]
+            }
+        ]
     
     }
 }

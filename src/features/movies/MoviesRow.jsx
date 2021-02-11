@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { MovieCard } from '../../app/MovieCard';
+import { MoviesError } from '../../app/MoviesError';
 
 const Row = styled.div`
   width: 100%;
@@ -11,16 +13,23 @@ const Row = styled.div`
   padding-bottom: 20px;
 `;
 
-export const MoviesRow = ({ movies }) => (
+export const MoviesRow = ({ movies, moviesError }) => (
   <Row>
     {movies.map(({ poster_path, release_date, vote_average, title, id }) => (
-      <MovieCard
+      <Link
+        to={{
+          pathname: `/movie/${id}`,
+          state: { poster_path, release_date, title },
+        }}
         key={id}
-        poster_path={poster_path}
-        release_date={release_date}
-        vote_average={vote_average}
-        title={title}
-      />
+      >
+        <MovieCard
+          poster_path={poster_path}
+          release_date={release_date}
+          vote_average={vote_average}
+          title={title}
+        />
+      </Link>
     ))}
   </Row>
 );
