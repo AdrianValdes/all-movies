@@ -67,11 +67,11 @@ const SearchButtom = styled.button`
   }
 `;
 
-export const HomeBanner = () => {
+export const HomeBanner = ({ headerImageId }) => {
   const [input, setInput] = useState('');
   const [, setSearch] = useState();
   const inputRef = useRef();
-
+  console.log(headerImageId);
   useEffect(() => {
     inputRef.current.focus();
   }, []);

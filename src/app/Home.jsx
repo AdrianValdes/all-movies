@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MoviesDashboard } from '../features/movies/MoviesDashboard';
+import { HomeBanner } from './HomeBanner';
 import {
   fetchAnimationsAction,
   fetchComediesAction,
@@ -29,6 +30,7 @@ export const Home = () => {
   return (
     <div>
       <h1>Home</h1>
+      <HomeBanner headerImageId={headerImageId} />
       {headerImageId && (
         <img src={`${IMAGE_BASE_URL_HIGH}${headerImageId}`} alt='banner' />
       )}

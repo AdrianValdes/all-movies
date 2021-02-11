@@ -22,7 +22,7 @@ const StyledLi = styled.li`
 `;
 
 const Dropbtn = styled.div`
-  display: inline-block;
+  display: block;
   color: white;
   text-align: center;
   padding: 14px 16px;
@@ -49,13 +49,14 @@ const DropDownLi = styled(StyledLi)`
   }
 `;
 
-const StyledA = styled.a`
+const StyledA = styled.p`
   display: inline-block;
   color: white;
   font-size: 20px;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  cursor: pointer;
   &:hover {
     color: lightseagreen;
   }
@@ -88,9 +89,8 @@ export const Navbar = () => (
       </Link>
     </StyledLi>
     <DropDownLi>
-      <Dropbtn>Genres</Dropbtn>
+      <StyledA>Genres</StyledA>
       <DropDownContent>
-        {' '}
         <SubA>Action</SubA>
         <SubA>Animation</SubA>
         <SubA>Comedy</SubA>
