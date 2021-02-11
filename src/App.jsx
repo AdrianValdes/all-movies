@@ -4,7 +4,10 @@ import { Footer } from './app/Footer';
 import { MovieRoute } from './features/movies/MovieRoute';
 
 import { Navbar } from './app/Navbar';
+
 import { Home } from './app/Home';
+
+
 
 export const App = () => (
   <Router>
