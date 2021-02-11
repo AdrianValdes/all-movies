@@ -1,23 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Footer } from './app/Footer';
-import { MovieRoute } from './app/MovieRoute';
+import { MovieRoute } from './features/movies/MovieRoute';
 
 import { Navbar } from './app/Navbar';
-import { HomeBanner } from './app/HomeBanner';
-// import { PageBanner } from './app/PageBanner';
-import { MoviesDashboard } from './features/movies/MoviesDashboard';
+import { Home } from './app/Home';
 
 export const App = () => (
   <Router>
     <Navbar />
     <Switch>
-      <HomeBanner />
-      {/* <PageBanner /> */}
       <Route path='/movie/:id' component={MovieRoute} />
-      <Route exact path='/'>
-        <MoviesDashboard />
-      </Route>
+      <Route exact path='/' component={Home} />
     </Switch>
     <Footer />
   </Router>

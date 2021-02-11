@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { IMAGE_BASE_URL_LOW } from '../../app/urls';
 
-const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w185';
-
-const RowCard = styled.div`
+export const RowCard = styled.div`
   width: 150px;
   min-width: 150px;
   margin-left: 40px;
@@ -28,7 +27,7 @@ export const MovieCard = ({
 }) => (
   <RowCard>
     <ImageWrapper>
-      <Img alt='movie' src={`${IMAGE_BASE_URL}${poster_path}`} />
+      <Img alt='movie' src={`${IMAGE_BASE_URL_LOW}${poster_path}`} />
     </ImageWrapper>
 
     <p>{title}</p>
