@@ -7,26 +7,49 @@ export const useMovies = () => useContext(MoviesContext);
 
 export const MoviesProvider = ({ children }) => {
   const [comedies, setComedies] = useState([]);
-  const [popular, setPopular] = useState([]);
-  const [animation, setAnimation] = useState([]);
+  const [comediesError, setComediesError] = useState(null);
+  const [comediesStatus, setComediesStatus] = useState('loading');
 
-  const { loading: loadingComedies, error: errorComedies } = useFetch({
+  const [popular, setPopular] = useState([]);
+  const [popularError, setPopularError] = useState(null);
+  const [popularStatus, setPopularStatus] = useState('loading');
+
+  const [animation, setAnimation] = useState([]);
+  const [animationError, setAnimationError] = useState(null);
+  const [animationStatus, setAnimationStatus] = useState('loading');
+
+  useFetch({
     url: comediesUrl,
     setMovies: setComedies,
+    setMoviesStatus: setComediesStatus,
+    setMoviesError: setComediesError,
   });
 
-  const { loading: loadingPopularity, error: errorPopularity } = useFetch({
+  useFetch({
     url: popularUrl,
     setMovies: setPopular,
+    setMoviesStatus: setPopularStatus,
+    setMoviesError: setPopularError,
   });
 
-  const { loading: loadingAnimation, error: errorAnimation } = useFetch({
+  useFetch({
     url: animationUrl,
     setMovies: setAnimation,
+    setMoviesError: setAnimationError,
+    setMoviesStatus: setAnimationStatus,
   });
 
   return (
-    <MoviesContext.Provider value={{ comedies, popular, animation }}>
+    <MoviesContext.Provider
+      value={{
+        comedies,
+        comediesError,
+        popular,
+        popularError,
+        animation,
+        animationError,
+      }}
+    >
       {children}
     </MoviesContext.Provider>
   );
