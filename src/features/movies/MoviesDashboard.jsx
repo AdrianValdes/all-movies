@@ -1,31 +1,37 @@
-import React from 'react';
-import { useMovies } from '../../app/context/movies/movies';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  fetchAnimationsAction,
+  fetchComediesAction,
+  fetchPopularsAction,
+} from '../../app/store/actions/moviesAction';
+
 import { MoviesRow } from './MoviesRow';
 
 export const MoviesDashboard = () => {
-  const {
-    comedies,
-    popular,
-    animation,
-    comediesError,
-    popularError,
-    animationError,
-  } = useMovies();
+  const dispatch = useDispatch();
+  const { comedies, animation, popular } = useSelector((state) => state.movies);
+
+  useEffect(() => {
+    dispatch(fetchComediesAction());
+    dispatch(fetchAnimationsAction());
+    dispatch(fetchPopularsAction());
+  }, []);
 
   return (
     <main>
       <div className='main' style={{ maxWidth: '1600px' }}>
         <div>
           <p>comedies</p>
-          <MoviesRow movies={comedies} moviesError={comediesError} />
+          <MoviesRow movies={comedies} />
         </div>
         <div>
           <p>animation</p>
-          <MoviesRow movies={animation} moviesError={animationError} />
+          <MoviesRow movies={animation} />
         </div>
         <div>
           <p>pouplar</p>
-          <MoviesRow movies={popular} moviesError={popularError} />
+          <MoviesRow movies={popular} />
         </div>
       </div>
     </main>
