@@ -8,32 +8,21 @@ import {
 
 import { MoviesRow } from './MoviesRow';
 
-export const MoviesDashboard = () => {
-  const dispatch = useDispatch();
-  const { comedies, animation, popular } = useSelector((state) => state.movies);
-
-  useEffect(() => {
-    dispatch(fetchComediesAction());
-    dispatch(fetchAnimationsAction());
-    dispatch(fetchPopularsAction());
-  }, []);
-
-  return (
-    <main>
-      <div className='main' style={{ maxWidth: '1600px' }}>
-        <div>
-          <p>comedies</p>
-          <MoviesRow movies={comedies} />
-        </div>
-        <div>
-          <p>animation</p>
-          <MoviesRow movies={animation} />
-        </div>
-        <div>
-          <p>pouplar</p>
-          <MoviesRow movies={popular} />
-        </div>
+export const MoviesDashboard = ({ comedies, animation, popular }) => (
+  <main>
+    <div className='main' style={{ maxWidth: '1600px' }}>
+      <div>
+        <p>comedies</p>
+        <MoviesRow movies={comedies} />
       </div>
-    </main>
-  );
-};
+      <div>
+        <p>animation</p>
+        <MoviesRow movies={animation} />
+      </div>
+      <div>
+        <p>popular</p>
+        <MoviesRow movies={popular} />
+      </div>
+    </div>
+  </main>
+);
