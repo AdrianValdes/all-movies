@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { GrInstagram } from 'react-icons/gr';
 import { FiFacebook, FiTwitter } from 'react-icons/fi';
 import logo from '../assets/images/logo.png';
