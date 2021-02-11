@@ -1,27 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-export const useFetch = ({ url, setMovies }) => {
-  const [apiError, setApiError] = useState(null);
-  const [loading, setLoading] = useState(true);
-
+export const useFetch = ({
+  url,
+  setMovies,
+  setMoviesStatus,
+  setMoviesError,
+}) => {
   useEffect(() => {
     if (!url) return;
-    async function fetchComedies() {
+    async function fetchMovies() {
       try {
         const response = await fetch(url);
         const data = await response.json();
         setMovies([...data.results]);
-        setLoading(false);
+        setMoviesStatus('finished');
       } catch (error) {
-        setApiError(error);
-        setLoading(false);
+        setMoviesError(error.message);
+        setMoviesStatus('finished');
       }
     }
-    fetchComedies();
+    fetchMovies();
   }, [url]);
 
-  return {
-    loading,
-    apiError,
-  };
+  return {};
 };
