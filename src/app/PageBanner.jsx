@@ -5,10 +5,7 @@
 
 // const BannerStyle = styled.div`
 //   width: 100vw;
-//   height: 300px;
-//   background-size: cover;
-//   background-repeat: none;
-//   background-position: center;
+//   height: 250px;
 //   display: flex;
 // `;
 
@@ -18,9 +15,10 @@
 // `;
 
 // export const PageBanner = ({movie}) =>
+// const { release_date, vote_average, title, id } = movies;
 //   <BannerStyle>
 //   ({
-/* <MovieImage alt='movie' src={`${IMAGE_BASE_URL}${poster_path}`} />
+/* <MovieImage alt='movie' src={} />
     <div>
       <h2>{title}</h2>
       <p></p>

@@ -63,7 +63,7 @@ const StyledA = styled.a`
 
 const SubA = styled.a`
   color: rgb(3, 37, 65);
-  padding: 14px 16px;
+  padding: 10px 12px;
   text-decoration: none;
   display: block;
   text-align: left;

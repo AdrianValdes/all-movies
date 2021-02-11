@@ -11,27 +11,28 @@ const BannerStyle = styled.div`
   background-position: center;
   display: flex;
   flex-direction: column;
-  opacity: 0.7;
+  padding: 0 20px;
+  opacity: 0.8;
 `;
 
 const FormStyle = styled.form`
-  width: 60%;
+  width: 90%;
   position: relative;
   border: 1px solid lightgrey;
   border-radius: 20px;
-  align-self: center;
+  align-self: flex-start;
   background-color: white;
 `;
 
 const StyleH2 = styled.h2`
-  align-self: center;
+  align-self: flex-start;
   font-size: 40px;
   color: white;
   margin-bottom: 0px;
 `;
 
 const StyleH3 = styled.h3`
-  align-self: center;
+  align-self: flex-start;
   font-size: 25px;
   margin-top: 0px;
   color: white;
@@ -56,6 +57,7 @@ const SearchButtom = styled.button`
   padding: 10px 15px;
   position: absolute;
   right: 0px;
+  font-weight: 700;
   background-color: rgb(72, 172, 196);
   color: white;
   &:focus {
@@ -82,15 +84,15 @@ export const HomeBanner = () => {
 
   return (
     <BannerStyle>
-      <StyleH2>Welcome!</StyleH2>
-      <StyleH3>Explore millions of movies and people.</StyleH3>
+      <StyleH2>Welcome to MOVIES!</StyleH2>
+      <StyleH3>Explore millions of movies and people now.</StyleH3>
       <FormStyle autoComplete='off' onSubmit={handleSearch}>
         <Input
           type='text'
           ref={inputRef}
           value={input}
           placeholder='Search for a movie or person...'
-          onChange={(e) => setInput(e.tartget.value)}
+          onChange={(e) => setInput(e.target.value)}
         />
         <SearchButtom type='submit'>Search</SearchButtom>
       </FormStyle>
