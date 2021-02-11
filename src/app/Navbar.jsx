@@ -1,95 +1,111 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable react/jsx-indent */
-import React from 'react';
 import { Link } from 'react-router-dom';
+import React from 'react';
 import styled from 'styled-components';
 import logo from '../assets/images/logo.png';
 
-// const NavContainer = styled.nav`
-//   width: 100%;
-//   display: flex;
-//   padding: 0 12px;
-//   background-color: rgb(3, 37, 65);
-//   position: relative;
-//   display: inline-block;
-//   $:hover {
-//     display: block;
-//   }
-// `;
-
-const NavContainer = styled.nav`
-  width: 100%;
-  display: flex;
-  padding: 0 12px;
+const StyledUl = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   background-color: rgb(3, 37, 65);
+  display: flex;
+  padding: 4px 20px;
 `;
 
-const NavLink = styled.a`
-  padding: 20px;
+const StyledLi = styled.li`
+  padding: 10px;
+  float: left;
+`;
+
+const Dropbtn = styled.div`
+  display: inline-block;
   color: white;
-  font-weight: 500;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
   &:hover {
     color: lightseagreen;
   }
 `;
 
-const LogoStyle = styled.img`
-  width: 100px;
-`;
-const Genre = styled.span`
-  &:hover {
-    color: red;
-  }
-  &:hover .genre {
-    display: block;
-  }
-`;
-const GenreChoices = styled.div`
+const DropDownContent = styled.div`
   display: none;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  padding: 12px 16px;
   z-index: 1;
-  ${Genre}:hover & {
+`;
+
+const DropDownLi = styled(StyledLi)`
+  display: inline-block;
+  font-size: 20px;
+  &:hover ${DropDownContent} {
     display: block;
   }
 `;
 
-const GenreLink = styled.a`
-  color: black
-  padding: 4px 8px;
-  display: block;
+const StyledA = styled.a`
+  display: inline-block;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
   &:hover {
-    background-color: #f1f1f1;
+    color: lightseagreen;
   }
+`;
 
+const SubA = styled.a`
+  color: rgb(3, 37, 65);
+  padding: 14px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  &:hover {
+    color: white;
+    background-color: rgba(3, 37, 65, 0.7);
+  }
+`;
+
+const LogoStyle = styled.img`
+  width: 100px;
 `;
 
 export const Navbar = () => (
-  <NavContainer>
+  <StyledUl>
     <Link to='/'>
       <LogoStyle src={logo} alt='logo' />
     </Link>
-    <NavLink path='/popular'>Popular</NavLink>
-    <div to='/g'>
-      <Genre>Genres</Genre>
-      <GenreChoices className='genre'>
-        <GenreLink to='/action'>Action</GenreLink>
-        <GenreLink to='/animation'>Animation</GenreLink>
-        <GenreLink to='/comedy'>Comedy</GenreLink>
-        <GenreLink to='/drama'>Drama</GenreLink>
-        <GenreLink to='/fantacy'>Fantasy</GenreLink>
-        <GenreLink to='/horrow'>Horror</GenreLink>
-        <GenreLink to='/romance'>Romance</GenreLink>
-        <GenreLink to='/thriller'>Thriller</GenreLink>
-      </GenreChoices>
-    </div>
-    <NavLink path='/people'>People</NavLink>
-    <NavLink path='/login'>Login</NavLink>
-  </NavContainer>
+    <StyledLi>
+      <Link to='/popular'>
+        <StyledA>Popular</StyledA>
+      </Link>
+    </StyledLi>
+    <DropDownLi>
+      <Dropbtn>Genres</Dropbtn>
+      <DropDownContent>
+        {' '}
+        <SubA>Action</SubA>
+        <SubA>Animation</SubA>
+        <SubA>Comedy</SubA>
+        <SubA>Drama</SubA>
+      </DropDownContent>
+    </DropDownLi>
+    <StyledLi>
+      <Link to='/people'>
+        <StyledA>People</StyledA>
+      </Link>
+    </StyledLi>
+    <StyledLi>
+      <Link to='/login'>
+        <StyledA>Login</StyledA>
+      </Link>
+    </StyledLi>
+  </StyledUl>
 );
