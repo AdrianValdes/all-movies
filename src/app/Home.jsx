@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
 import { MoviesDashboard } from '../features/movies/MoviesDashboard';
 import { HomeBanner } from './HomeBanner';
 import {
@@ -7,7 +8,11 @@ import {
   fetchComediesAction,
   fetchPopularsAction,
 } from './store/actions/moviesAction';
-import { IMAGE_BASE_URL_HIGH } from './urls';
+
+const Section = styled.section`
+  display: flex;
+  justify-content: center;
+`;
 
 export const Home = () => {
   const [headerImageId, setHeaderImageId] = useState('');
@@ -29,12 +34,9 @@ export const Home = () => {
 
   return (
     <div>
-      <h1>Home</h1>
-      <HomeBanner headerImageId={headerImageId} />
-      {headerImageId && (
-        <img src={`${IMAGE_BASE_URL_HIGH}${headerImageId}`} alt='banner' />
-      )}
-
+      <Section>
+        <HomeBanner headerImageId={headerImageId} />
+      </Section>
       <MoviesDashboard
         comedies={comedies}
         popular={popular}

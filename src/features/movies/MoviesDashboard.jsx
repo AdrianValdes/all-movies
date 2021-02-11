@@ -1,16 +1,10 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  fetchAnimationsAction,
-  fetchComediesAction,
-  fetchPopularsAction,
-} from '../../app/store/actions/moviesAction';
+import React from 'react';
 
 import { MoviesRow } from './MoviesRow';
 
 export const MoviesDashboard = ({ comedies, animation, popular }) => (
   <main>
-    <div className='main' style={{ maxWidth: '1600px' }}>
+    <div className='main' style={{ maxWidth: '1400px' }}>
       <div>
         <p>comedies</p>
         <MoviesRow movies={comedies} />

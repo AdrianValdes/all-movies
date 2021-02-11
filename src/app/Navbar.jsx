@@ -1,23 +1,28 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react/jsx-no-comment-textnodes */
-/* eslint-disable react/jsx-indent */
 import { Link } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
 import logo from '../assets/images/logo.png';
 
-const StyledUl = styled.ul`
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+const Nav = styled.nav`
   background-color: rgb(3, 37, 65);
   display: flex;
-  padding: 4px 20px;
+  justify-content: center;
+  height: 90px;
+`;
+
+const SubNav = styled.nav`
+  display: flex;
+  width: 1400px;
+`;
+
+const StyledUl = styled.ul`
+  display: flex;
+  list-style: none;
+  align-items: center;
 `;
 
 const StyledLi = styled.li`
-  padding: 10px;
+  padding: 0 5px;
   float: left;
 `;
 
@@ -43,7 +48,7 @@ const DropDownContent = styled.div`
 
 const DropDownLi = styled(StyledLi)`
   display: inline-block;
-  font-size: 20px;
+  font-size: 16px;
   &:hover ${DropDownContent} {
     display: block;
   }
@@ -52,11 +57,12 @@ const DropDownLi = styled(StyledLi)`
 const StyledA = styled.p`
   display: inline-block;
   color: white;
-  font-size: 20px;
+  font-size: 16px;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   cursor: pointer;
+  vertical-align: middle;
   &:hover {
     color: lightseagreen;
   }
@@ -75,37 +81,43 @@ const SubA = styled.a`
 `;
 
 const LogoStyle = styled.img`
-  width: 100px;
+  width: 80px;
+  padding: 20px 0;
+  margin-right: 15px;
 `;
 
 export const Navbar = () => (
-  <StyledUl>
-    <Link to='/'>
-      <LogoStyle src={logo} alt='logo' />
-    </Link>
-    <StyledLi>
-      <Link to='/popular'>
-        <StyledA>Popular</StyledA>
+  <Nav>
+    <SubNav>
+      <Link to='/'>
+        <LogoStyle src={logo} alt='logo' />
       </Link>
-    </StyledLi>
-    <DropDownLi>
-      <StyledA>Genres</StyledA>
-      <DropDownContent>
-        <SubA>Action</SubA>
-        <SubA>Animation</SubA>
-        <SubA>Comedy</SubA>
-        <SubA>Drama</SubA>
-      </DropDownContent>
-    </DropDownLi>
-    <StyledLi>
-      <Link to='/people'>
-        <StyledA>People</StyledA>
-      </Link>
-    </StyledLi>
-    <StyledLi>
-      <Link to='/login'>
-        <StyledA>Login</StyledA>
-      </Link>
-    </StyledLi>
-  </StyledUl>
+      <StyledUl>
+        <StyledLi>
+          <Link to='/popular'>
+            <StyledA>Popular</StyledA>
+          </Link>
+        </StyledLi>
+        <DropDownLi>
+          <StyledA>Genres</StyledA>
+          <DropDownContent>
+            <SubA>Action</SubA>
+            <SubA>Animation</SubA>
+            <SubA>Comedy</SubA>
+            <SubA>Drama</SubA>
+          </DropDownContent>
+        </DropDownLi>
+        <StyledLi>
+          <Link to='/people'>
+            <StyledA>People</StyledA>
+          </Link>
+        </StyledLi>
+        <StyledLi>
+          <Link to='/login'>
+            <StyledA>Login</StyledA>
+          </Link>
+        </StyledLi>
+      </StyledUl>
+    </SubNav>
+  </Nav>
 );
