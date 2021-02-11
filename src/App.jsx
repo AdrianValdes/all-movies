@@ -3,13 +3,17 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { MoviesProvider } from './app/context/movies/movies';
 import { Footer } from './app/Footer';
 
-import { Header } from './app/Header';
+import { Navbar } from './app/Navbar';
+import { HomeBanner } from './app/HomeBanner';
+// import { PageBanner } from './app/PageBanner';
 import { MoviesDashboard } from './features/movies/MoviesDashboard';
 
 export const App = () => (
   <Router>
-    <Header />
+    <Navbar />
     <Switch>
+      <HomeBanner />
+      {/* <PageBanner /> */}
       <MoviesProvider>
         <Route exact path='/'>
           <MoviesDashboard />
