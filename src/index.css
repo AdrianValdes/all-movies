@@ -27,3 +27,7 @@ main {
   background-color: #fff;
   margin-top: 64px;
 }
+a {
+  text-decoration: none;
+  color: black;
+}

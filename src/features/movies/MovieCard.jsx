@@ -6,6 +6,7 @@ export const RowCard = styled.div`
   width: 150px;
   min-width: 150px;
   margin-left: 40px;
+  color: black;
 `;
 
 export const ImageWrapper = styled.div`
@@ -19,6 +20,22 @@ export const Img = styled.img`
   width: 100%;
   border-radius: 10px;
 `;
+
+const CardTitle = styled.h2`
+  font-weight: 700;
+  font-size: 1em;
+  padding-top: 10px;
+`;
+
+const CardDate = styled.p`
+  font-size: 1em;
+  color: rgba(0, 0, 0, 0.6);
+  padding: 5px 0;
+`;
+
+const CardContent = styled.div`
+  padding: 2px 0;
+`;
 export const MovieCard = ({
   poster_path,
   release_date,
@@ -29,8 +46,10 @@ export const MovieCard = ({
     <ImageWrapper>
       <Img alt='movie' src={`${IMAGE_BASE_URL_LOW}${poster_path}`} />
     </ImageWrapper>
-
-    <p>{title}</p>
-    <p>{vote_average}</p>
+    <CardContent>
+      <CardTitle>{title}</CardTitle>
+      <CardDate>{new Date(release_date).toDateString().slice(4)}</CardDate>
+      <p>{vote_average}</p>
+    </CardContent>
   </RowCard>
 );
