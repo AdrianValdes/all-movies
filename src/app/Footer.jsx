@@ -17,15 +17,19 @@ const LogoStyle = styled.img`
   margin: 0 20px;
 `;
 
+const StyleP = styled.p`
+  padding-top: 20px;
+`;
+
 const SocialButton = styled.div`
   display: flex;
-  padding: 18px 10px;
+  padding: 20px 15px;
 `;
 
 export const Footer = () => (
   <StyledFooter>
     <LogoStyle src={logo} alt='logo' />
-    <p>Follow us on</p>
+    <StyleP>Follow us on</StyleP>
     <SocialButton>
       <GrInstagram size={20} style={{ marginRight: '10px' }} />
       <FiFacebook size={20} style={{ marginRight: '10px' }} />

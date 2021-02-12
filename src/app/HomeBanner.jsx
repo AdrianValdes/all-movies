@@ -59,7 +59,7 @@ const Input = styled.input`
   }
 `;
 
-const SearchButtom = styled.button`
+const SearchButton = styled.button`
   border: none;
   border-radius: 30px;
   padding: 10px 15px;
@@ -107,7 +107,7 @@ export const HomeBanner = ({ headerImageId }) => {
           placeholder='Search for a movie or person...'
           onChange={(e) => setInput(e.target.value)}
         />
-        <SearchButtom type='submit'>Search</SearchButtom>
+        <SearchButton type='submit'>Search</SearchButton>
       </FormStyle>
     </BannerStyle>
   );
