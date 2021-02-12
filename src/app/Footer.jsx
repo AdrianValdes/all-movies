@@ -9,6 +9,7 @@ const StyledFooter = styled.footer`
   color: white;
   display: flex;
   justify-content: center;
+  padding: 50px 0;
 `;
 
 const LogoStyle = styled.img`
