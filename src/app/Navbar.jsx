@@ -26,17 +26,6 @@ const StyledLi = styled.li`
   float: left;
 `;
 
-const Dropbtn = styled.div`
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  &:hover {
-    color: lightseagreen;
-  }
-`;
-
 const DropDownContent = styled.div`
   display: none;
   position: absolute;
