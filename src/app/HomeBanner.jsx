@@ -3,13 +3,20 @@ import styled from 'styled-components';
 import { IMAGE_BASE_URL_HIGH } from './urls';
 
 const BannerStyle = styled.div`
-  background-image: url(${(props) => props.imageUrl});
+  background-image: linear-gradient(
+      to right,
+      rgba(3, 37, 65, 0.8) 0%,
+      rgba(3, 37, 65, 0) 100%
+    ),
+    url(${(props) => props.imageUrl});
   width: 100%;
   max-width: 1400px;
-  height: 360px;
+  max-height: 360px;
+  min-height: 300px;
+  height: calc(100vh / 2.5);
   background-size: cover;
-  background-repeat: none;
-  background-position: center;
+  background-repeat: no-repeat;
+  background-position: top center;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -22,7 +29,7 @@ const FormStyle = styled.form`
   border: 1px solid lightgrey;
   border-radius: 20px;
   align-self: flex-start;
-  background-color: white;
+  background-color: #fff;
 `;
 
 const StyleH2 = styled.h2`
