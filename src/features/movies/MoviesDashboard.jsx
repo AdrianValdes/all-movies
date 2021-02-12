@@ -1,22 +1,39 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import { MoviesRow } from './MoviesRow';
+
+const RowWrapper = styled.div`
+  padding-top: 30px;
+`;
+const RowTitle = styled.h2`
+  padding-left: 40px;
+  color: black;
+  text-decoration: none;
+`;
 
 export const MoviesDashboard = ({ comedies, animation, popular }) => (
   <main>
     <div className='main' style={{ maxWidth: '1400px' }}>
-      <div>
-        <p>comedies</p>
+      <RowWrapper>
+        <RowTitle>
+          <Link to='/'> Comedies</Link>
+        </RowTitle>
         <MoviesRow movies={comedies} />
-      </div>
-      <div>
-        <p>animation</p>
+      </RowWrapper>
+      <RowWrapper>
+        <RowTitle>
+          <Link to='/'>Animation</Link>
+        </RowTitle>
         <MoviesRow movies={animation} />
-      </div>
-      <div>
-        <p>popular</p>
+      </RowWrapper>
+      <RowWrapper>
+        <RowTitle>
+          <Link to='/'>Popular</Link>
+        </RowTitle>
         <MoviesRow movies={popular} />
-      </div>
+      </RowWrapper>
     </div>
   </main>
 );
