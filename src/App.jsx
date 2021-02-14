@@ -7,15 +7,17 @@ import { Navbar } from './app/Navbar';
 import { Home } from './app/Home';
 import { Login } from './app/Login';
 import { SignUp } from './app/SignUp';
+import { ActionRoute } from './features/movies/ActionRoute';
 
 export const App = () => (
   <Router>
     <Navbar />
     <Switch>
       <Route path='/movie/:id' component={MovieRoute} />
-      <Route exact path='/' component={Home} />
       <Route path='/login' component={Login} />
       <Route path='/signup' component={SignUp} />
+      <Route path='/action' component={ActionRoute} />
+      <Route exact path='/' component={Home} />
     </Switch>
     <Footer />
   </Router>

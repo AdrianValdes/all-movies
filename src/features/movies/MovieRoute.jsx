@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Row } from './MoviesRow';
 import { useFetch } from '../../app/hooks/useFetch';
-import { ImageWrapper, Img, RowCard } from './MovieCard';
+import { ImageWrapper, Img, RowCard } from './RowCard';
 import { KEY, IMAGE_BASE_URL_LOW, SINGLE_MOVIE_BASE_URL } from '../../app/urls';
 
 const PageBannerStyle = styled.div`

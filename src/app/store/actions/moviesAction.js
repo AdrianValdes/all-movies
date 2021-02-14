@@ -1,4 +1,4 @@
-import { animationUrl, comediesUrl, popularUrl } from '../../urls';
+import { actionUrl, animationUrl, comediesUrl, popularUrl } from '../../urls';
 import { helpFetchMovies } from '../helpers';
 
 export const fetchComediesAction = () => async (dispatch) => {
@@ -23,6 +23,14 @@ export const fetchPopularsAction = () => async (dispatch) => {
 
   dispatch({
     type: 'FETCH_POPULAR',
+    payload: response,
+  });
+};
+export const fetchActionsAction = () => async (dispatch) => {
+  const response = await helpFetchMovies(actionUrl);
+
+  dispatch({
+    type: 'FETCH_ACTION',
     payload: response,
   });
 };

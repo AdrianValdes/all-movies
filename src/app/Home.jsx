@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { MoviesDashboard } from '../features/movies/MoviesDashboard';
 import { HomeBanner } from './HomeBanner';
 import {
+  fetchActionsAction,
   fetchAnimationsAction,
   fetchComediesAction,
   fetchPopularsAction,
@@ -23,6 +24,7 @@ export const Home = () => {
     dispatch(fetchComediesAction());
     dispatch(fetchAnimationsAction());
     dispatch(fetchPopularsAction());
+    dispatch(fetchActionsAction());
   }, []);
 
   useEffect(() => {

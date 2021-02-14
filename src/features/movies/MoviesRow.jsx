@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { MovieCard } from './MovieCard';
+import { RowCard } from './RowCard';
 
 export const Row = styled.div`
   width: 100%;
@@ -22,7 +22,7 @@ export const MoviesRow = ({ movies }) => (
         }}
         key={id}
       >
-        <MovieCard
+        <RowCard
           poster_path={poster_path}
           release_date={release_date}
           vote_average={vote_average}
