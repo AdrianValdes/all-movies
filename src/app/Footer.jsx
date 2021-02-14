@@ -1,34 +1,33 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { GrInstagram } from 'react-icons/gr';
 import { FiFacebook, FiTwitter } from 'react-icons/fi';
 import logo from '../assets/images/logo.png';
+import { LogoStyle } from './Navbar';
 
 const StyledFooter = styled.footer`
   background-color: rgb(3, 37, 65);
   color: white;
   display: flex;
   justify-content: center;
-  padding: 50px 0;
-`;
-
-const LogoStyle = styled.img`
-  width: 100px;
-  margin: 0 20px;
+  padding: 30px 0;
 `;
 
 const StyleP = styled.p`
-  padding-top: 20px;
+  padding-top: 30px;
 `;
 
 const SocialButton = styled.div`
   display: flex;
-  padding: 20px 15px;
+  padding: 30px 15px;
 `;
 
 export const Footer = () => (
   <StyledFooter>
-    <LogoStyle src={logo} alt='logo' />
+    <Link to='/'>
+      <LogoStyle src={logo} alt='logo' />
+    </Link>
     <StyleP>Follow us on</StyleP>
     <SocialButton>
       <GrInstagram size={20} style={{ marginRight: '10px' }} />

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const LoginPageStyle = styled.div`
     width: 80%;
-    margin: 40px auto;
+    margin: 50px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,7 +46,7 @@ export const StyleForm = styled.form`
 export const StyleInput = styled.input`
     width: 100%;
     height: 30px;
-    padding-left: 4px;
+    padding-left: 10px;
     margin: 10px 0;
     border-radius: 10px;
     &:focus {
@@ -59,10 +59,12 @@ export const StyleButton = styled.button`
     height: 30px;
     background-color: rgb(8, 48, 82);
     color: white;
+    border: none;
     border-radius: 10px;
     margin-top: 10px;
     margin-bottom: 60px;
     &:hover {
-        background-color: rgba(8, 48, 82, 0.8);  
+        background-color: rgba(8, 48, 82, 0.8);
+        outline: none;  
     }
 `;
