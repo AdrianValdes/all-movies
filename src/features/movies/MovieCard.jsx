@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FcRating } from 'react-icons/fc';
 import { IMAGE_BASE_URL_LOW } from '../../app/urls';
 
 export const RowCard = styled.div`
@@ -49,7 +50,10 @@ export const MovieCard = ({
     <CardContent>
       <CardTitle>{title}</CardTitle>
       <CardDate>{new Date(release_date).toDateString().slice(4)}</CardDate>
-      <p>{vote_average}</p>
+      <p>
+        <FcRating style={{ marginRight: '10px' }} />
+        {vote_average}
+      </p>
     </CardContent>
   </RowCard>
 );

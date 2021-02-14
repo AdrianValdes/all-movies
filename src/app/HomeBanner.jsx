@@ -32,7 +32,7 @@ const FormStyle = styled.form`
   background-color: #fff;
 `;
 
-const StyleH2 = styled.h2`
+const StyleH1 = styled.h1`
   align-self: flex-start;
   font-size: 40px;
   color: white;
@@ -71,7 +71,7 @@ const SearchButton = styled.button`
   font-weight: 700;
   background-color: #47cfb5;
   color: white;
-  &:focus {
+  &:hover {
     background-color: rgb(3, 37, 65);
     outline: none;
     cursor: pointer;
@@ -100,7 +100,7 @@ export const HomeBanner = ({ headerImageId }) => {
 
   return (
     <BannerStyle imageUrl={imageUrl}>
-      <StyleH2>Welcome to MOVIES!</StyleH2>
+      <StyleH1>Welcome to MOVIES!</StyleH1>
       <StyleH3>Explore millions of movies and people now.</StyleH3>
       <FormStyle autoComplete='off' onSubmit={handleSearch}>
         <Input
