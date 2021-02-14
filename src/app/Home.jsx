@@ -17,15 +17,8 @@ const Section = styled.section`
 
 export const Home = () => {
   const [headerImageId, setHeaderImageId] = useState('');
-  const dispatch = useDispatch();
-  const { comedies, animation, popular } = useSelector((state) => state.movies);
 
-  useEffect(() => {
-    dispatch(fetchComediesAction());
-    dispatch(fetchAnimationsAction());
-    dispatch(fetchPopularsAction());
-    dispatch(fetchActionsAction());
-  }, []);
+  const { comedies, animation, popular } = useSelector((state) => state.movies);
 
   useEffect(() => {
     if (popular.length > 0) {
