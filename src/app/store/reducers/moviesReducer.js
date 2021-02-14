@@ -9,7 +9,7 @@ export const moviesReducer = (state = initialState, action) => {
     case 'FETCH_POPULAR':
       return { ...state, popular: [...action.payload] };
     case 'FETCH_ACTION':
-      return { ...state, action: [...action.payload] };
+      return { ...state, action: [...state.action, ...action.payload] };
     default:
       return state;
   }

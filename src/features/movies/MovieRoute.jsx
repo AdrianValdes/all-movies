@@ -40,11 +40,10 @@ const NoticeStyle = styled.p`
 export const MovieRoute = ({ location }) => {
   const { poster_path, title, id, release_date } = location.state;
 
-  const urlSingleMovieWithALL = `${SINGLE_MOVIE_BASE_URL}/${id}?api_key=${KEY}&append_to_response=videos,credit`;
   const urlVideos = `${SINGLE_MOVIE_BASE_URL}/${id}/videos?api_key=${KEY}&language=en-US`;
   const urlCredits = `${SINGLE_MOVIE_BASE_URL}/${id}/credits?api_key=${KEY}`;
 
-  const { dataApi, loadingApi, errorApi } = useFetch(urlVideos);
+  const { dataApi } = useFetch(urlVideos);
 
   let trailerKey;
   if (dataApi.results !== undefined && dataApi.results.length > 0) {

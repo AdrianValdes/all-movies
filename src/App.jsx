@@ -10,7 +10,6 @@ import { Login } from './app/Login';
 import { SignUp } from './app/SignUp';
 import { ActionRoute } from './features/movies/ActionRoute';
 import {
-  fetchActionsAction,
   fetchAnimationsAction,
   fetchComediesAction,
   fetchPopularsAction,
@@ -22,7 +21,6 @@ export const App = () => {
     dispatch(fetchComediesAction());
     dispatch(fetchAnimationsAction());
     dispatch(fetchPopularsAction());
-    dispatch(fetchActionsAction());
   }, []);
 
   return (

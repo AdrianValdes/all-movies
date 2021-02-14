@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { MoviesDashboard } from '../features/movies/MoviesDashboard';
 import { HomeBanner } from './HomeBanner';
-import {
-  fetchActionsAction,
-  fetchAnimationsAction,
-  fetchComediesAction,
-  fetchPopularsAction,
-} from './store/actions/moviesAction';
 
 const Section = styled.section`
   display: flex;
