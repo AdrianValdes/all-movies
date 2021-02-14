@@ -83,7 +83,10 @@ export const HomeBanner = ({ headerImageId }) => {
   const [, setSearch] = useState();
   const inputRef = useRef();
 
-  const imageUrl = `${IMAGE_BASE_URL_HIGH}${headerImageId}`;
+  let imageUrl;
+  if (headerImageId) {
+    imageUrl = `${IMAGE_BASE_URL_HIGH}${headerImageId}`;
+  }
 
   useEffect(() => {
     inputRef.current.focus();
