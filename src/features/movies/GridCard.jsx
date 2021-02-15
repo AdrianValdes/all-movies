@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FcRating } from 'react-icons/fc';
 import { IMAGE_BASE_URL_LOW } from '../../app/urls';
 
-export const Card = styled.div`
+const Card = styled.div`
   width: 180px;
   min-width: 160px;
   margin-left: 40px;
@@ -37,23 +38,27 @@ const CardDate = styled.p`
 const CardContent = styled.div`
   padding: 16px 10px 12px 10px;
 `;
-export const GridCard = ({
-  poster_path,
-  release_date,
-  vote_average,
-  title,
-}) => (
-  <Card>
-    <ImageWrapper>
-      <Img alt='movie' src={`${IMAGE_BASE_URL_LOW}${poster_path}`} />
-    </ImageWrapper>
-    <CardContent>
-      <CardTitle>{title}</CardTitle>
-      <CardDate>{new Date(release_date).toDateString().slice(4)}</CardDate>
-      <p>
-        <FcRating style={{ marginRight: '10px' }} />
-        {vote_average}
-      </p>
-    </CardContent>
-  </Card>
+export const GridCard = ({ movie }) => (
+  <Link
+    to={{
+      pathname: `/movie/${movie.id}`,
+      state: { movie },
+    }}
+  >
+    <Card>
+      <ImageWrapper>
+        <Img alt='movie' src={`${IMAGE_BASE_URL_LOW}${movie.poster_path}`} />
+      </ImageWrapper>
+      <CardContent>
+        <CardTitle>{movie.title}</CardTitle>
+        <CardDate>
+          {new Date(movie.release_date).toDateString().slice(4)}
+        </CardDate>
+        <p>
+          <FcRating style={{ marginRight: '10px' }} />
+          {movie.vote_average}
+        </p>
+      </CardContent>
+    </Card>
+  </Link>
 );

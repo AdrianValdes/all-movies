@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { RowCard } from './RowCard';
 
@@ -14,38 +13,8 @@ export const Row = styled.div`
 
 export const MoviesRow = ({ movies }) => (
   <Row>
-    {movies.map(
-      ({
-        poster_path,
-        release_date,
-        vote_average,
-        title,
-        id,
-        backdrop_path,
-        overview,
-      }) => (
-        <Link
-          to={{
-            pathname: `/movie/${id}`,
-            state: {
-              poster_path,
-              release_date,
-              title,
-              id,
-              backdrop_path,
-              overview,
-            },
-          }}
-          key={id}
-        >
-          <RowCard
-            poster_path={poster_path}
-            release_date={release_date}
-            vote_average={vote_average}
-            title={title}
-          />
-        </Link>
-      )
-    )}
+    {movies.map((movie) => (
+      <RowCard key={movie.id} movie={movie} />
+    ))}
   </Row>
 );

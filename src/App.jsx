@@ -8,12 +8,15 @@ import { Navbar } from './app/Navbar';
 import { Home } from './app/Home';
 import { Login } from './app/Login';
 import { SignUp } from './app/SignUp';
-import { ActionRoute } from './features/movies/ActionRoute';
+/* import { PopularRoute } from './features/movies/Routes/PopularRoute'; */
+
 import {
   fetchAnimationsAction,
   fetchComediesAction,
   fetchPopularsAction,
 } from './app/store/actions/moviesAction';
+
+import { GenreRoute } from './features/movies/GenreRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -28,9 +31,9 @@ export const App = () => {
       <Navbar />
       <Switch>
         <Route path='/movie/:id' component={MovieRoute} />
+        <Route path='/genre/:genre' component={GenreRoute} />
         <Route path='/login' component={Login} />
         <Route path='/signup' component={SignUp} />
-        <Route path='/action' component={ActionRoute} />
         <Route exact path='/' component={Home} />
       </Switch>
       <Footer />
