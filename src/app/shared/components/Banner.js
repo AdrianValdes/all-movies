@@ -25,7 +25,7 @@ export const BannerHome = styled(Banner)`
   padding: 0 40px;
 `;
 
-export const MovieBanner = styled(Banner)`
+export const MovieBannerStyle = styled(Banner)`
   padding: 30px 0;
   color: #fff;
   height: 570px;
