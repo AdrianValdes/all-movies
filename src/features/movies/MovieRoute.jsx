@@ -4,7 +4,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { AiFillStar } from 'react-icons/ai';
 import { BsFlagFill, BsListTask, BsFillPlayFill } from 'react-icons/bs';
 import { FaHeart } from 'react-icons/fa';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+
 import { Link } from 'react-router-dom';
 import { Row } from './MoviesRow';
 import { useFetch } from '../../app/hooks/useFetch';
@@ -16,6 +16,8 @@ import {
   SINGLE_MOVIE_BASE_URL,
   IMAGE_BASE_URL_HIGH,
 } from '../../app/urls';
+import { Spinner } from '../../app/shared/components/Spiner';
+import { CircularBar } from '../../app/shared/components/CircularBar';
 
 const PageBanner = styled.div`
   background-image: linear-gradient(
@@ -128,7 +130,7 @@ export const MovieRoute = ({ location }) => {
   const bannerImage = `${IMAGE_BASE_URL_HIGH}/${backdrop_path}`;
 
   const { dataApi } = useFetch(urlVideos);
-  const { dataApi: credits } = useFetch(urlCredits);
+  const { dataApi: credits, loadingApi, errorApi } = useFetch(urlCredits);
 
   let trailerKey;
   if (dataApi.results !== undefined && dataApi.results.length > 0) {
@@ -141,6 +143,8 @@ export const MovieRoute = ({ location }) => {
     cast = credits.cast.slice(0, 10);
   }
 
+  if (loadingApi) return <Spinner />;
+  if (errorApi) return <p>There has been an error: {errorApi} </p>;
   return (
     <div>
       <PageBanner imageUrl={bannerImage}>
@@ -154,21 +158,7 @@ export const MovieRoute = ({ location }) => {
             {title} ({new Date(release_date).getFullYear()})
           </MovieTitle>
           <IconContainer>
-            <CircularProgressbar
-              value={vote_average}
-              maxValue={10}
-              text={`${vote_average * 10}%`}
-              styles={buildStyles({
-                rotation: 0.25,
-                strokeLinecap: 'butt',
-                width: '60px',
-                textSize: '30px',
-                pathTransitionDuration: 0.5,
-                pathColor: `rgba(28,210,175, ${(vote_average * 10) / 100})`,
-                textColor: 'white',
-                trailColor: '#d6d6d6',
-              })}
-            />
+            <CircularBar vote_average={vote_average} widthF='60px' />
             <Score>
               User <br />
               Score

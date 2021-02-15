@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { IMAGE_BASE_URL_LOW } from '../../app/urls';
+import { CircularBar } from '../../app/shared/components/CircularBar';
 
 export const Card = styled.div`
   width: 150px;
@@ -66,23 +67,9 @@ export const RowCard = ({ movie }) => (
           {new Date(movie.release_date).toDateString().slice(4)}
         </CardDate>
         <RatingCircle>
-          <CircularProgressbar
+          <CircularBar
             className='row-card-icon'
-            maxValue={10}
-            value={movie.vote_average}
-            background
-            text={`${movie.vote_average * 10}%`}
-            styles={buildStyles({
-              rotation: 0.25,
-              strokeLinecap: 'butt',
-              width: '50px',
-              pathTransitionDuration: 0.5,
-              pathColor: `rgba(28,210,175, ${(movie.vote_average * 10) / 100})`,
-              textSize: '30px',
-              textColor: 'white',
-              backgroundColor: '#083052',
-              trailColor: '#d6d6d6',
-            })}
+            vote_average={movie.vote_average}
           />
         </RatingCircle>
       </CardContent>
