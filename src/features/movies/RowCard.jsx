@@ -49,9 +49,6 @@ const RatingCircle = styled.div`
   left: 10px;
 `;
 
-
-
-
 export const RowCard = ({ movie }) => (
   <Link
     to={{
@@ -68,29 +65,27 @@ export const RowCard = ({ movie }) => (
         <CardDate>
           {new Date(movie.release_date).toDateString().slice(4)}
         </CardDate>
-      <RatingCircle>
+        <RatingCircle>
           <CircularProgressbar
             className='row-card-icon'
-          maxValue={10}
-            rotation: 0.25,
-          value={vote_average}
-          background
-          text={`${movie.vote_average * 10}%`}
-          styles={buildStyles({
-            strokeLinecap: 'butt',
-            width: '50px',
-            pathTransitionDuration: 0.5,
-            pathColor: `rgba(28,210,175, ${(vote_average * 10) / 100})`,
-            textSize: '30px',
-            textColor: 'white',
-            backgroundColor: '#083052',
-          })}
-            trailColor: '#d6d6d6',
-        />
-         </RatingCircle>
+            maxValue={10}
+            value={movie.vote_average}
+            background
+            text={`${movie.vote_average * 10}%`}
+            styles={buildStyles({
+              rotation: 0.25,
+              strokeLinecap: 'butt',
+              width: '50px',
+              pathTransitionDuration: 0.5,
+              pathColor: `rgba(28,210,175, ${(movie.vote_average * 10) / 100})`,
+              textSize: '30px',
+              textColor: 'white',
+              backgroundColor: '#083052',
+              trailColor: '#d6d6d6',
+            })}
+          />
+        </RatingCircle>
       </CardContent>
     </Card>
   </Link>
-  
-     
 );
