@@ -1,6 +1,13 @@
 import React from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 
+const selectColor = (vote_average) => {
+  if (vote_average > 6.9) return '78,187,111';
+  if (vote_average > 5) return '203,206,48';
+  if (vote_average > 3) return '199,60,89';
+  return '247,75,82';
+};
+
 export const CircularBar = ({ vote_average, className }) => (
   <CircularProgressbar
     background
@@ -9,14 +16,14 @@ export const CircularBar = ({ vote_average, className }) => (
     maxValue={10}
     text={`${vote_average * 10}%`}
     styles={buildStyles({
-      rotation: 0.25,
+      rotation: 0.03,
       strokeLinecap: 'butt',
       width: '30px',
       textSize: '30px',
       pathTransitionDuration: 0.5,
-      pathColor: `rgba(28,210,175, ${(vote_average * 10) / 100})`,
+      pathColor: `rgb(${selectColor(vote_average)})`,
       textColor: 'white',
-      trailColor: '#d6d6d6',
+      trailColor: 'rgb(30,66,39)',
       backgroundColor: '#083052',
     })}
   />
