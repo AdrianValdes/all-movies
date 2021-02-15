@@ -35,7 +35,6 @@ export const ActionRoute = () => {
   const lastMovie = useCallback(
     (movieNode) => {
       if (loadingApi) return;
-      if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore) {
           setPageNumber((prevsPageNum) => prevsPageNum + 1);
@@ -59,44 +58,24 @@ export const ActionRoute = () => {
         <MoviesGrid>
           {action &&
             action.map(
-              ({ poster_path, release_date, vote_average, title, id }, idx) => {
-                if (action.length === idx + 1) {
-                  return (
-                    <Link
-                      ref={lastMovie}
-                      to={{
-                        pathname: `/movie/${id}`,
-                        state: { poster_path, release_date, title, id },
-                      }}
-                      key={id}
-                    >
-                      <GridCard
-                        poster_path={poster_path}
-                        release_date={release_date}
-                        vote_average={vote_average}
-                        title={title}
-                      />
-                    </Link>
-                  );
-                }
-                return (
-                  <Link
-                    to={{
-                      pathname: `/movie/${id}`,
-                      state: { poster_path, release_date, title, id },
-                    }}
-                    key={id}
-                  >
-                    <GridCard
-                      poster_path={poster_path}
-                      release_date={release_date}
-                      vote_average={vote_average}
-                      title={title}
-                    />
-                  </Link>
-                );
-              }
+              ({ poster_path, release_date, vote_average, title, id }, idx) => (
+                <Link
+                  to={{
+                    pathname: `/movie/${id}`,
+                    state: { poster_path, release_date, title, id },
+                  }}
+                  key={id}
+                >
+                  <GridCard
+                    poster_path={poster_path}
+                    release_date={release_date}
+                    vote_average={vote_average}
+                    title={title}
+                  />
+                </Link>
+              )
             )}
+          <div ref={lastMovie} />
         </MoviesGrid>
       </MoviesGridContainer>
     </div>
