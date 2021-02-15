@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import 'react-circular-progressbar/dist/styles.css';
 import { AiFillStar } from 'react-icons/ai';
 import { BsFlagFill, BsListTask, BsFillPlayFill } from 'react-icons/bs';
 import { FaHeart } from 'react-icons/fa';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
 import { Link } from 'react-router-dom';
 import { Row } from './MoviesRow';
 import { useFetch } from '../../app/hooks/useFetch';
 import { Card, ImageWrapper, Img } from './RowCard';
+
 import {
   KEY,
   IMAGE_BASE_URL_LOW,
@@ -119,7 +120,7 @@ export const MovieRoute = ({ location }) => {
     release_date,
     backdrop_path,
     overview,
-    vote_average
+    vote_average,
   } = location.state.movie;
 
   const urlVideos = `${SINGLE_MOVIE_BASE_URL}/${id}/videos?api_key=${KEY}&language=en-US`;
