@@ -78,54 +78,51 @@ export const MovieBanner = ({
   title,
   overview,
   trailerKey,
-}) => {
-  console.log('hee');
-  return (
-    <MovieBannerStyle imageUrl={bannerImage}>
-      <IndividualPageCard>
-        <ImageWrapper>
-          <Img alt='movie' src={`${IMAGE_BASE_URL_LOW}${poster_path}`} />
-        </ImageWrapper>
-      </IndividualPageCard>
-      <MovieInfo>
-        <MovieTitle>
-          {title} ({new Date(release_date).getFullYear()})
-        </MovieTitle>
-        <IconContainer>
-          <CircularBar vote_average={vote_average} widthF='60px' />
-          <Score>
-            User <br />
-            Score
-          </Score>
-          <Icons>
-            <BsListTask />
-          </Icons>
-          <Icons>
-            <FaHeart />
-          </Icons>
-          <Icons>
-            <BsFlagFill />
-          </Icons>
-          <Icons>
-            <AiFillStar />
-          </Icons>
-          <Trailer
-            to={{
-              pathname: `https://www.youtube.com/embed/${trailerKey}`,
-              target: 'trailer',
-            }}
-          >
-            <BsFillPlayFill size={25} />
-            <div>
-              Play <br />
-              Trailer
-            </div>
-          </Trailer>
-        </IconContainer>
-        <Overview>Overview</Overview>
-        <OverviewPara>{overview}</OverviewPara>
-        {/* <h4>Director</h4> */}
-      </MovieInfo>
-    </MovieBannerStyle>
-  );
-};
+}) => (
+  <MovieBannerStyle imageUrl={bannerImage}>
+    <IndividualPageCard>
+      <ImageWrapper>
+        <Img alt='movie' src={`${IMAGE_BASE_URL_LOW}${poster_path}`} />
+      </ImageWrapper>
+    </IndividualPageCard>
+    <MovieInfo>
+      <MovieTitle>
+        {title} ({new Date(release_date).getFullYear()})
+      </MovieTitle>
+      <IconContainer>
+        <CircularBar vote_average={vote_average} widthF='60px' />
+        <Score>
+          User <br />
+          Score
+        </Score>
+        <Icons>
+          <BsListTask />
+        </Icons>
+        <Icons>
+          <FaHeart />
+        </Icons>
+        <Icons>
+          <BsFlagFill />
+        </Icons>
+        <Icons>
+          <AiFillStar />
+        </Icons>
+        <Trailer
+          to={{
+            pathname: `https://www.youtube.com/embed/${trailerKey}`,
+            target: 'trailer',
+          }}
+        >
+          <BsFillPlayFill size={25} />
+          <div>
+            Play <br />
+            Trailer
+          </div>
+        </Trailer>
+      </IconContainer>
+      <Overview>Overview</Overview>
+      <OverviewPara>{overview}</OverviewPara>
+      {/* <h4>Director</h4> */}
+    </MovieInfo>
+  </MovieBannerStyle>
+);
