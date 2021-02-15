@@ -7,6 +7,8 @@ export const SINGLE_MOVIE_BASE_URL = 'https://api.themoviedb.org/3/movie';
 export const genres =
   'https://api.themoviedb.org/3/genre/movie/list?api_key=009f9976a57d0b92e9dee06122c5b4bc&language=en-US';
 
-export const comediesUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&with_genres=35&page=1`;
-export const popularUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
-export const animationUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&with_genres=16&page=1`;
+export const comediesUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&with_genres=35`;
+export const popularUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false`;
+export const animationUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&with_genres=16`;
+export const actionUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&with_genres=28`;
+const urlSingleMovieWithALL = `${SINGLE_MOVIE_BASE_URL}/$<id>?api_key=${KEY}&append_to_response=videos,credit`;

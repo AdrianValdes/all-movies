@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { MoviesDashboard } from '../features/movies/MoviesDashboard';
 import { HomeBanner } from './HomeBanner';
-import {
-  fetchAnimationsAction,
-  fetchComediesAction,
-  fetchPopularsAction,
-} from './store/actions/moviesAction';
 
 const Section = styled.section`
   display: flex;
@@ -16,14 +11,8 @@ const Section = styled.section`
 
 export const Home = () => {
   const [headerImageId, setHeaderImageId] = useState('');
-  const dispatch = useDispatch();
-  const { comedies, animation, popular } = useSelector((state) => state.movies);
 
-  useEffect(() => {
-    dispatch(fetchComediesAction());
-    dispatch(fetchAnimationsAction());
-    dispatch(fetchPopularsAction());
-  }, []);
+  const { comedies, animation, popular } = useSelector((state) => state.movies);
 
   useEffect(() => {
     if (popular.length > 0) {

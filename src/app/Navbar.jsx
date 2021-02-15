@@ -10,7 +10,7 @@ const Nav = styled.nav`
   height: 80px;
 `;
 
-const SubNav = styled.nav`
+const SubNav = styled.div`
   display: flex;
   width: 1400px;
 `;
@@ -21,7 +21,7 @@ const StyledUl = styled.ul`
   align-items: center;
 `;
 
-const StyledLi = styled(Link)`
+const StyledLi = styled.div`
   padding: 0 5px;
 `;
 
@@ -47,7 +47,6 @@ const StyledA = styled.p`
   font-size: 16px;
   text-align: center;
   padding: 14px 16px;
-  text-decoration: none;
   cursor: pointer;
   vertical-align: middle;
   &:hover {
@@ -55,7 +54,7 @@ const StyledA = styled.p`
   }
 `;
 
-const SubA = styled(Link)`
+const SubA = styled.div`
   color: rgb(3, 37, 65);
   padding: 10px 12px;
   text-decoration: none;
@@ -80,23 +79,37 @@ export const Navbar = () => (
         <LogoStyle src={logo} alt='logo' />
       </Link>
       <StyledUl>
-        <StyledLi to='/popular'>
-          <StyledA>Popular</StyledA>
+        <StyledLi>
+          <Link to='/popular'>
+            <StyledA>Popular</StyledA>
+          </Link>
         </StyledLi>
         <DropDownLi>
           <StyledA>Genres</StyledA>
           <DropDownContent>
-            <SubA to='/action'>Action</SubA>
-            <SubA to='/animation'>Animation</SubA>
-            <SubA to='/comedy'>Comedy</SubA>
-            <SubA to='/drama'>Drama</SubA>
+            <Link to='/action'>
+              <SubA>Action</SubA>
+            </Link>
+            <Link to='/animation'>
+              <SubA>Animation</SubA>
+            </Link>
+            <Link to='/comedy'>
+              <SubA>Comedy</SubA>
+            </Link>
+            <Link to='/drama'>
+              <SubA>Drama </SubA>
+            </Link>
           </DropDownContent>
         </DropDownLi>
-        <StyledLi to='/people'>
-          <StyledA>People</StyledA>
+        <StyledLi>
+          <Link to='/people'>
+            <StyledA>People</StyledA>
+          </Link>
         </StyledLi>
-        <StyledLi to='/login'>
-          <StyledA>Login</StyledA>
+        <StyledLi>
+          <Link to='/login'>
+            <StyledA>Login</StyledA>
+          </Link>
         </StyledLi>
       </StyledUl>
     </SubNav>

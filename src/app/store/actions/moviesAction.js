@@ -26,3 +26,10 @@ export const fetchPopularsAction = () => async (dispatch) => {
     payload: response,
   });
 };
+export const fetchActionsAction = (actionUrl) => async (dispatch) => {
+  const response = await helpFetchMovies(actionUrl);
+  dispatch({
+    type: 'FETCH_ACTION',
+    payload: response,
+  });
+};
