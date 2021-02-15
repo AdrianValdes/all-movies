@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FcRating } from 'react-icons/fc';
 import { IMAGE_BASE_URL_LOW } from '../../app/urls';
@@ -37,18 +38,27 @@ const CardDate = styled.p`
 const CardContent = styled.div`
   padding: 2px 0;
 `;
-export const RowCard = ({ poster_path, release_date, vote_average, title }) => (
-  <Card>
-    <ImageWrapper>
-      <Img alt='movie' src={`${IMAGE_BASE_URL_LOW}${poster_path}`} />
-    </ImageWrapper>
-    <CardContent>
-      <CardTitle>{title}</CardTitle>
-      <CardDate>{new Date(release_date).toDateString().slice(4)}</CardDate>
-      <p>
-        <FcRating style={{ marginRight: '10px' }} />
-        {vote_average}
-      </p>
-    </CardContent>
-  </Card>
+export const RowCard = ({ movie }) => (
+  <Link
+    to={{
+      pathname: `/movie/${movie.id}`,
+      state: { movie },
+    }}
+  >
+    <Card>
+      <ImageWrapper>
+        <Img alt='movie' src={`${IMAGE_BASE_URL_LOW}${movie.poster_path}`} />
+      </ImageWrapper>
+      <CardContent>
+        <CardTitle>{movie.title}</CardTitle>
+        <CardDate>
+          {new Date(movie.release_date).toDateString().slice(4)}
+        </CardDate>
+        <p>
+          <FcRating style={{ marginRight: '10px' }} />
+          {movie.vote_average}
+        </p>
+      </CardContent>
+    </Card>
+  </Link>
 );

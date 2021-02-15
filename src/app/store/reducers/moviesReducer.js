@@ -1,4 +1,10 @@
-const initialState = { comedies: [], animation: [], popular: [], action: [] };
+const initialState = {
+  comedies: [],
+  animation: [],
+  popular: [],
+  action: [],
+  error: null,
+};
 
 export const moviesReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -9,7 +15,9 @@ export const moviesReducer = (state = initialState, action) => {
     case 'FETCH_POPULAR':
       return { ...state, popular: [...action.payload] };
     case 'FETCH_ACTION':
-      return { ...state, action: [...state.action, ...action.payload] };
+      return { ...state, action: [...action.payload] };
+    case 'FETCH_ERROR':
+      return { ...state, error: action.payload };
     default:
       return state;
   }

@@ -67,7 +67,7 @@ export const MovieRoute = ({ location }) => {
     release_date,
     backdrop_path,
     overview,
-  } = location.state;
+  } = location.state.movie;
 
   const urlVideos = `${SINGLE_MOVIE_BASE_URL}/${id}/videos?api_key=${KEY}&language=en-US`;
   const urlCredits = `${SINGLE_MOVIE_BASE_URL}/${id}/credits?api_key=${KEY}`;
