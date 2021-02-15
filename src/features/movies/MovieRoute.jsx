@@ -16,31 +16,7 @@ import {
   SINGLE_MOVIE_BASE_URL,
   IMAGE_BASE_URL_HIGH,
 } from '../../app/urls';
-import { Spinner } from '../../app/shared/components/Spiner';
-import { CircularBar } from '../../app/shared/components/CircularBar';
-
-const PageBanner = styled.div`
-  background-image: linear-gradient(
-      to right,
-      rgba(3, 37, 65, 1) 0%,
-      rgba(3, 37, 65, 0.8) 100%
-    ),
-    url(${(props) => props.imageUrl});
-  width: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top center;
-  display: flex;
-  justify-content: center;
-  padding: 30px 0;
-  background-color: rgb(214, 225, 227);
-  color: #fff;
-  height: 570px;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
+import { Spinner, CircularBar, MovieBanner } from '../../app/shared/components';
 
 const IndividualPageCard = styled.div`
   width: 300px;
@@ -147,7 +123,7 @@ export const MovieRoute = ({ location }) => {
   if (errorApi) return <p>There has been an error: {errorApi} </p>;
   return (
     <div>
-      <PageBanner imageUrl={bannerImage}>
+      <MovieBanner imageUrl={bannerImage}>
         <IndividualPageCard>
           <ImageWrapper>
             <Img alt='movie' src={`${IMAGE_BASE_URL_LOW}${poster_path}`} />
@@ -192,7 +168,7 @@ export const MovieRoute = ({ location }) => {
           <OverviewPara>{overview}</OverviewPara>
           {/* <h4>Director</h4> */}
         </MovieInfo>
-      </PageBanner>
+      </MovieBanner>
       <div>
         {cast.length > 0 ? (
           <Row style={{ maxWidth: '1200px' }}>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { IMAGE_BASE_URL_LOW } from '../../app/urls';
-import { CircularBar } from '../../app/shared/components/CircularBar';
+import { CircularBar } from '../../app/shared/components';
 
 const Card = styled.div`
   width: 180px;
