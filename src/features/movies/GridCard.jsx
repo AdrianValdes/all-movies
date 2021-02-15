@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { FcRating } from 'react-icons/fc';
 import { IMAGE_BASE_URL_LOW } from '../../app/urls';
+import { CircularBar } from '../../app/shared/components/CircularBar';
 
 const Card = styled.div`
   width: 180px;
@@ -12,6 +12,7 @@ const Card = styled.div`
   border: 1px solid #e3e3e3;
   box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
   border-radius: 10px;
+  height: 100%;
 `;
 
 export const ImageWrapper = styled.div`
@@ -34,10 +35,17 @@ const CardDate = styled.p`
   color: rgba(0, 0, 0, 0.6);
   padding: 5px 0;
 `;
+const RatingCircle = styled.div`
+  position: absolute;
+  top: -20px;
+  left: 10px;
+`;
 
 const CardContent = styled.div`
-  padding: 16px 10px 12px 10px;
+  padding: 26px 10px 12px 10px;
+  position: relative;
 `;
+
 export const GridCard = ({ movie }) => (
   <Link
     to={{
@@ -54,10 +62,12 @@ export const GridCard = ({ movie }) => (
         <CardDate>
           {new Date(movie.release_date).toDateString().slice(4)}
         </CardDate>
-        <p>
-          <FcRating style={{ marginRight: '10px' }} />
-          {movie.vote_average}
-        </p>
+        <RatingCircle>
+          <CircularBar
+            vote_average={movie.vote_average}
+            className='row-card-icon'
+          />
+        </RatingCircle>
       </CardContent>
     </Card>
   </Link>
