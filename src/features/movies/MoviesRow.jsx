@@ -34,6 +34,7 @@ export const MoviesRow = ({ movies }) => (
               id,
               backdrop_path,
               overview,
+              vote_average,
             },
           }}
           key={id}

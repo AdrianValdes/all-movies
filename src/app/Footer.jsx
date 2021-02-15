@@ -7,11 +7,14 @@ import logo from '../assets/images/logo.png';
 import { LogoStyle } from './Navbar';
 
 const StyledFooter = styled.footer`
+  width: 100%;
   background-color: rgb(3, 37, 65);
   color: white;
   display: flex;
   justify-content: center;
   padding: 30px 0;
+  position: fixed;
+  bottom: 0;
 `;
 
 const StyleP = styled.p`
