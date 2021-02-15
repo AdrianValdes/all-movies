@@ -1,5 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { AiFillStar } from 'react-icons/ai';
+import { BsFlagFill, BsListTask, BsFillPlayFill } from 'react-icons/bs';
+import { FaHeart } from 'react-icons/fa';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import { Link } from 'react-router-dom';
 import { Row } from './MoviesRow';
 import { useFetch } from '../../app/hooks/useFetch';
 import { Card, ImageWrapper, Img } from './RowCard';
@@ -13,8 +19,8 @@ import {
 const PageBanner = styled.div`
   background-image: linear-gradient(
       to right,
-      rgba(3, 37, 65, 0.8) 0%,
-      rgba(3, 37, 65, 0) 100%
+      rgba(3, 37, 65, 1) 0%,
+      rgba(3, 37, 65, 0.8) 100%
     ),
     url(${(props) => props.imageUrl});
   width: 100%;
@@ -27,6 +33,10 @@ const PageBanner = styled.div`
   background-color: rgb(214, 225, 227);
   color: #fff;
   height: 570px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const IndividualPageCard = styled.div`
@@ -38,7 +48,9 @@ const IndividualPageCard = styled.div`
 const MovieInfo = styled.div`
   display: flex;
   flex-direction: column;
+  width: 60%;
   margin-top: 50px;
+  margin-right: 20px;
   max-width: 1600px;
 `;
 
@@ -46,8 +58,48 @@ const MovieTitle = styled.h1`
   margin-bottom: 10px;
 `;
 
+const IconContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+`;
+
+const Icons = styled.div`
+  width: 45px;
+  height: 45px;
+  background-color: rgb(3, 37, 65);
+  border-radius: 50%;
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px;
+  cursor: pointer;
+`;
+
+const Score = styled.div`
+  margin-top: 10px;
+  font-weight: 600;
+`;
+
+const Trailer = styled(Link)`
+  color: white;
+  font-weight: 600;
+  margin-left: 10px;
+  margin-top: 10px;
+  display: flex;
+  &:hover {
+    color: lightgreen;
+  }
+`;
+
 const Overview = styled.h3`
   margin: 20px 0;
+`;
+
+const OverviewPara = styled.p`
+  line-height: 22px;
+  margin-bottom: 20px;
 `;
 
 const Notice = styled.p`
@@ -67,6 +119,7 @@ export const MovieRoute = ({ location }) => {
     release_date,
     backdrop_path,
     overview,
+    vote_average
   } = location.state.movie;
 
   const urlVideos = `${SINGLE_MOVIE_BASE_URL}/${id}/videos?api_key=${KEY}&language=en-US`;
@@ -96,14 +149,57 @@ export const MovieRoute = ({ location }) => {
           </ImageWrapper>
         </IndividualPageCard>
         <MovieInfo>
-          <MovieTitle>{title}</MovieTitle>
-          <p>Released: {new Date(release_date).toDateString().slice(4)}</p>
-          <p>Genres: </p>
-          {/* <p>Rating: {vote_average}</p> */}
+          <MovieTitle>
+            {title} ({new Date(release_date).getFullYear()})
+          </MovieTitle>
+          <IconContainer>
+            <CircularProgressbar
+              value={vote_average}
+              maxValue={10}
+              text={`${vote_average * 10}%`}
+              styles={buildStyles({
+                rotation: 0.25,
+                strokeLinecap: 'butt',
+                width: '60px',
+                textSize: '30px',
+                pathTransitionDuration: 0.5,
+                pathColor: `rgba(28,210,175, ${(vote_average * 10) / 100})`,
+                textColor: 'white',
+                trailColor: '#d6d6d6',
+              })}
+            />
+            <Score>
+              User <br />
+              Score
+            </Score>
+            <Icons>
+              <BsListTask />
+            </Icons>
+            <Icons>
+              <FaHeart />
+            </Icons>
+            <Icons>
+              <BsFlagFill />
+            </Icons>
+            <Icons>
+              <AiFillStar />
+            </Icons>
+            <Trailer
+              to={{
+                pathname: `https://www.youtube.com/embed/${trailerKey}`,
+                target: 'trailer',
+              }}
+            >
+              <BsFillPlayFill size={25} />
+              <div>
+                Play <br />
+                Trailer
+              </div>
+            </Trailer>
+          </IconContainer>
           <Overview>Overview</Overview>
-          <p>{overview}</p>
-          {/* <h4>{director}</h4> */}
-          <p>Director</p>
+          <OverviewPara>{overview}</OverviewPara>
+          {/* <h4>Director</h4> */}
         </MovieInfo>
       </PageBanner>
       <div>
@@ -133,6 +229,7 @@ export const MovieRoute = ({ location }) => {
         {trailerKey ? (
           <iframe
             title='trailer'
+            name='trailer'
             width='560'
             height='315'
             src={`https://www.youtube.com/embed/${trailerKey}`}
