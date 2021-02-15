@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { IMAGE_BASE_URL_HIGH } from './urls';
 
-const BannerStyle = styled.div`
+export const BannerStyle = styled.div`
   background-image: linear-gradient(
       to right,
       rgba(3, 37, 65, 0.8) 0%,

@@ -2,14 +2,31 @@ import React from 'react';
 import styled from 'styled-components';
 import { Row } from './MoviesRow';
 import { useFetch } from '../../app/hooks/useFetch';
-import { ImageWrapper, Img, RowCard } from './RowCard';
-import { KEY, IMAGE_BASE_URL_LOW, SINGLE_MOVIE_BASE_URL } from '../../app/urls';
+import { Card, ImageWrapper, Img } from './RowCard';
+import {
+  KEY,
+  IMAGE_BASE_URL_LOW,
+  SINGLE_MOVIE_BASE_URL,
+  IMAGE_BASE_URL_HIGH,
+} from '../../app/urls';
 
-const PageBannerStyle = styled.div`
+const PageBanner = styled.div`
+  background-image: linear-gradient(
+      to right,
+      rgba(3, 37, 65, 0.8) 0%,
+      rgba(3, 37, 65, 0) 100%
+    ),
+    url(${(props) => props.imageUrl});
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
   display: flex;
-  width: 100vw;
+  justify-content: center;
   padding: 30px 0;
   background-color: rgb(214, 225, 227);
+  color: #fff;
+  height: 570px;
 `;
 
 const IndividualPageCard = styled.div`
@@ -18,32 +35,46 @@ const IndividualPageCard = styled.div`
   margin: 0 40px;
 `;
 
-const MovieInfoStyle = styled.div`
+const MovieInfo = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 50px;
+  max-width: 1600px;
 `;
 
-const MovieTitleStyle = styled.h1`
+const MovieTitle = styled.h1`
   margin-bottom: 10px;
 `;
 
-const OverviewStyle = styled.h3`
+const Overview = styled.h3`
   margin: 20px 0;
 `;
 
-const NoticeStyle = styled.p`
+const Notice = styled.p`
   text-align: center;
   padding: 20px 0;
 `;
 
+const CharacterName = styled.p`
+  font-weight: 700;
+`;
+
 export const MovieRoute = ({ location }) => {
-  const { poster_path, title, id, release_date } = location.state;
+  const {
+    poster_path,
+    title,
+    id,
+    release_date,
+    backdrop_path,
+    overview,
+  } = location.state;
 
   const urlVideos = `${SINGLE_MOVIE_BASE_URL}/${id}/videos?api_key=${KEY}&language=en-US`;
   const urlCredits = `${SINGLE_MOVIE_BASE_URL}/${id}/credits?api_key=${KEY}`;
+  const bannerImage = `${IMAGE_BASE_URL_HIGH}/${backdrop_path}`;
 
   const { dataApi } = useFetch(urlVideos);
+  const { dataApi: credits } = useFetch(urlCredits);
 
   let trailerKey;
   if (dataApi.results !== undefined && dataApi.results.length > 0) {
@@ -51,7 +82,6 @@ export const MovieRoute = ({ location }) => {
     trailerKey = trailer.key;
   }
 
-  const { dataApi: credits } = useFetch(urlCredits);
   let cast = [];
   if (credits.cast && credits.cast.length > 0) {
     cast = credits.cast.slice(0, 10);
@@ -59,42 +89,44 @@ export const MovieRoute = ({ location }) => {
 
   return (
     <div>
-      <PageBannerStyle>
+      <PageBanner imageUrl={bannerImage}>
         <IndividualPageCard>
           <ImageWrapper>
             <Img alt='movie' src={`${IMAGE_BASE_URL_LOW}${poster_path}`} />
           </ImageWrapper>
         </IndividualPageCard>
-        <MovieInfoStyle>
-          <MovieTitleStyle>{title}</MovieTitleStyle>
+        <MovieInfo>
+          <MovieTitle>{title}</MovieTitle>
           <p>Released: {new Date(release_date).toDateString().slice(4)}</p>
           <p>Genres: </p>
           {/* <p>Rating: {vote_average}</p> */}
-          <OverviewStyle>Overview</OverviewStyle>
-          {/* <p>{overview}</p> */}
+          <Overview>Overview</Overview>
+          <p>{overview}</p>
           {/* <h4>{director}</h4> */}
           <p>Director</p>
-        </MovieInfoStyle>
-      </PageBannerStyle>
+        </MovieInfo>
+      </PageBanner>
       <div>
         {cast.length > 0 ? (
           <Row style={{ maxWidth: '1200px' }}>
             {cast.map((person) => (
-              <RowCard key={person.id}>
+              <Card key={person.id}>
                 <ImageWrapper>
                   <Img
                     src={`${IMAGE_BASE_URL_LOW}${person.profile_path}`}
                     alt={person.name}
                   />
                 </ImageWrapper>
-              </RowCard>
+                <CharacterName>{person.original_name}</CharacterName>
+                <p>{person.character}</p>
+              </Card>
             ))}
           </Row>
         ) : (
-          <NoticeStyle>
+          <Notice>
             We do not have any cast added to this movie. You can help by adding
             some!
-          </NoticeStyle>
+          </Notice>
         )}
       </div>
       <div>
@@ -107,9 +139,7 @@ export const MovieRoute = ({ location }) => {
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
           />
         ) : (
-          <NoticeStyle>
-            There is no trailer for this movie yet, sorry :(
-          </NoticeStyle>
+          <Notice>There is no trailer for this movie yet, sorry :(</Notice>
         )}
       </div>
     </div>
