@@ -30,3 +30,12 @@ main {
 a {
   text-decoration: none;
 }
+
+.CircularProgressbar {
+  width: 60px;
+  margin-right: 10px;
+}
+
+.row-card-icon {
+  width: 35px;
+}

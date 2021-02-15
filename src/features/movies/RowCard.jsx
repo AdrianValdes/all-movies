@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { FcRating } from 'react-icons/fc';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 import { IMAGE_BASE_URL_LOW } from '../../app/urls';
 
 export const Card = styled.div`
@@ -17,6 +18,7 @@ export const ImageWrapper = styled.div`
   background: #dbdbdb;
   width: 100%;
 `;
+
 export const Img = styled.img`
   height: 100%;
   width: 100%;
@@ -24,6 +26,7 @@ export const Img = styled.img`
 `;
 
 const CardTitle = styled.h2`
+  margin-top: 20px;
   font-weight: 700;
   font-size: 1em;
   padding-top: 10px;
@@ -37,7 +40,15 @@ const CardDate = styled.p`
 
 const CardContent = styled.div`
   padding: 2px 0;
+  position: relative;
 `;
+
+const RatingCircle = styled.div`
+  position: absolute;
+  top: -20px;
+  left: 10px;
+`;
+
 export const RowCard = ({ movie }) => (
   <Link
     to={{
@@ -54,10 +65,26 @@ export const RowCard = ({ movie }) => (
         <CardDate>
           {new Date(movie.release_date).toDateString().slice(4)}
         </CardDate>
-        <p>
-          <FcRating style={{ marginRight: '10px' }} />
-          {movie.vote_average}
-        </p>
+        <RatingCircle>
+          <CircularProgressbar
+            className='row-card-icon'
+            maxValue={10}
+            value={movie.vote_average}
+            background
+            text={`${movie.vote_average * 10}%`}
+            styles={buildStyles({
+              rotation: 0.25,
+              strokeLinecap: 'butt',
+              width: '50px',
+              pathTransitionDuration: 0.5,
+              pathColor: `rgba(28,210,175, ${(movie.vote_average * 10) / 100})`,
+              textSize: '30px',
+              textColor: 'white',
+              backgroundColor: '#083052',
+              trailColor: '#d6d6d6',
+            })}
+          />
+        </RatingCircle>
       </CardContent>
     </Card>
   </Link>
