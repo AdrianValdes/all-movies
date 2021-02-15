@@ -4,8 +4,10 @@ import styled from 'styled-components';
 import { MoviesRow } from './MoviesRow';
 
 const RowWrapper = styled.div`
+  width: 100%;
   padding-top: 30px;
 `;
+
 const RowTitle = styled.h2`
   padding-left: 40px;
   color: black;
@@ -14,7 +16,7 @@ const RowTitle = styled.h2`
 
 export const MoviesDashboard = ({ comedies, animation, popular }) => (
   <main>
-    <div className='main' style={{ maxWidth: '1400px' }}>
+    <div className='main'>
       <RowWrapper>
         <RowTitle>
           <Link to='/'> Comedies</Link>

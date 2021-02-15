@@ -18,7 +18,7 @@ code {
     monospace;
 }
 
-main {
+.main {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -27,6 +27,7 @@ main {
   background-color: #fff;
   margin-top: 64px;
 }
+
 a {
   text-decoration: none;
 }
