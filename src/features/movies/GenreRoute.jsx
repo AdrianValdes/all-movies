@@ -7,6 +7,7 @@ import {
   MoviesGridContainer,
   MoviesGrid,
 } from '../../app/shared';
+import { Spinner } from '../../app/shared/components/Spiner';
 
 export const GenreRoute = ({ location }) => {
   const [comingUrl, setUrl] = useState('');
@@ -37,7 +38,7 @@ export const GenreRoute = ({ location }) => {
     return observer.unobserve;
   }, [loadingApi, hasMore]);
 
-  if (loadingApi) return <p>Loading...</p>;
+  if (loadingApi) return <Spinner />;
   if (errorAPi) return <p>Error: {errorAPi}</p>;
   return (
     <div>

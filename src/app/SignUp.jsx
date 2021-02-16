@@ -6,7 +6,7 @@ import {
   StyleForm,
   StyleInput,
   StyleButton,
-} from './shared/components/Form';
+} from './shared/components';
 
 export const SignUp = () => {
   const [userName, setUserName] = useState('');
