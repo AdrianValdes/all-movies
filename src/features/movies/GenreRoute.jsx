@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useFetchMovies } from '../../app/hooks';
 
 import { GridCard } from './GridCard';
@@ -8,10 +9,12 @@ import {
   MoviesGrid,
 } from '../../app/shared';
 import { Spinner } from '../../app/shared/components/Spiner';
+import { GenreForm } from './GenreForm';
 
 export const GenreRoute = ({ location }) => {
   const [comingUrl, setUrl] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
+  const { genre } = useParams();
 
   const { genreUrl } = location.state;
   if (genreUrl !== comingUrl) {
@@ -42,6 +45,7 @@ export const GenreRoute = ({ location }) => {
   if (errorAPi) return <p>Error: {errorAPi}</p>;
   return (
     <div>
+      <GenreForm genre={genre} />
       <MoviesGridContainer>
         <MoviesGrid>
           {dataApi &&
