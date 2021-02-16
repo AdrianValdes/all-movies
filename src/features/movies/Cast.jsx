@@ -41,8 +41,12 @@ const CharacterName = styled.p`
   font-weight: 700;
 `;
 
-export const CastSection = ({ cast }) => (
-  <>
+const Wrapper = styled.div`
+  max-width: 1200px;
+`;
+
+export const Cast = ({ cast }) => (
+  <Wrapper>
     {cast.length > 0 ? (
       <Row style={{ maxWidth: '1200px' }}>
         <Section>
@@ -76,5 +80,5 @@ export const CastSection = ({ cast }) => (
         some!
       </Notice>
     )}
-  </>
+  </Wrapper>
 );

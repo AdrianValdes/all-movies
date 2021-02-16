@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Notice } from './CastSection';
+import { Notice } from './Cast';
 import { TitlesContainer, Title } from './ReviewSection';
 import { IMAGE_BASE_URL_HIGH } from '../../app/urls';
 
 const Section = styled.section`
   margin-top: 40px;
   margin-left: 40px;
+  max-width: 1200px;
 `;
 
 const TrailerPoster = styled.div`
@@ -29,7 +30,7 @@ const ImgPoster = styled.img`
   object-fit: cover;
 `;
 
-export const TrailerSection = ({ trailerKey, poster_path }) => (
+export const Trailer = ({ trailerKey, poster_path }) => (
   <Section>
     <TitlesContainer>
       <Title>Trailer</Title>

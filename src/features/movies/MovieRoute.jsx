@@ -8,10 +8,10 @@ import {
 } from '../../app/urls';
 import { Spinner } from '../../app/shared/components';
 import { MovieBanner } from './MovieBanner';
-import { RecommenSection } from './RecommenSection';
-import { CastSection } from './CastSection';
+import { Recommendations } from './Recommendations';
+import { Cast } from './Cast';
 import { ReviewSection } from './ReviewSection';
-import { TrailerSection } from './TrailerSection';
+import { Trailer } from './Trailer';
 
 export const MovieRoute = ({ location }) => {
   const {
@@ -23,10 +23,8 @@ export const MovieRoute = ({ location }) => {
     overview,
     vote_average,
   } = location.state.movie;
-  const urLSingleMovieWithAll = `${SINGLE_MOVIE_BASE_URL}/${id}?api_key=${KEY}&append_to_response=videos,credits,similar_movies,recommendations,release_dates`;
+  const urLSingleMovieWithAll = `${SINGLE_MOVIE_BASE_URL}/${id}?api_key=${KEY}&append_to_response=videos,credits,similar_movies,recommendations,release_dates,reviews`;
 
-  const urlVideos = `${SINGLE_MOVIE_BASE_URL}/${id}/videos?api_key=${KEY}&language=en-US`;
-  const urlCredits = `${SINGLE_MOVIE_BASE_URL}/${id}/credits?api_key=${KEY}`;
   const bannerImage = `${IMAGE_BASE_URL_HIGH}/${backdrop_path}`;
 
   const { dataApi, loadingApi, errorApi } = useFetch(urLSingleMovieWithAll);
@@ -39,9 +37,10 @@ export const MovieRoute = ({ location }) => {
     release_dates,
     runtime,
     tagline,
+    reviews,
   } = dataApi;
 
-  console.log(dataApi);
+  console.log(recommendations?.results);
 
   const certification =
     release_dates?.results[0]?.release_dates[0]?.certification;
@@ -74,7 +73,7 @@ export const MovieRoute = ({ location }) => {
   if (loadingApi) return <Spinner />;
   if (errorApi) return <p>There has been an error: {errorApi} </p>;
   return (
-    <div>
+    <main>
       <MovieBanner
         imageUrl={bannerImage}
         poster_path={poster_path}
@@ -91,11 +90,11 @@ export const MovieRoute = ({ location }) => {
         crew={crew}
       />
       <div>
-        <CastSection cast={cast} />
-        <ReviewSection />
-        <TrailerSection trailerKey={trailerKey} poster_path={poster_path} />
-        {/* <RecommenSection results={results} /> */}
+        <Cast cast={cast} />
+        <ReviewSection reviews={reviews.results} />
+        <Trailer trailerKey={trailerKey} poster_path={poster_path} />
+        <Recommendations recommendations={recommendations.results} />
       </div>
-    </div>
+    </main>
   );
 };
