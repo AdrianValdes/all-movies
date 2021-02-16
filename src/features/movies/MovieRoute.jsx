@@ -1,31 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
-import 'react-circular-progressbar/dist/styles.css';
-import { Row } from './MoviesRow';
 import { useFetch } from '../../app/hooks/useFetch';
-import { Card, ImageWrapper, Img } from './RowCard';
 
 import {
   KEY,
-  IMAGE_BASE_URL_LOW,
   SINGLE_MOVIE_BASE_URL,
   IMAGE_BASE_URL_HIGH,
 } from '../../app/urls';
 import { Spinner } from '../../app/shared/components';
 import { MovieBanner } from './MovieBanner';
+import { RecommenSection } from './RecommenSection';
+import { CastSection } from './CastSection';
+import { ReviewSection } from './ReviewSection';
+import { TrailerSection } from './TrailerSection';
 
-const Notice = styled.p`
-  text-align: center;
-  padding: 20px 0;
-`;
-
-const CharacterName = styled.p`
-  font-weight: 700;
-`;
-
-const TrailerContainer = styled.div`
-  padding-bottom: 100px;
-`;
 export const MovieRoute = ({ location }) => {
   const {
     poster_path,
@@ -70,49 +57,11 @@ export const MovieRoute = ({ location }) => {
         bannerImage={bannerImage}
       />
       <div>
-        {cast.length > 0 ? (
-          <Row style={{ maxWidth: '1200px' }}>
-            {cast.map((person) => (
-              <Card key={person.id}>
-                <ImageWrapper>
-                  {person.profile_path ? (
-                    <Img
-                      src={`${IMAGE_BASE_URL_LOW}${person.profile_path}`}
-                      alt={person.name}
-                    />
-                  ) : (
-                    <Img
-                      src='https://via.placeholder.com/150x225?text=no+image'
-                      alt={person.name}
-                    />
-                  )}
-                </ImageWrapper>
-                <CharacterName>{person.original_name}</CharacterName>
-                <p>{person.character}</p>
-              </Card>
-            ))}
-          </Row>
-        ) : (
-          <Notice>
-            We do not have any cast added to this movie. You can help by adding
-            some!
-          </Notice>
-        )}
+        <CastSection cast={cast} />
+        <ReviewSection />
+        <TrailerSection trailerKey={trailerKey} poster_path={poster_path} />
+        {/* <RecommenSection results={results} /> */}
       </div>
-      <TrailerContainer>
-        {trailerKey ? (
-          <iframe
-            title='trailer'
-            name='trailer'
-            width='560'
-            height='315'
-            src={`https://www.youtube.com/embed/${trailerKey}`}
-            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-          />
-        ) : (
-          <Notice>There is no trailer for this movie yet, sorry :(</Notice>
-        )}
-      </TrailerContainer>
     </div>
   );
 };
