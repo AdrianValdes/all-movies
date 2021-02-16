@@ -36,23 +36,52 @@ export const MovieRoute = ({ location }) => {
     overview,
     vote_average,
   } = location.state.movie;
+  const urLSingleMovieWithAll = `${SINGLE_MOVIE_BASE_URL}/${id}?api_key=${KEY}&append_to_response=videos,credits,similar_movies,recommendations,release_dates`;
 
   const urlVideos = `${SINGLE_MOVIE_BASE_URL}/${id}/videos?api_key=${KEY}&language=en-US`;
   const urlCredits = `${SINGLE_MOVIE_BASE_URL}/${id}/credits?api_key=${KEY}`;
   const bannerImage = `${IMAGE_BASE_URL_HIGH}/${backdrop_path}`;
 
-  const { dataApi } = useFetch(urlVideos);
-  const { dataApi: credits, loadingApi, errorApi } = useFetch(urlCredits);
+  const { dataApi, loadingApi, errorApi } = useFetch(urLSingleMovieWithAll);
+  const {
+    genres,
+    credits,
+    recommendations,
+    videos,
+    similar_movies,
+    release_dates,
+    runtime,
+    tagline,
+  } = dataApi;
+
+  console.log(dataApi);
+
+  const certification =
+    release_dates?.results[0]?.release_dates[0]?.certification;
+
+  let genresString;
+  if (genres !== undefined) {
+    genresString = genres.map((genre) => genre.name).join(', ');
+  }
 
   let trailerKey;
-  if (dataApi.results !== undefined && dataApi.results.length > 0) {
-    const [trailer] = dataApi.results;
-    trailerKey = trailer.key;
+  if (videos !== undefined) {
+    if (videos.results !== undefined && videos.results.length > 0) {
+      const [trailer] = videos.results;
+      trailerKey = trailer.key;
+    }
+  }
+
+  let crew;
+  if (credits !== undefined) {
+    crew = credits.crew.slice(0, 50);
   }
 
   let cast = [];
-  if (credits.cast && credits.cast.length > 0) {
-    cast = credits.cast.slice(0, 10);
+  if (credits !== undefined) {
+    if (credits.cast && credits.cast.length > 0) {
+      cast = credits.cast.slice(0, 10);
+    }
   }
 
   if (loadingApi) return <Spinner />;
@@ -68,6 +97,11 @@ export const MovieRoute = ({ location }) => {
         overview={overview}
         trailerKey={trailerKey}
         bannerImage={bannerImage}
+        certification={certification}
+        genresString={genresString}
+        runtime={runtime}
+        tagline={tagline}
+        crew={crew}
       />
       <div>
         {cast.length > 0 ? (

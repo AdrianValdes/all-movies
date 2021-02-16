@@ -29,7 +29,4 @@ export const MovieBannerStyle = styled(Banner)`
   padding: 30px 0;
   color: #fff;
   height: 570px;
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
 `;

@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { CircularBar, MovieBannerStyle } from '../../app/shared/components';
 import { ImageWrapper, Img } from './RowCard';
 import { IMAGE_BASE_URL_LOW } from '../../app/urls';
+import { Facts } from './Facts';
+import { Crew } from './Crew';
 
 const IndividualPageCard = styled.div`
   width: 300px;
@@ -63,11 +65,20 @@ const Trailer = styled(Link)`
   color: white;
   font-weight: 600;
   margin-left: 10px;
-  margin-top: 10px;
   display: flex;
+  align-items: center;
+
   &:hover {
     color: lightgreen;
   }
+`;
+const Tagline = styled.h3`
+  margin-bottom: 0;
+  margin-top: 30px;
+  font-size: 1.1em;
+  font-weight: 400;
+  font-style: italic;
+  opacity: 0.7;
 `;
 
 export const MovieBanner = ({
@@ -78,6 +89,11 @@ export const MovieBanner = ({
   title,
   overview,
   trailerKey,
+  certification,
+  genresString,
+  runtime,
+  tagline,
+  crew,
 }) => (
   <MovieBannerStyle imageUrl={bannerImage}>
     <IndividualPageCard>
@@ -89,6 +105,12 @@ export const MovieBanner = ({
       <MovieTitle>
         {title} ({new Date(release_date).getFullYear()})
       </MovieTitle>
+      <Facts
+        certification={certification}
+        release_date={release_date}
+        genresString={genresString}
+        runtime={runtime}
+      />
       <IconContainer>
         <CircularBar vote_average={vote_average} widthF='60px' />
         <Score>
@@ -114,15 +136,13 @@ export const MovieBanner = ({
           }}
         >
           <BsFillPlayFill size={25} />
-          <div>
-            Play <br />
-            Trailer
-          </div>
+          <div>Play Trailer</div>
         </Trailer>
       </IconContainer>
+      <Tagline>{tagline} </Tagline>
       <Overview>Overview</Overview>
       <OverviewPara>{overview}</OverviewPara>
-      {/* <h4>Director</h4> */}
+      <Crew crew={crew} />
     </MovieInfo>
   </MovieBannerStyle>
 );

@@ -15,5 +15,6 @@ export const documentaryUrl = `https://api.themoviedb.org/3/discover/movie?api_k
 export const dramaUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&with_genres=18`;
 export const horrorUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&with_genres=27`;
 export const romanceUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&with_genres=10749`;
+const urLSingleMovieWithAll = `${SINGLE_MOVIE_BASE_URL}/$<id>?api_key=${KEY}&append_to_response=videos,credits,similar_movies,recommendations,release_dates`;
 
-const urlSingleMovieWithALL = `${SINGLE_MOVIE_BASE_URL}/$<id>?api_key=${KEY}&append_to_response=videos,credit`;
+const urlSingleMovieWithVideoAndCredits = `${SINGLE_MOVIE_BASE_URL}/$<id>?api_key=${KEY}&append_to_response=videos,credits`;
