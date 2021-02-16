@@ -7,7 +7,7 @@ import {
   StyleForm,
   StyleInput,
   StyleButton,
-} from './shared/components/Form';
+} from './shared/components';
 
 export const Login = () => {
   const [userName, setUserName] = useState('');

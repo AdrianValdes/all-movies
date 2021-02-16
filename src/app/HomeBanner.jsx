@@ -1,27 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import { BannerHome } from './shared/components';
 import { IMAGE_BASE_URL_HIGH } from './urls';
-
-export const BannerStyle = styled.div`
-  background-image: linear-gradient(
-      to right,
-      rgba(3, 37, 65, 0.8) 0%,
-      rgba(3, 37, 65, 0) 100%
-    ),
-    url(${(props) => props.imageUrl});
-  width: 100%;
-  max-width: 1400px;
-  max-height: 360px;
-  min-height: 300px;
-  height: calc(100vh / 2.5);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top center;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 40px;
-`;
 
 const FormStyle = styled.form`
   width: 90%;
@@ -99,7 +79,7 @@ export const HomeBanner = ({ headerImageId }) => {
   };
 
   return (
-    <BannerStyle imageUrl={imageUrl}>
+    <BannerHome imageUrl={imageUrl}>
       <StyleH1>Welcome to MOVIES!</StyleH1>
       <StyleH3>Explore millions of movies and people now.</StyleH3>
       <FormStyle autoComplete='off' onSubmit={handleSearch}>
@@ -112,6 +92,6 @@ export const HomeBanner = ({ headerImageId }) => {
         />
         <SearchButton type='submit'>Search</SearchButton>
       </FormStyle>
-    </BannerStyle>
+    </BannerHome>
   );
 };
