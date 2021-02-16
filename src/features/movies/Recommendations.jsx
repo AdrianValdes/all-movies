@@ -9,6 +9,7 @@ const Section = styled.section`
   flex-direction: column;
   margin-left: 40px;
   margin-bottom: 40px;
+  max-width: 1200px;
 `;
 
 const Title = styled.h4`
@@ -31,22 +32,28 @@ const MoviesRow = styled(Row)`
   padding-bottom: 2px;
 `;
 
-export const RecommenSection = ({ results }) => (
+const Card = styled.div`
+  margin-right: 20px;
+`;
+
+export const Recommendations = ({ recommendations }) => (
   <Section>
     <Title>Recommendations</Title>
-    {results.map((movie) => (
-      <MoviesRow key={movie.id}>
-        <ImageWrapper>
-          <Img
-            alt='movie'
-            src={`${IMAGE_BASE_URL_LOW}${movie.backdrop_path}`}
-          />
-        </ImageWrapper>
-        <CardContent>
-          <p>{movie.title}</p>
-          <p> {`${movie.vote_average * 10}%`}</p>
-        </CardContent>
-      </MoviesRow>
-    ))}
+    <MoviesRow>
+      {recommendations.map((movie) => (
+        <Card key={movie.id}>
+          <ImageWrapper>
+            <Img
+              alt='movie'
+              src={`${IMAGE_BASE_URL_LOW}${movie.backdrop_path}`}
+            />
+          </ImageWrapper>
+          <CardContent>
+            <p>{movie.title}</p>
+            <p> {`${movie.vote_average * 10}%`}</p>
+          </CardContent>
+        </Card>
+      ))}
+    </MoviesRow>
   </Section>
 );

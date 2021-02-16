@@ -2,8 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Section = styled.section`
-  margin-top: 20px;
+  margin-top: 40px;
   margin-left: 40px;
+  overflow: hidden;
+  max-height: 350px;
+  border-top: 1px solid #d7d7d7;
+  padding-top: 20px;
 `;
 
 export const TitlesContainer = styled.div`
@@ -23,17 +27,32 @@ const ReviewContainer = styled.div`
   border-radius: 10px;
   padding: 20px 40px;
 `;
+const Article = styled.article`
+  line-height: 2;
+`;
 
-export const ReviewSection = () => (
+const Release = styled.h5`
+  color: grey;
+  font-weight: 300;
+  font-size: 0.9em;
+  margin-bottom: 15px;
+`;
+const Author = styled.span`
+  color: #000;
+`;
+export const ReviewSection = ({ reviews }) => (
   <Section>
     <TitlesContainer>
       <Title>Reviews</Title>
       <Title>Add review</Title>
     </TitlesContainer>
     <ReviewContainer>
-      <h4>A review by</h4>
-      <p>Written by on </p>
-      {/* <article>{review}</article> */}
+      <h3>A review by {reviews[9].author}</h3>
+      <Release>
+        Written by <Author>{reviews[9].author}</Author> on{' '}
+        {new Date(reviews[9].created_at).toDateString().slice(4)}{' '}
+      </Release>
+      <Article>{reviews[9].content}</Article>
     </ReviewContainer>
   </Section>
 );
