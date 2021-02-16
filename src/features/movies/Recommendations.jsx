@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { IMAGE_BASE_URL_LOW } from '../../app/urls';
 import { Img } from './RowCard';
@@ -26,6 +27,7 @@ const CardContent = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 5px 0;
+  color: #000;
 `;
 
 const MoviesRow = styled(Row)`
@@ -41,18 +43,26 @@ export const Recommendations = ({ recommendations }) => (
     <Title>Recommendations</Title>
     <MoviesRow>
       {recommendations.map((movie) => (
-        <Card key={movie.id}>
-          <ImageWrapper>
-            <Img
-              alt='movie'
-              src={`${IMAGE_BASE_URL_LOW}${movie.backdrop_path}`}
-            />
-          </ImageWrapper>
-          <CardContent>
-            <p>{movie.title}</p>
-            <p> {`${movie.vote_average * 10}%`}</p>
-          </CardContent>
-        </Card>
+        <Link
+          key={movie.id}
+          to={{
+            pathname: `/movie/${movie.id}`,
+            state: { id: movie.id },
+          }}
+        >
+          <Card>
+            <ImageWrapper>
+              <Img
+                alt='movie'
+                src={`${IMAGE_BASE_URL_LOW}${movie.backdrop_path}`}
+              />
+            </ImageWrapper>
+            <CardContent>
+              <p>{movie.title}</p>
+              <p> {`${movie.vote_average * 10}%`}</p>
+            </CardContent>
+          </Card>
+        </Link>
       ))}
     </MoviesRow>
   </Section>

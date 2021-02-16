@@ -54,7 +54,7 @@ export const RowCard = ({ movie }) => (
   <Link
     to={{
       pathname: `/movie/${movie.id}`,
-      state: { movie },
+      state: { id: movie.id },
     }}
   >
     <Card>

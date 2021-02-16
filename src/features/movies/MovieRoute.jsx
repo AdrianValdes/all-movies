@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFetch } from '../../app/hooks/useFetch';
 
 import {
@@ -14,18 +14,9 @@ import { ReviewSection } from './ReviewSection';
 import { Trailer } from './Trailer';
 
 export const MovieRoute = ({ location }) => {
-  const {
-    poster_path,
-    title,
-    id,
-    release_date,
-    backdrop_path,
-    overview,
-    vote_average,
-  } = location.state.movie;
-  const urLSingleMovieWithAll = `${SINGLE_MOVIE_BASE_URL}/${id}?api_key=${KEY}&append_to_response=videos,credits,similar_movies,recommendations,release_dates,reviews`;
+  const { id } = location.state;
 
-  const bannerImage = `${IMAGE_BASE_URL_HIGH}/${backdrop_path}`;
+  const urLSingleMovieWithAll = `${SINGLE_MOVIE_BASE_URL}/${id}?api_key=${KEY}&append_to_response=videos,credits,similar_movies,recommendations,release_dates,reviews`;
 
   const { dataApi, loadingApi, errorApi } = useFetch(urLSingleMovieWithAll);
   const {
@@ -38,10 +29,15 @@ export const MovieRoute = ({ location }) => {
     runtime,
     tagline,
     reviews,
+    poster_path,
+    title,
+    release_date,
+    backdrop_path,
+    overview,
+    vote_average,
   } = dataApi;
 
-  console.log(recommendations?.results);
-
+  const bannerImage = `${IMAGE_BASE_URL_HIGH}/${backdrop_path}`;
   const certification =
     release_dates?.results[0]?.release_dates[0]?.certification;
 
@@ -69,6 +65,9 @@ export const MovieRoute = ({ location }) => {
       cast = credits.cast.slice(0, 10);
     }
   }
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [urLSingleMovieWithAll]);
 
   if (loadingApi) return <Spinner />;
   if (errorApi) return <p>There has been an error: {errorApi} </p>;

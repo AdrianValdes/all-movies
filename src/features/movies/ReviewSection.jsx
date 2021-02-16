@@ -47,12 +47,12 @@ export const ReviewSection = ({ reviews }) => (
       <Title>Add review</Title>
     </TitlesContainer>
     <ReviewContainer>
-      <h3>A review by {reviews[9].author}</h3>
+      <h3>A review by {reviews[0]?.author}</h3>
       <Release>
-        Written by <Author>{reviews[9].author}</Author> on{' '}
-        {new Date(reviews[9].created_at).toDateString().slice(4)}{' '}
+        Written by <Author>{reviews[0]?.author}</Author> on{' '}
+        {new Date(reviews[0]?.created_at).toDateString().slice(4)}{' '}
       </Release>
-      <Article>{reviews[9].content}</Article>
+      <Article>{reviews[0]?.content}</Article>
     </ReviewContainer>
   </Section>
 );
