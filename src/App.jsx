@@ -18,6 +18,7 @@ import {
 } from './app/store/actions/moviesAction';
 
 import { GenreRoute } from './features/movies/GenreRoute';
+import { ProfileRoute } from './features/people/ProfileRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ export const App = () => {
         <Route path='/movie/:id' component={MovieRoute} />
         <Route path='/genre/:genre' component={GenreRoute} />
         <Route path='/people' component={PeopleRoute} />
+        {/* <Route path='/profile' component={ProfileRoute} /> */}
         <Route path='/login' component={Login} />
         <Route path='/signup' component={SignUp} />
         <Route exact path='/' component={Home} />
