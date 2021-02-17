@@ -17,7 +17,7 @@ export const BannerHome = styled(Banner)`
       rgba(3, 37, 65, 0.1) 100%
     ),
     url(${(props) => props.imageUrl});
-  max-width: 1400px;
+  max-width: 1300px;
   max-height: 360px;
   min-height: 300px;
   height: calc(100vh / 2.5);
