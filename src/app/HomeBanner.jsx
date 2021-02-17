@@ -7,7 +7,6 @@ import { IMAGE_BASE_URL_HIGH } from './urls';
 const FormStyle = styled.div`
   width: 90%;
   position: relative;
-  border: 1px solid lightgrey;
   border-radius: 20px;
   align-self: flex-start;
   background-color: #fff;
@@ -31,7 +30,7 @@ const Input = styled.input`
   border: none;
   width: 90%;
   height: 45px;
-  padding: 10px 15px;
+  padding: 10px 20px;
   font-size: 15px;
   border-radius: 30px;
   &:focus {
@@ -42,20 +41,29 @@ const Input = styled.input`
 const SearchButton = styled(Link)`
   border: none;
   border-radius: 30px;
-  padding: 10px 15px;
   position: absolute;
-  cursor: pointer;
   right: -2px;
-  height: 45px;
-  width: 80px;
+  top: -0.5px;
   font-weight: 700;
   background-color: #47cfb5;
   color: white;
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 46px;
+  padding: 10px 26px;
+  border: none;
   &:hover {
     background-color: rgb(3, 37, 65);
     outline: none;
     cursor: pointer;
   }
+  background: linear-gradient(
+    to right,
+    rgba(30, 213, 169, 1) 0%,
+    rgba(1, 180, 228, 1) 100%
+  );
 `;
 
 export const HomeBanner = ({ headerImageId }) => {
