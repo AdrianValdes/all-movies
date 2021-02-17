@@ -12,7 +12,7 @@ import {
 import { Spinner } from '../../app/shared/components/Spiner';
 import { GenreForm } from './GenreForm';
 import { baseStringCount } from '../../app/urls';
-import { useFetchMovies } from '../../app/hooks';
+import { useFetchMoviesOrPeople } from '../../app/hooks';
 
 const RouteContainer = styled.section`
   display: flex;
@@ -32,7 +32,7 @@ export const GenreRoute = ({ location }) => {
 
   const [urlToFetch, setUrlToFetch] = useState(genreUrl);
 
-  const { dataApi, loadingApi, errorAPi, hasMore } = useFetchMovies(
+  const { dataApi, loadingApi, errorAPi, hasMore } = useFetchMoviesOrPeople(
     urlToFetch,
     pageNumber
   );
@@ -65,6 +65,7 @@ export const GenreRoute = ({ location }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    console.log('genreUrl', genreUrl);
     const urlWithFilters = `${genreUrl.slice(0, baseStringCount)}${
       filters.sort
     }&${filters.score}&language=${filters.language}`;

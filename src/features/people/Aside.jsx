@@ -23,10 +23,7 @@ const InfoDetails = styled.p`
   font-size: 20px;
 `;
 
-const genderDiffer = (num) => {
-  if (num === 1) return 'Female';
-  return 'Male';
-};
+const genderDiffer = (num) => (num === 1 ? 'Female' : 'Male');
 
 export const Aside = ({
   profile_path,

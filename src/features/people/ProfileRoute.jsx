@@ -43,7 +43,7 @@ export const ProfileRoute = ({ location }) => {
     place_of_birth,
     profile_path,
   } = dataApi;
-  console.log(known_for);
+
   return (
     <main>
       <Profile>
