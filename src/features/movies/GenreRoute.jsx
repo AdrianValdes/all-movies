@@ -34,6 +34,7 @@ export const GenreRoute = ({ location }) => {
     genreUrl,
     pageNumber
   );
+  console.log(dataApi);
 
   const observer = useRef();
   const lastItem = useRef();

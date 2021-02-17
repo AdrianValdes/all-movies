@@ -36,8 +36,7 @@ export const MovieRoute = ({ location }) => {
     overview,
     vote_average,
   } = dataApi;
-  console.log(dataApi);
-  console.log(errorApi);
+
   const bannerImage = `${IMAGE_BASE_URL_HIGH}/${backdrop_path}`;
   const certification =
     release_dates?.results[0]?.release_dates[0]?.certification;
@@ -72,7 +71,7 @@ export const MovieRoute = ({ location }) => {
 
   if (loadingApi) return <Spinner />;
 
-  if (errorApi || !dataApi.success) {
+  if (errorApi || dataApi.success === false) {
     return (
       <main>
         <p>There has been an error: {errorApi || dataApi.status_message} </p>
