@@ -66,7 +66,7 @@ export const GridCard = ({ movie }) => (
         />
       </ImageWrapper>
       <CardContent>
-        <CardTitle>{movie.title}</CardTitle>
+        <CardTitle>{movie.original_title}</CardTitle>
         <CardDate>
           {new Date(movie.release_date).toDateString().slice(4)}
         </CardDate>
