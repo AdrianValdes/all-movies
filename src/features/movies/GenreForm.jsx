@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const FilterContainer = styled.section`
@@ -60,50 +60,47 @@ const FilterButton = styled.button`
 `;
 const handleGenre = (title) => title[0].toUpperCase() + title.slice(1);
 
-export const GenreForm = ({ genre }) => {
-  const [select, setSelect] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
-  return (
-    <FilterContainer>
-      <GenreTitle>{handleGenre(genre)}</GenreTitle>
-      <Form onSubmit={handleSubmit}>
-        <Label>
-          <h3>Sort</h3>
-          <Select value={select} onChange={(e) => setSelect(e.target.value)}>
-            <option value='descending'>Popularity Descending</option>
-            <option value='ascending'>Popularity Ascending</option>
-            <option value='titleToZ'>Title (A - Z)</option>
-            <option value='titleToA'>Title (Z -A) </option>
-          </Select>
-        </Label>
-        <Label>
-          <h3>Language</h3>
-          <Select value={select} onChange={(e) => setSelect(e.target.value)}>
-            <option value='english'>English</option>
-            <option value='french'>French</option>
-            <option value='german'>German</option>
-            <option value='spanish'>Spanish</option>
-            <option value='italian'>Italian</option>
-            <option value='japanese'>Japanese</option>
-            <option value='chinese'>Chinese</option>
-          </Select>
-        </Label>
-        <Label>
-          <h3>User Score</h3>
-          <Select value={select} onChange={(e) => setSelect(e.target.value)}>
-            <option value='less'> Less than 50% </option>
-            <option value='over50'>over 50% </option>
-            <option value='over70'>Over 70%</option>
-            <option value='over80'>Over 80%</option>
-            <option value='over90'>Over 90%</option>
-          </Select>
-        </Label>
-        <FilterButton type='submit'>Search</FilterButton>
-      </Form>
-    </FilterContainer>
-  );
-};
+export const GenreForm = ({ genre, filters, handleFilters, handleSearch }) => (
+  <FilterContainer>
+    <GenreTitle>{handleGenre(genre)}</GenreTitle>
+    <Form onSubmit={handleSearch}>
+      <Label>
+        <h3>Sort</h3>
+        <Select name='sort' value={filters.sort} onChange={handleFilters}>
+          <option value='popularity.desc'>Popularity Descending</option>
+          <option value='popularity.asc'>Popularity Ascending</option>
+          <option value='original_title.asc'>Title (A - Z)</option>
+          <option value='original_title.desc'>Title (Z -A) </option>
+        </Select>
+      </Label>
+      <Label>
+        <h3>Language</h3>
+        <Select
+          name='language'
+          value={filters.language}
+          onChange={handleFilters}
+        >
+          <option value='en-US'>English</option>
+          <option value='fr'>French</option>
+          <option value='de'>German</option>
+          <option value='es'>Spanish</option>
+          <option value='it'>Italian</option>
+          <option value='ja'>Japanese</option>
+          <option value='zh'>Chinese</option>
+        </Select>
+      </Label>
+      <Label>
+        <h3>User Score</h3>
+        <Select name='score' value={filters.score} onChange={handleFilters}>
+          <option value=''>user score</option>
+          <option value='vote_average.lte=5'> Less than 50% </option>
+          <option value='vote_average.gte=5'>over 50% </option>
+          <option value='vote_average.gte=7'>Over 70%</option>
+          <option value='vote_average.gte=8'>Over 80%</option>
+          <option value='vote_average.gte=9'>Over 90%</option>
+        </Select>
+      </Label>
+      <FilterButton type='submit'>Search</FilterButton>
+    </Form>
+  </FilterContainer>
+);

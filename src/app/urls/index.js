@@ -7,7 +7,7 @@ export const SINGLE_MOVIE_BASE_URL = 'https://api.themoviedb.org/3/movie';
 export const genres =
   'https://api.themoviedb.org/3/genre/movie/list?api_key=009f9976a57d0b92e9dee06122c5b4bc&language=en-US';
 
-export const popularUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false`;
+export const popularUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&sort_by=popularity.desc`;
 export const actionUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&with_genres=28`;
 export const animationUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&with_genres=16`;
 export const comediesUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&with_genres=35`;
@@ -19,3 +19,4 @@ const urLSingleMovieWithAll = `${SINGLE_MOVIE_BASE_URL}/$<id>?api_key=${KEY}&app
 
 const urlQueryMovies = `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&query=<Person>`;
 export const urlMultiQuery = `https://api.themoviedb.org/3/search/multi?api_key=${KEY}&query=`;
+export const baseStringCount = 93;

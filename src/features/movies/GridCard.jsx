@@ -56,10 +56,17 @@ export const GridCard = ({ movie }) => (
   >
     <Card>
       <ImageWrapper>
-        <Img alt='movie' src={`${IMAGE_BASE_URL_LOW}${movie.poster_path}`} />
+        <Img
+          alt='movie'
+          src={
+            movie.poster_path
+              ? `${IMAGE_BASE_URL_LOW}${movie.poster_path}`
+              : 'https://via.placeholder.com/150x225?text=no+image'
+          }
+        />
       </ImageWrapper>
       <CardContent>
-        <CardTitle>{movie.title}</CardTitle>
+        <CardTitle>{movie.original_title}</CardTitle>
         <CardDate>
           {new Date(movie.release_date).toDateString().slice(4)}
         </CardDate>

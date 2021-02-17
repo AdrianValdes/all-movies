@@ -6,35 +6,15 @@ import { useFetch } from '../../app/hooks';
 import { KEY, IMAGE_BASE_URL_LOW, IMAGE_BASE_URL_MEDIUM } from '../../app/urls';
 import { Row } from '../movies/MoviesRow';
 import { Img } from '../movies/GridCard';
+import { Aside } from './Aside';
 
 const Profile = styled.div`
   display: flex;
   margin: 40px;
 `;
 
-const ProfileSide = styled.div`
-  margin: 20px;
-`;
-
-const ImageProfile = styled.div`
-  width: 400px;
-  height: 550px;
-`;
-
-const Personal = styled.h1`
-  margin: 20px 0;
-`;
-
 const ProfileMain = styled.div`
   margin: 20px;
-`;
-
-const Info = styled.h2`
-  margin-top: 20px;
-`;
-
-const InfoDetails = styled.p`
-  font-size: 20px;
 `;
 
 const MoviesRow = styled(Row)`
@@ -82,27 +62,15 @@ export const ProfileRoute = ({ location }) => {
     profile_path,
   } = dataApi;
 
-  const genderDiffer = (num) => {
-    if (num === 1) return 'Female';
-    return 'Male';
-  };
-
   return (
     <Profile>
-      <ProfileSide>
-        <ImageProfile>
-          <Img src={`${IMAGE_BASE_URL_MEDIUM}${profile_path}`} alt={name} />
-        </ImageProfile>
-        <Personal>Personal Info</Personal>
-        <Info>Known for</Info>
-        <InfoDetails>{known_for_department}</InfoDetails>
-        <Info>Gender</Info>
-        <InfoDetails>{genderDiffer(gender)}</InfoDetails>
-        <Info>Birthday</Info>
-        <InfoDetails>{new Date(birthday).toDateString().slice(4)}</InfoDetails>
-        <Info>Place of Birth</Info>
-        <InfoDetails>{place_of_birth}</InfoDetails>
-      </ProfileSide>
+      <Aside
+        birthday={birthday}
+        gender={gender}
+        known_for_department={known_for_department}
+        place_of_birth={place_of_birth}
+        profile_path={profile_path}
+      />
       <ProfileMain>
         <Name>{name}</Name>
         {biography && (

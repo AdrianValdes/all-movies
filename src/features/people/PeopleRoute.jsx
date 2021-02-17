@@ -13,7 +13,7 @@ import {
 import { Spinner } from '../../app/shared/components/Spiner';
 
 const PeopleSection = styled.div`
-  width: 100%
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin: 20px;
