@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
 import { useFetchMovies } from '../../app/hooks';
 
 import { GridCard } from './GridCard';
@@ -10,6 +11,11 @@ import {
 } from '../../app/shared';
 import { Spinner } from '../../app/shared/components/Spiner';
 import { GenreForm } from './GenreForm';
+
+const RouteContainer = styled.section`
+  display: flex;
+  justify-content: center;
+`;
 
 export const GenreRoute = ({ location }) => {
   const [comingUrl, setUrl] = useState('');
@@ -44,7 +50,7 @@ export const GenreRoute = ({ location }) => {
   if (loadingApi) return <Spinner />;
   if (errorAPi) return <p>Error: {errorAPi}</p>;
   return (
-    <div>
+    <RouteContainer>
       <GenreForm genre={genre} />
       <MoviesGridContainer>
         <MoviesGrid>
@@ -53,6 +59,6 @@ export const GenreRoute = ({ location }) => {
           <div ref={lastMovie} />
         </MoviesGrid>
       </MoviesGridContainer>
-    </div>
+    </RouteContainer>
   );
 };

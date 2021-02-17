@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Footer } from './app/Footer';
 import { MovieRoute } from './features/movies/MovieRoute';
+import { PeopleRoute } from './features/people/PeopleRoute';
 
 import { Navbar } from './app/Navbar';
 import { Home } from './app/Home';
@@ -32,6 +33,7 @@ export const App = () => {
       <Switch>
         <Route path='/movie/:id' component={MovieRoute} />
         <Route path='/genre/:genre' component={GenreRoute} />
+        <Route path='/people' component={PeopleRoute} />
         <Route path='/login' component={Login} />
         <Route path='/signup' component={SignUp} />
         <Route exact path='/' component={Home} />
