@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { IMAGE_BASE_URL_LOW } from '../../app/urls';
-import { Card, ImageWrapper, Img } from './RowCard';
-import { Row } from './MoviesRow';
+import { IMAGE_BASE_URL_LOW } from '../../../app/urls';
+import { Card, ImageWrapper } from '../RowCard';
+import { Row } from '../MoviesRow';
+import { Img } from '../GridCard';
 
 const Section = styled.section`
   display: flex;

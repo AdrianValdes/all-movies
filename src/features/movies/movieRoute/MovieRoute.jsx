@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import { useFetch } from '../../app/hooks/useFetch';
+import { useFetch } from '../../../app/hooks/useFetch';
 
 import {
   KEY,
   SINGLE_MOVIE_BASE_URL,
   IMAGE_BASE_URL_HIGH,
-} from '../../app/urls';
-import { Spinner } from '../../app/shared/components';
+} from '../../../app/urls';
+import { Spinner } from '../../../app/shared/components';
 import { MovieBanner } from './MovieBanner';
 import { Recommendations } from './Recommendations';
 import { Cast } from './Cast';
@@ -16,7 +16,7 @@ import { Trailer } from './Trailer';
 export const MovieRoute = ({ location }) => {
   const { id } = location.state;
 
-  const urLSingleMovieWithAll = `${SINGLE_MOVIE_BASE_URL}/${id}?api_key=${KEY}&append_to_response=videos,credits,similar_movies,recommendations,release_dates,reviews`;
+  const urLSingleMovieWithAll = `${SINGLE_MOVIE_BASE_URL}/${id}?api_key=${KEY}&append_to_response=videos,credits,similar_movies,recommendations,release_dates,reviews,keywords`;
 
   const { dataApi, loadingApi, errorApi } = useFetch(urLSingleMovieWithAll);
   const {
