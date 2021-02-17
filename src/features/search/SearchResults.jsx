@@ -11,7 +11,7 @@ const SearchContent = styled.div`
 
 const buildQuery = (query) => query.split(' ').join('+');
 
-export const SearchResults = ({ location, match }) => {
+export const SearchResults = ({ location }) => {
   const { query } = location.state;
   const url = `${urlMultiQuery}${buildQuery(query.trim())}`;
 

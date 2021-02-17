@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 
-export const useFetchMoviesOrPeople = (comingUrl, genreUrl, pageNumber) => {
+export const useFetchMovies = (genreUrl, pageNumber) => {
   const [dataApi, setData] = useState([]);
   const [errorApi, setError] = useState(null);
   const [loadingApi, setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
-  /* console.log('comingUrl', comingUrl);
-  console.log('genreUrl', genreUrl); */
-  if (comingUrl !== genreUrl) {
+  const [persistentUrl, setPersistentUrl] = useState(genreUrl);
+  if (persistentUrl !== genreUrl) {
     setData([]);
+    setPersistentUrl(genreUrl);
   }
+
   const url = `${genreUrl}&page=${pageNumber}`;
   useEffect(() => {
     if (!url) return;
