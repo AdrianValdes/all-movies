@@ -39,6 +39,11 @@ export const GenreRoute = ({ location }) => {
 
   useEffect(() => {
     setUrlToFetch(genreUrl);
+    setFilters({
+      sort: 'popularity.desc',
+      language: 'en-US',
+      score: '',
+    });
   }, [genreUrl]);
 
   const observer = useRef();
@@ -63,6 +68,8 @@ export const GenreRoute = ({ location }) => {
     const urlWithFilters = `${genreUrl.slice(0, baseStringCount)}${
       filters.sort
     }&${filters.score}&language=${filters.language}`;
+    console.log(filters.language);
+
     setUrlToFetch(urlWithFilters);
   };
 
