@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const useFetchMovies = (comingUrl, genreUrl, pageNumber) => {
+export const useFetchMoviesOrPeople = (comingUrl, genreUrl, pageNumber) => {
   const [dataApi, setData] = useState([]);
   const [errorApi, setError] = useState(null);
   const [loadingApi, setLoading] = useState(true);

@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { BannerHome } from './shared/components';
 import { IMAGE_BASE_URL_HIGH } from './urls';
 
-const FormStyle = styled.form`
+const FormStyle = styled.div`
   width: 90%;
   position: relative;
   border: 1px solid lightgrey;
@@ -35,11 +36,10 @@ const Input = styled.input`
   border-radius: 30px;
   &:focus {
     outline: none;
-    cursor: pointer;
   }
 `;
 
-const SearchButton = styled.button`
+const SearchButton = styled(Link)`
   border: none;
   border-radius: 30px;
   padding: 10px 15px;
@@ -59,8 +59,9 @@ const SearchButton = styled.button`
 `;
 
 export const HomeBanner = ({ headerImageId }) => {
-  const [input, setInput] = useState('');
-  const [, setSearch] = useState();
+  const [query, setQuery] = useState('');
+  const history = useHistory();
+
   const inputRef = useRef();
 
   let imageUrl;
@@ -72,25 +73,26 @@ export const HomeBanner = ({ headerImageId }) => {
     inputRef.current.focus();
   }, []);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setSearch(input);
-    setInput('');
-  };
-
   return (
     <BannerHome imageUrl={imageUrl}>
       <StyleH1>Welcome to MOVIES!</StyleH1>
       <StyleH3>Explore millions of movies and people now.</StyleH3>
-      <FormStyle autoComplete='off' onSubmit={handleSearch}>
+      <FormStyle>
         <Input
           type='text'
           ref={inputRef}
-          value={input}
+          value={query}
           placeholder='Search for a movie or person...'
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              history.push({ pathname: `/search/${query}`, state: { query } });
+            }
+          }}
         />
-        <SearchButton type='submit'>Search</SearchButton>
+        <SearchButton to={{ pathname: `/search/${query}`, state: { query } }}>
+          Search
+        </SearchButton>
       </FormStyle>
     </BannerHome>
   );

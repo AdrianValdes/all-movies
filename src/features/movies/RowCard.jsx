@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import 'react-circular-progressbar/dist/styles.css';
 import { IMAGE_BASE_URL_LOW } from '../../app/urls';
 import { CircularBar } from '../../app/shared/components';
+import { Img } from './GridCard';
 
 export const Card = styled.div`
   width: 150px;
@@ -16,14 +17,7 @@ export const Card = styled.div`
 export const ImageWrapper = styled.div`
   box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
   border-radius: 10px;
-  background: #dbdbdb;
   width: 100%;
-`;
-
-export const Img = styled.img`
-  height: 100%;
-  width: 100%;
-  border-radius: 10px;
 `;
 
 const CardTitle = styled.h2`

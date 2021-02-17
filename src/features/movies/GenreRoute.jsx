@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useFetchMovies } from '../../app/hooks';
+import { useFetchMoviesOrPeople } from '../../app/hooks';
 
 import { GridCard } from './GridCard';
 import {
@@ -10,22 +10,22 @@ import {
 import { Spinner } from '../../app/shared/components/Spiner';
 
 export const GenreRoute = ({ location }) => {
-  const [comingUrl, setUrl] = useState('');
+  const [comingUrl, setComingUrl] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
 
   const { genreUrl } = location.state;
   if (genreUrl !== comingUrl) {
-    setUrl(genreUrl);
+    setComingUrl(genreUrl);
   }
 
-  const { dataApi, loadingApi, errorAPi, hasMore } = useFetchMovies(
+  const { dataApi, loadingApi, errorAPi, hasMore } = useFetchMoviesOrPeople(
     comingUrl,
     genreUrl,
     pageNumber
   );
 
   const observer = useRef();
-  const lastMovie = useRef();
+  const lastItem = useRef();
 
   useEffect(() => {
     handleIntersectionObserver({
@@ -33,7 +33,7 @@ export const GenreRoute = ({ location }) => {
       setPageNumber,
       hasMore,
       observer,
-      lastMovie,
+      lastItem,
     });
     return observer.unobserve;
   }, [loadingApi, hasMore]);
@@ -46,7 +46,7 @@ export const GenreRoute = ({ location }) => {
         <MoviesGrid>
           {dataApi &&
             dataApi.map((movie) => <GridCard key={movie.id} movie={movie} />)}
-          <div ref={lastMovie} />
+          <div ref={lastItem} />
         </MoviesGrid>
       </MoviesGridContainer>
     </div>
