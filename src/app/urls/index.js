@@ -19,4 +19,4 @@ const urLSingleMovieWithAll = `${SINGLE_MOVIE_BASE_URL}/$<id>?api_key=${KEY}&app
 
 const urlQueryMovies = `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&query=<Person>`;
 export const urlMultiQuery = `https://api.themoviedb.org/3/search/multi?api_key=${KEY}&query=`;
-export const baseStringCount = 93;
+export const baseStringCount = 99;

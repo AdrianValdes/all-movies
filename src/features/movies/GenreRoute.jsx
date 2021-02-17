@@ -65,13 +65,14 @@ export const GenreRoute = ({ location }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log('genreUrl', genreUrl);
-    const urlWithFilters = `${genreUrl.slice(0, baseStringCount)}${
+
+    const urlWithFilters = `${genreUrl.slice(0, baseStringCount)}&${
       filters.sort
     }&${filters.score}&language=${filters.language}`;
     setUrlToFetch(urlWithFilters);
+    setPageNumber(1);
   };
-
+  console.log(dataApi);
   if (loadingApi) return <Spinner />;
   if (errorAPi) return <p>Error: {errorAPi}</p>;
   return (
