@@ -86,7 +86,10 @@ export const PeopleRoute = () => {
               dataApi.map((person) => (
                 <PersonCard
                   key={person.id}
-                  to={{ pathname: '/profile', state: { id: person.id } }}
+                  to={{
+                    pathname: `/profile/${person.id}`,
+                    state: { id: person.id, known_for: person.known_for },
+                  }}
                 >
                   <ImageWrapper>
                     {person.profile_path && (

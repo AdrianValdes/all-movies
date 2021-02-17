@@ -37,8 +37,8 @@ export const App = () => {
         <Route path='/search/:query' component={SearchResults} />
         <Route path='/movie/:id' component={MovieRoute} />
         <Route path='/genre/:genre' component={GenreRoute} />
-        <Route path='/people' component={PeopleRoute} />
-        {/* <Route path='/profile' component={ProfileRoute} /> */}
+        <Route exact path='/people' component={PeopleRoute} />
+        <Route path='/profile/:id' component={ProfileRoute} />
         <Route path='/login' component={Login} />
         <Route path='/signup' component={SignUp} />
         <Route exact path='/' component={Home} />
