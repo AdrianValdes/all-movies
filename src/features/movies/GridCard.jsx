@@ -50,7 +50,7 @@ export const GridCard = ({ movie }) => (
   <Link
     to={{
       pathname: `/movie/${movie.id}`,
-      state: { movie },
+      state: { id: movie.id },
     }}
   >
     <Card>
