@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { KEY, IMAGE_BASE_URL_LOW } from '../../app/urls';
-import { useFetchMoviesOrPeople } from '../../app/hooks';
 import { ImageWrapper } from '../movies/RowCard';
+import { useFetchMoviesOrPeople } from '../../app/hooks';
 import { Img } from '../movies/GridCard';
 import {
   MoviesGridContainer,
@@ -45,20 +45,19 @@ const KnowFor = styled.p`
 `;
 
 export const PeopleRoute = () => {
-  const [comingUrl, setUrl] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
 
   const peopleUrl = `https://api.themoviedb.org/3/person/popular?api_key=${KEY}&language=en-US`;
 
-  if (peopleUrl !== comingUrl) {
-    setUrl(peopleUrl);
-  }
-
+  const [urlToFetch, setUrlToFetch] = useState(peopleUrl);
   const { dataApi, loadingApi, errorAPi, hasMore } = useFetchMoviesOrPeople(
-    comingUrl,
-    peopleUrl,
+    urlToFetch,
     pageNumber
   );
+
+  useEffect(() => {
+    setUrlToFetch(peopleUrl);
+  }, [peopleUrl]);
 
   const observer = useRef();
   const lastItem = useRef();
