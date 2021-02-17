@@ -15,7 +15,7 @@ const RowTitle = styled.h2`
 
 export const MoviesDashboard = ({ comedies, animation, popular }) => (
   <main>
-    <div className='main' style={{ maxWidth: '1400px' }}>
+    <div className='main' style={{ maxWidth: '1300px' }}>
       <RowWrapper>
         <RowTitle>
           <Link to='/'> Comedies</Link>
