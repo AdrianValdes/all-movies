@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { KEY, IMAGE_BASE_URL_LOW } from '../../app/urls';
 import { useFetchMoviesOrPeople } from '../../app/hooks';
-import { ImageWrapper, Img } from '../movies/RowCard';
+import { ImageWrapper } from '../movies/RowCard';
+import { Img } from './GridCard'
 import {
   MoviesGridContainer,
   PeopleGrid,
