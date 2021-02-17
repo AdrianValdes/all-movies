@@ -25,12 +25,15 @@ main {
   align-content: flex-start;
   justify-content: center;
   background-color: #fff;
-  margin-top: 64px;
+  margin: 24px 0;
+  min-height: 100vh;
 }
 a {
   text-decoration: none;
 }
-
+a:visited {
+  color: black;
+}
 .CircularProgressbar {
   width: 60px;
   margin-right: 10px;

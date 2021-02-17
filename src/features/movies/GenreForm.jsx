@@ -32,6 +32,7 @@ const Label = styled.label`
 const Select = styled.select`
   font-size: 18px;
   border: none;
+  background-color: white;
   &:focus {
     outline: none;
   }
@@ -57,6 +58,7 @@ const FilterButton = styled.button`
     cursor: pointer;
   }
 `;
+const handleGenre = (title) => title[0].toUpperCase() + title.slice(1);
 
 export const GenreForm = ({ genre }) => {
   const [select, setSelect] = useState('');
@@ -64,8 +66,6 @@ export const GenreForm = ({ genre }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-
-  const handleGenre = (title) => title[0].toUpperCase() + title.slice(1);
 
   return (
     <FilterContainer>

@@ -70,7 +70,14 @@ export const MovieRoute = ({ location }) => {
   }, [urLSingleMovieWithAll]);
 
   if (loadingApi) return <Spinner />;
-  if (errorApi) return <p>There has been an error: {errorApi} </p>;
+
+  if (errorApi || dataApi.success === false) {
+    return (
+      <main>
+        <p>There has been an error: {errorApi || dataApi.status_message} </p>
+      </main>
+    );
+  }
   return (
     <main>
       <MovieBanner
