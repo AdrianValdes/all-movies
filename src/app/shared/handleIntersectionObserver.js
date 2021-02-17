@@ -4,7 +4,7 @@ export const handleIntersectionObserver = ({
   setPageNumber,
   hasMore,
   observer,
-  lastMovie,
+  lastItem,
 }) => {
   if (loadingApi) return;
   observer.current = new IntersectionObserver((entries) => {
@@ -12,5 +12,5 @@ export const handleIntersectionObserver = ({
       setPageNumber((prevsPageNum) => prevsPageNum + 1);
     }
   });
-  observer.current.observe(lastMovie.current);
+  observer.current.observe(lastItem.current);
 };

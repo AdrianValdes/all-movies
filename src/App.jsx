@@ -17,6 +17,7 @@ import {
 } from './app/store/actions/moviesAction';
 
 import { GenreRoute } from './features/movies/GenreRoute';
+import { SearchResults } from './features/search/SearchResults';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ export const App = () => {
     <Router>
       <Navbar />
       <Switch>
+        <Route path='/search/:query' component={SearchResults} />
         <Route path='/movie/:id' component={MovieRoute} />
         <Route path='/genre/:genre' component={GenreRoute} />
         <Route path='/login' component={Login} />

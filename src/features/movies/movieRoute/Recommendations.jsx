@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { IMAGE_BASE_URL_LOW } from '../../../app/urls';
-import { Img } from '../RowCard';
+import { Img } from '../GridCard';
 import { Row } from '../MoviesRow';
 
 const Section = styled.section`

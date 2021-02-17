@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { MovieBannerStyle } from '../../../app/shared/components';
-import { ImageWrapper, Img } from '../RowCard';
+import { ImageWrapper } from '../RowCard';
 import { IMAGE_BASE_URL_LOW } from '../../../app/urls';
 import { Facts } from './Facts';
 import { Crew } from './Crew';
 import { BannerIcons } from './BannerIcons';
+import { Img } from '../GridCard';
 
 const IndividualPageCard = styled.div`
   width: 300px;
