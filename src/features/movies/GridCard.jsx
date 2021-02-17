@@ -47,11 +47,11 @@ const CardContent = styled.div`
   position: relative;
 `;
 
-export const GridCard = ({ movie }) => (
+export const GridCard = ({ movie, language = 'language=en-US' }) => (
   <Link
     to={{
       pathname: `/movie/${movie.id}`,
-      state: { id: movie.id },
+      state: { id: movie.id, language },
     }}
   >
     <Card>
@@ -66,7 +66,7 @@ export const GridCard = ({ movie }) => (
         />
       </ImageWrapper>
       <CardContent>
-        <CardTitle>{movie.original_title}</CardTitle>
+        <CardTitle>{movie.title}</CardTitle>
         <CardDate>
           {new Date(movie.release_date).toDateString().slice(4)}
         </CardDate>

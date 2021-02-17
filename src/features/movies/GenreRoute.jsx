@@ -18,6 +18,8 @@ const RouteContainer = styled.section`
   display: flex;
   justify-content: center;
 `;
+const buildFiltersQuery = ({ genreUrl, sort, score, language }) =>
+  `${genreUrl.slice(0, baseStringCount)}&${sort}&${score}&language=${language}`;
 
 export const GenreRoute = ({ location }) => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -26,17 +28,15 @@ export const GenreRoute = ({ location }) => {
     language: 'en-US',
     score: '',
   });
+
   const { genre } = useParams();
-
   const { genreUrl } = location.state;
-
   const [urlToFetch, setUrlToFetch] = useState(genreUrl);
 
   const { dataApi, loadingApi, errorAPi, hasMore } = useFetchMoviesOrPeople(
     urlToFetch,
     pageNumber
   );
-
   useEffect(() => {
     setUrlToFetch(genreUrl);
     setFilters({
@@ -48,7 +48,6 @@ export const GenreRoute = ({ location }) => {
 
   const observer = useRef();
   const lastItem = useRef();
-
   useEffect(() => {
     handleIntersectionObserver({
       loadingApi,
@@ -65,11 +64,16 @@ export const GenreRoute = ({ location }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log('genreUrl', genreUrl);
-    const urlWithFilters = `${genreUrl.slice(0, baseStringCount)}${
-      filters.sort
-    }&${filters.score}&language=${filters.language}`;
+
+    const { sort, score, language } = filters;
+    const urlWithFilters = buildFiltersQuery({
+      genreUrl,
+      sort,
+      score,
+      language,
+    });
     setUrlToFetch(urlWithFilters);
+    setPageNumber(1);
   };
 
   if (loadingApi) return <Spinner />;
@@ -85,7 +89,13 @@ export const GenreRoute = ({ location }) => {
       <MoviesGridContainer>
         <MoviesGrid>
           {dataApi &&
-            dataApi.map((movie) => <GridCard key={movie.id} movie={movie} />)}
+            dataApi.map((movie) => (
+              <GridCard
+                key={movie.id}
+                movie={movie}
+                language={`language=${filters.language}`}
+              />
+            ))}
           <div ref={lastItem} />
         </MoviesGrid>
       </MoviesGridContainer>

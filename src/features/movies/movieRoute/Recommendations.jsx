@@ -38,7 +38,10 @@ const Card = styled.div`
   margin-right: 20px;
 `;
 
-export const Recommendations = ({ recommendations }) => (
+export const Recommendations = ({
+  recommendations,
+  language = 'language=en-US',
+}) => (
   <Section>
     <Title>Recommendations</Title>
     <MoviesRow>
@@ -47,14 +50,18 @@ export const Recommendations = ({ recommendations }) => (
           key={movie.id}
           to={{
             pathname: `/movie/${movie.id}`,
-            state: { id: movie.id },
+            state: { id: movie.id, language },
           }}
         >
           <Card>
             <ImageWrapper>
               <Img
                 alt='movie'
-                src={`${IMAGE_BASE_URL_LOW}${movie.backdrop_path}`}
+                src={
+                  movie.backdrop_path
+                    ? `${IMAGE_BASE_URL_LOW}${movie.backdrop_path}`
+                    : 'https://via.placeholder.com/250x150?text=no+image'
+                }
               />
             </ImageWrapper>
             <CardContent>

@@ -14,9 +14,9 @@ import { ReviewSection } from './ReviewSection';
 import { Trailer } from './Trailer';
 
 export const MovieRoute = ({ location }) => {
-  const { id } = location.state;
+  const { id, language } = location.state;
 
-  const urLSingleMovieWithAll = `${SINGLE_MOVIE_BASE_URL}/${id}?api_key=${KEY}&append_to_response=videos,credits,similar_movies,recommendations,release_dates,reviews,keywords`;
+  const urLSingleMovieWithAll = `${SINGLE_MOVIE_BASE_URL}/${id}?api_key=${KEY}&append_to_response=videos,credits,similar_movies,recommendations,release_dates,reviews,keywords&${language}`;
 
   const { dataApi, loadingApi, errorApi } = useFetch(urLSingleMovieWithAll);
   const {
@@ -99,7 +99,10 @@ export const MovieRoute = ({ location }) => {
         <Cast cast={cast} />
         <ReviewSection reviews={reviews.results} />
         <Trailer trailerKey={trailerKey} poster_path={poster_path} />
-        <Recommendations recommendations={recommendations.results} />
+        <Recommendations
+          language={language}
+          recommendations={recommendations.results}
+        />
       </div>
     </main>
   );
