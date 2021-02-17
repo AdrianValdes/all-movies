@@ -11,7 +11,6 @@ export const Card = styled.div`
   width: 150px;
   min-width: 150px;
   margin-left: 40px;
-  color: black;
 `;
 
 export const ImageWrapper = styled.div`
