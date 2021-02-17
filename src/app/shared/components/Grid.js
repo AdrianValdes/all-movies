@@ -13,5 +13,11 @@ export const MoviesGrid = styled.div`
   grid-auto-rows: minmax(250px, auto);
   max-width: 1200px;
   width: 100%;
-  gap: 40px 0;
+  gap: 40px 0px;
+`;
+
+export const PeopleGrid = styled(MoviesGrid)`
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+max-width: 1400px;
+gap: 20px 40px;
 `;

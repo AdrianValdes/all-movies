@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Footer } from './app/Footer';
+import { PeopleRoute } from './features/people/PeopleRoute';
 import { MovieRoute } from './features/movies/movieRoute/MovieRoute';
-
 import { Navbar } from './app/Navbar';
 import { Home } from './app/Home';
 import { Login } from './app/Login';
@@ -17,6 +17,9 @@ import {
 } from './app/store/actions/moviesAction';
 
 import { GenreRoute } from './features/movies/GenreRoute';
+
+import { ProfileRoute } from './features/people/ProfileRoute';
+
 import { SearchResults } from './features/search/SearchResults';
 
 export const App = () => {
@@ -34,6 +37,8 @@ export const App = () => {
         <Route path='/search/:query' component={SearchResults} />
         <Route path='/movie/:id' component={MovieRoute} />
         <Route path='/genre/:genre' component={GenreRoute} />
+        <Route path='/people' component={PeopleRoute} />
+        {/* <Route path='/profile' component={ProfileRoute} /> */}
         <Route path='/login' component={Login} />
         <Route path='/signup' component={SignUp} />
         <Route exact path='/' component={Home} />
