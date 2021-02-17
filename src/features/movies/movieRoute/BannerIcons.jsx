@@ -4,7 +4,7 @@ import { BsFlagFill, BsListTask, BsFillPlayFill } from 'react-icons/bs';
 import { FaHeart } from 'react-icons/fa';
 
 import styled from 'styled-components';
-import { CircularBar } from '../../app/shared/components';
+import { CircularBar } from '../../../app/shared/components';
 
 const IconContainer = styled.div`
   display: flex;

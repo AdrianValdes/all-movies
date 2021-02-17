@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Footer } from './app/Footer';
-import { MovieRoute } from './features/movies/MovieRoute';
+import { MovieRoute } from './features/movies/movieRoute/MovieRoute';
 
 import { Navbar } from './app/Navbar';
 import { Home } from './app/Home';

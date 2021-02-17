@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import { useFetch } from '../../app/hooks/useFetch';
+import { useFetch } from '../../../app/hooks/useFetch';
 
 import {
   KEY,
   SINGLE_MOVIE_BASE_URL,
   IMAGE_BASE_URL_HIGH,
-} from '../../app/urls';
-import { Spinner } from '../../app/shared/components';
+} from '../../../app/urls';
+import { Spinner } from '../../../app/shared/components';
 import { MovieBanner } from './MovieBanner';
 import { Recommendations } from './Recommendations';
 import { Cast } from './Cast';
