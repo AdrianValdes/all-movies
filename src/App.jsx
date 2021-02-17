@@ -22,7 +22,6 @@ import { ProfileRoute } from './features/people/ProfileRoute';
 
 import { SearchResults } from './features/search/SearchResults';
 
-
 export const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
