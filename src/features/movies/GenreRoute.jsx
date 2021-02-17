@@ -86,7 +86,13 @@ export const GenreRoute = ({ location }) => {
       <MoviesGridContainer>
         <MoviesGrid>
           {dataApi &&
-            dataApi.map((movie) => <GridCard key={movie.id} movie={movie} />)}
+            dataApi.map((movie) => (
+              <GridCard
+                key={movie.id}
+                movie={movie}
+                language={`language=${filters.language}`}
+              />
+            ))}
           <div ref={lastItem} />
         </MoviesGrid>
       </MoviesGridContainer>

@@ -47,11 +47,11 @@ const CardContent = styled.div`
   position: relative;
 `;
 
-export const GridCard = ({ movie }) => (
+export const GridCard = ({ movie, language = 'language=en-US' }) => (
   <Link
     to={{
       pathname: `/movie/${movie.id}`,
-      state: { id: movie.id },
+      state: { id: movie.id, language },
     }}
   >
     <Card>
