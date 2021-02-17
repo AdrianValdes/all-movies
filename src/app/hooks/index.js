@@ -1,2 +1,2 @@
 export * from './useFetch';
-export * from './useFetchMovies';
+export * from './useFetchMoviesOrPeople';

@@ -12,13 +12,11 @@ const SearchContent = styled.div`
 const buildQuery = (query) => query.split(' ').join('+');
 
 export const SearchResults = ({ location, match }) => {
-  console.log('Rendered Search Results');
   const { query } = location.state;
   const url = `${urlMultiQuery}${buildQuery(query.trim())}`;
 
   const { dataApi } = useFetch(url);
-  console.log(dataApi);
-  console.log(match.params.query);
+
   return (
     <main>
       <SearchContent>

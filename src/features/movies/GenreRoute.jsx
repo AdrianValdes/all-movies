@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useFetchMovies } from '../../app/hooks';
+import { useFetchMoviesOrPeople } from '../../app/hooks';
 
 import { GridCard } from './GridCard';
 import {
@@ -18,7 +18,7 @@ export const GenreRoute = ({ location }) => {
     setComingUrl(genreUrl);
   }
 
-  const { dataApi, loadingApi, errorAPi, hasMore } = useFetchMovies(
+  const { dataApi, loadingApi, errorAPi, hasMore } = useFetchMoviesOrPeople(
     comingUrl,
     genreUrl,
     pageNumber
