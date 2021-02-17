@@ -13,7 +13,6 @@ const Profile = styled.div`
 `;
 
 const ProfileSide = styled.div`
-  width: 30%;
   margin: 20px;
 `;
 
@@ -106,12 +105,21 @@ export const ProfileRoute = ({ location }) => {
       </ProfileSide>
       <ProfileMain>
         <Name>{name}</Name>
-        <h1>Biography</h1>
-        <Bio>
-          <ShowMoreText lines={8} more='Read more' less='Show Less'>
-            {biography}
-          </ShowMoreText>
-        </Bio>
+        {biography && (
+          <>
+            <h1>Biography</h1>
+            <Bio>
+              <ShowMoreText
+                lines={8}
+                more='Read more'
+                less='Show Less'
+                expanded={false}
+              >
+                {biography}
+              </ShowMoreText>
+            </Bio>
+          </>
+        )}
         <h1>Known For</h1>
         <MoviesRow>
           {known_for.map((movie) => (
