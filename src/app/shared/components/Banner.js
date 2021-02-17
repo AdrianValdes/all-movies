@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 
 const Banner = styled.div`
-  background-image: linear-gradient(
-      to right,
-      rgba(3, 37, 65, 0.8) 0%,
-      rgba(3, 37, 65, 0.5) 100%
-    ),
-    url(${(props) => props.imageUrl});
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -17,6 +11,12 @@ const Banner = styled.div`
 `;
 
 export const BannerHome = styled(Banner)`
+  background-image: linear-gradient(
+      to right,
+      rgba(3, 37, 65, 0.8) 0%,
+      rgba(3, 37, 65, 0.1) 100%
+    ),
+    url(${(props) => props.imageUrl});
   max-width: 1400px;
   max-height: 360px;
   min-height: 300px;
@@ -26,7 +26,13 @@ export const BannerHome = styled(Banner)`
 `;
 
 export const MovieBannerStyle = styled(Banner)`
+  background-image: linear-gradient(
+      to right,
+      rgba(3, 37, 65, 0.8) 0%,
+      rgba(3, 37, 65, 0.8) 100%
+    ),
+    url(${(props) => props.imageUrl});
   padding: 30px 0;
   color: #fff;
-  height: 570px;
+  height: 510px;
 `;

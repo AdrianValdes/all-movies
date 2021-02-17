@@ -16,7 +16,7 @@ import { Trailer } from './Trailer';
 export const MovieRoute = ({ location }) => {
   const { id } = location.state;
 
-  const urLSingleMovieWithAll = `${SINGLE_MOVIE_BASE_URL}/${id}?api_key=${KEY}&append_to_response=videos,credits,similar_movies,recommendations,release_dates,reviews`;
+  const urLSingleMovieWithAll = `${SINGLE_MOVIE_BASE_URL}/${id}?api_key=${KEY}&append_to_response=videos,credits,similar_movies,recommendations,release_dates,reviews,keywords`;
 
   const { dataApi, loadingApi, errorApi } = useFetch(urLSingleMovieWithAll);
   const {

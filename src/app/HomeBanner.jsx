@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { BannerHome } from './shared/components';
-import { IMAGE_BASE_URL_HIGH } from './urls';
+import { IMAGE_BASE_URL_HIGH, urlMultiQuery } from './urls';
 
 const FormStyle = styled.form`
   width: 90%;
@@ -35,7 +35,6 @@ const Input = styled.input`
   border-radius: 30px;
   &:focus {
     outline: none;
-    cursor: pointer;
   }
 `;
 
@@ -58,9 +57,11 @@ const SearchButton = styled.button`
   }
 `;
 
+const buildQuery = (query) => query.split(' ').join('+');
+
 export const HomeBanner = ({ headerImageId }) => {
-  const [input, setInput] = useState('');
-  const [, setSearch] = useState();
+  const [query, setQuery] = useState('');
+
   const inputRef = useRef();
 
   let imageUrl;
@@ -74,8 +75,10 @@ export const HomeBanner = ({ headerImageId }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    setSearch(input);
-    setInput('');
+
+    const query1 = `${urlMultiQuery}${buildQuery(query.trim())}`;
+    console.log(query1);
+    setQuery('');
   };
 
   return (
@@ -86,9 +89,9 @@ export const HomeBanner = ({ headerImageId }) => {
         <Input
           type='text'
           ref={inputRef}
-          value={input}
+          value={query}
           placeholder='Search for a movie or person...'
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => setQuery(e.target.value)}
         />
         <SearchButton type='submit'>Search</SearchButton>
       </FormStyle>
