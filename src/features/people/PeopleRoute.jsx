@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  KEY,
   IMAGE_BASE_URL_LOW,
   MoviesGridContainer,
   PeopleGrid,
