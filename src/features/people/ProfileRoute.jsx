@@ -60,12 +60,7 @@ export const ProfileRoute = ({ location }) => {
             <>
               <h1>Biography</h1>
               <Bio>
-                <ShowMoreText
-                  lines={8}
-                  more='Read more'
-                  less='Show Less'
-                  expanded={false}
-                >
+                <ShowMoreText lines={6} more='Read more' less='Show Less'>
                   {biography}
                 </ShowMoreText>
               </Bio>

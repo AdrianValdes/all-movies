@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { Footer } from './app/Footer';
 import { PeopleRoute } from './features/people/PeopleRoute';
 import { MovieRoute } from './features/movies/movieRoute/MovieRoute';
+import { ReviewRoute } from './features/movies/movieRoute/ReviewRoute';
+import { AddReview } from './features/movies/movieRoute/AddReview';
 import { Navbar } from './app/Navbar';
 import { Home } from './app/Home';
 import { Login } from './app/Login';
@@ -35,10 +37,12 @@ export const App = () => {
       <Navbar />
       <Switch>
         <Route path='/search/:query' component={SearchResults} />
-        <Route path='/movie/:id' component={MovieRoute} />
+        <Route exact path='/movie/:id' component={MovieRoute} />
         <Route path='/genre/:genre' component={GenreRoute} />
         <Route exact path='/people' component={PeopleRoute} />
         <Route path='/profile/:id' component={ProfileRoute} />
+        <Route exact path='/reviews' component={ReviewRoute} />
+        <Route exact path='/addReview' component={AddReview} />
         <Route path='/login' component={Login} />
         <Route path='/signup' component={SignUp} />
         <Route exact path='/' component={Home} />
