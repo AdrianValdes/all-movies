@@ -34,5 +34,7 @@ export const MovieBannerStyle = styled(Banner)`
     url(${(props) => props.imageUrl});
   padding: 30px 0;
   color: #fff;
-  height: 510px;
+  min-height: 510px;
+  display: flex;
+  align-items: center;
 `;

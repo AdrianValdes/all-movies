@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Img } from '../movies/GridCard';
-import { IMAGE_BASE_URL_LOW } from '../../app/urls';
+
+import { IMAGE_BASE_URL_LOW, Img } from '../../app/shared';
+import { prettifyDate } from '../../app/shared/helpers/prettifyDate';
 
 const Card = styled.div`
   box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
@@ -55,12 +56,12 @@ const Overview = styled.p`
   margin: 0;
 `;
 
-export const SearchCard = ({ movie }) => (
+export const SearchCard = ({ movie, language = 'language=en-US' }) => (
   <Link
     key={movie.id}
     to={{
       pathname: `/movie/${movie.id}`,
-      state: { id: movie.id },
+      state: { id: movie.id, language },
     }}
   >
     <Card>
@@ -76,9 +77,7 @@ export const SearchCard = ({ movie }) => (
       </ImgWrapper>
       <Details>
         <Title>{movie.title}</Title>
-        <Release>
-          {new Date(movie.release_date).toDateString().slice(4)}
-        </Release>
+        <Release>{prettifyDate(movie.release_date)}</Release>
         <Overview>{movie?.overview}</Overview>
       </Details>
     </Card>

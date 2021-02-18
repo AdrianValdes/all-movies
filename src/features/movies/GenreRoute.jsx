@@ -1,25 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
-
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-
 import { GridCard } from './GridCard';
 import {
   handleIntersectionObserver,
   MoviesGridContainer,
   MoviesGrid,
+  Spinner,
+  buildFiltersQuery,
 } from '../../app/shared';
-import { Spinner } from '../../app/shared/components/Spiner';
-import { GenreForm } from './GenreForm';
-import { baseStringCount } from '../../app/urls';
+
+import { GenreFilters } from './GenreFilters';
+
 import { useFetchMoviesOrPeople } from '../../app/hooks';
 
 const RouteContainer = styled.section`
   display: flex;
   justify-content: center;
 `;
-const buildFiltersQuery = ({ genreUrl, sort, score, language }) =>
-  `${genreUrl.slice(0, baseStringCount)}&${sort}&${score}&language=${language}`;
 
 export const GenreRoute = ({ location }) => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -43,7 +41,9 @@ export const GenreRoute = ({ location }) => {
       sort: 'popularity.desc',
       language: 'en-US',
       score: '',
+      original_language: '',
     });
+    setPageNumber(1);
   }, [genreUrl]);
 
   const observer = useRef();
@@ -65,22 +65,24 @@ export const GenreRoute = ({ location }) => {
   const handleSearch = (e) => {
     e.preventDefault();
 
-    const { sort, score, language } = filters;
+    const { sort, score, language, original_language } = filters;
     const urlWithFilters = buildFiltersQuery({
       genreUrl,
       sort,
       score,
       language,
+      original_language,
     });
-    setUrlToFetch(urlWithFilters);
     setPageNumber(1);
+    setUrlToFetch(urlWithFilters);
   };
 
   if (loadingApi) return <Spinner />;
   if (errorAPi) return <p>Error: {errorAPi}</p>;
+
   return (
     <RouteContainer>
-      <GenreForm
+      <GenreFilters
         genre={genre}
         filters={filters}
         handleFilters={handleFilters}

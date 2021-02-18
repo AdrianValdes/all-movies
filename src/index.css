@@ -42,3 +42,8 @@ a:visited {
 .row-card-icon {
   width: 35px;
 }
+
+.edit-icon {
+  size: 20;
+  margin-right: 10px;
+}

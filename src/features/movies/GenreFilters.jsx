@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { parseTitle } from '../../app/shared';
 
 const FilterContainer = styled.section`
   width: 380px;
@@ -50,7 +51,7 @@ const FilterButton = styled.button`
   height: 45px;
   font-size: 20px;
   font-weight: bold;
-  background-color: #47cfb5;
+  background-color: ${(props) => (props.disabled ? 'gray' : '#1cb8da')};
   color: white;
   &:hover {
     background-color: rgb(3, 37, 65);
@@ -61,15 +62,19 @@ const FilterButton = styled.button`
     outline: none;
   }
 `;
-const handleGenre = (title) => title[0].toUpperCase() + title.slice(1);
 
-export const GenreForm = ({ genre, filters, handleFilters, handleSearch }) => (
+export const GenreFilters = ({
+  genre,
+  filters: { sort, language, original_language, score },
+  handleFilters,
+  handleSearch,
+}) => (
   <FilterContainer>
-    <GenreTitle>{handleGenre(genre)}</GenreTitle>
+    <GenreTitle>{parseTitle(genre)}</GenreTitle>
     <Form onSubmit={handleSearch}>
       <Label>
         <h3>Sort</h3>
-        <Select name='sort' value={filters.sort} onChange={handleFilters}>
+        <Select name='sort' value={sort} onChange={handleFilters}>
           <option value='popularity.desc'>Popularity Descending</option>
           <option value='popularity.asc'>Popularity Ascending</option>
           <option value='original_title.asc'>Title (A - Z)</option>
@@ -78,9 +83,21 @@ export const GenreForm = ({ genre, filters, handleFilters, handleSearch }) => (
       </Label>
       <Label>
         <h3>Language</h3>
+        <Select name='language' value={language} onChange={handleFilters}>
+          <option value='en-US'>English</option>
+          <option value='fr'>French</option>
+          <option value='de'>German</option>
+          <option value='es'>Spanish</option>
+          <option value='it'>Italian</option>
+          <option value='ja'>Japanese</option>
+          <option value='zh'>Chinese</option>
+        </Select>
+      </Label>
+      <Label>
+        <h3>Original Language</h3>
         <Select
-          name='language'
-          value={filters.language}
+          name='original_language'
+          value={original_language}
           onChange={handleFilters}
         >
           <option value='en-US'>English</option>
@@ -94,7 +111,7 @@ export const GenreForm = ({ genre, filters, handleFilters, handleSearch }) => (
       </Label>
       <Label>
         <h3>User Score</h3>
-        <Select name='score' value={filters.score} onChange={handleFilters}>
+        <Select name='score' value={score} onChange={handleFilters}>
           <option value=''>user score</option>
           <option value='vote_average.lte=5'> Less than 50% </option>
           <option value='vote_average.gte=5'>over 50% </option>

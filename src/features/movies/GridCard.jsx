@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { IMAGE_BASE_URL_LOW } from '../../app/urls';
-import { CircularBar } from '../../app/shared/components';
+import { IMAGE_BASE_URL_LOW } from '../../app/shared';
+import { CircularBar, Img } from '../../app/shared/components';
+import { prettifyDate } from '../../app/shared/helpers/prettifyDate';
 
 const Card = styled.div`
   width: 180px;
@@ -18,12 +19,6 @@ const Card = styled.div`
 export const ImageWrapper = styled.div`
   border-radius: 10px;
   width: 100%;
-`;
-export const Img = styled.img`
-  height: 100%;
-  width: 100%;
-  border-radius: 10px;
-  object-fit: cover;
 `;
 
 const CardTitle = styled.h2`
@@ -67,9 +62,7 @@ export const GridCard = ({ movie, language = 'language=en-US' }) => (
       </ImageWrapper>
       <CardContent>
         <CardTitle>{movie.title}</CardTitle>
-        <CardDate>
-          {new Date(movie.release_date).toDateString().slice(4)}
-        </CardDate>
+        <CardDate>{prettifyDate(movie.release_date)}</CardDate>
         <RatingCircle>
           <CircularBar
             vote_average={movie.vote_average}

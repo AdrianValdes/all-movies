@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { BannerHome } from './shared/components';
-import { IMAGE_BASE_URL_HIGH } from './urls';
+import { IMAGE_BASE_URL_HIGH } from './shared';
 
 const FormStyle = styled.div`
   width: 90%;

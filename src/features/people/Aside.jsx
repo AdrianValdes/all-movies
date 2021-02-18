@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { IMAGE_BASE_URL_MEDIUM } from '../../app/urls';
-import { Img } from '../movies/GridCard';
+import { IMAGE_BASE_URL_MEDIUM, Img } from '../../app/shared';
 
 const ProfileSide = styled.div`
   margin: 20px;

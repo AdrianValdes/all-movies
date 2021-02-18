@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useFetch } from '../../app/hooks';
-import { urlMultiQuery } from '../../app/urls';
+import { urlMultiQuery } from '../../app/shared';
 
 import { SearchCard } from './SearchCard';
 

@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { useFetch } from '../../../app/hooks/useFetch';
-
 import {
   KEY,
   SINGLE_MOVIE_BASE_URL,
   IMAGE_BASE_URL_HIGH,
-} from '../../../app/urls';
+} from '../../../app/shared';
 import { Spinner } from '../../../app/shared/components';
 import { MovieBanner } from './MovieBanner';
 import { Recommendations } from './Recommendations';
@@ -36,7 +35,6 @@ export const MovieRoute = ({ location }) => {
     overview,
     vote_average,
   } = dataApi;
-  console.log(dataApi);
 
   const bannerImage = `${IMAGE_BASE_URL_HIGH}/${backdrop_path}`;
   const certification =
