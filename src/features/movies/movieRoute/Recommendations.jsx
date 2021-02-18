@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { IMAGE_BASE_URL_LOW } from '../../../app/urls';
+import { IMAGE_BASE_URL_LOW } from '../../../app/shared';
 import { Img } from '../GridCard';
 import { Row } from '../MoviesRow';
 

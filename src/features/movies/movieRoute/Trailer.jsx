@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Notice } from './Cast';
 import { TitlesContainer } from './ReviewSection';
-import { IMAGE_BASE_URL_HIGH } from '../../../app/urls';
+import { IMAGE_BASE_URL_HIGH } from '../../../app/shared';
 
 const Section = styled.section`
   margin-top: 40px;

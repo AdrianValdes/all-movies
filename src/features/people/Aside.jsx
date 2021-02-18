@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { IMAGE_BASE_URL_MEDIUM } from '../../app/urls';
+import { IMAGE_BASE_URL_MEDIUM } from '../../app/shared';
 import { Img } from '../movies/GridCard';
 
 const ProfileSide = styled.div`

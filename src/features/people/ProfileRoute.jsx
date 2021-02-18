@@ -5,7 +5,7 @@ import { useFetch } from '../../app/hooks';
 
 import { Aside } from './Aside';
 import { KnownFor } from './KnownFor';
-import { KEY } from '../../app/urls';
+import { KEY } from '../../app/shared';
 
 const Profile = styled.div`
   display: flex;

@@ -1,15 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { KEY, IMAGE_BASE_URL_LOW } from '../../app/urls';
-import { ImageWrapper } from '../movies/RowCard';
-import { useFetchMoviesOrPeople } from '../../app/hooks';
-import { Img } from '../movies/GridCard';
 import {
+  KEY,
+  IMAGE_BASE_URL_LOW,
   MoviesGridContainer,
   PeopleGrid,
   handleIntersectionObserver,
 } from '../../app/shared';
+import { ImageWrapper } from '../movies/RowCard';
+import { useFetchMoviesOrPeople } from '../../app/hooks';
+import { Img } from '../movies/GridCard';
+
 import { Spinner } from '../../app/shared/components/Spiner';
 
 const PeopleSection = styled.div`

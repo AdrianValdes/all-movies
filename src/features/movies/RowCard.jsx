@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import 'react-circular-progressbar/dist/styles.css';
-import { IMAGE_BASE_URL_LOW } from '../../app/urls';
+import { IMAGE_BASE_URL_LOW } from '../../app/shared';
 import { CircularBar } from '../../app/shared/components';
 import { Img } from './GridCard';
 

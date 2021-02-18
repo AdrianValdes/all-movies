@@ -63,7 +63,12 @@ const FilterButton = styled.button`
 `;
 const handleGenre = (title) => title[0].toUpperCase() + title.slice(1);
 
-export const GenreForm = ({ genre, filters, handleFilters, handleSearch }) => (
+export const GenreFilters = ({
+  genre,
+  filters,
+  handleFilters,
+  handleSearch,
+}) => (
   <FilterContainer>
     <GenreTitle>{handleGenre(genre)}</GenreTitle>
     <Form onSubmit={handleSearch}>

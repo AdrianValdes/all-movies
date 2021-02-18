@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { MovieBannerStyle } from '../../../app/shared/components';
 import { ImageWrapper } from '../RowCard';
-import { IMAGE_BASE_URL_LOW } from '../../../app/urls';
+import { IMAGE_BASE_URL_LOW } from '../../../app/shared';
 import { Facts } from './Facts';
 import { Crew } from './Crew';
 import { BannerIcons } from './BannerIcons';
@@ -29,7 +29,7 @@ const MovieTitle = styled.h1`
 `;
 
 const Overview = styled.h3`
-  margin: 20px 0;
+  margin-bottom: 20px;
 `;
 
 const OverviewPara = styled.p`

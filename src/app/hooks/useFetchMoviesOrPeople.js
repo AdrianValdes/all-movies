@@ -12,7 +12,6 @@ export const useFetchMoviesOrPeople = (genreUrl, pageNumber) => {
   }
 
   const url = `${genreUrl}&page=${pageNumber}`;
-
   useEffect(() => {
     if (!url) return;
     async function fetchData() {

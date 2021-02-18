@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { IMAGE_BASE_URL_LOW } from '../../../app/urls';
+import { IMAGE_BASE_URL_LOW } from '../../../app/shared';
 import { Card, ImageWrapper } from '../RowCard';
 import { Row } from '../MoviesRow';
 import { Img } from '../GridCard';

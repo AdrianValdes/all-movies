@@ -1,17 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
-
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-
 import { GridCard } from './GridCard';
 import {
   handleIntersectionObserver,
   MoviesGridContainer,
   MoviesGrid,
+  Spinner,
+  baseStringCount,
 } from '../../app/shared';
-import { Spinner } from '../../app/shared/components/Spiner';
-import { GenreForm } from './GenreFilters';
-import { baseStringCount } from '../../app/urls';
+
+import { GenreFilters } from './GenreFilters';
+
 import { useFetchMoviesOrPeople } from '../../app/hooks';
 
 const RouteContainer = styled.section`
@@ -44,6 +44,7 @@ export const GenreRoute = ({ location }) => {
       language: 'en-US',
       score: '',
     });
+    setPageNumber(1);
   }, [genreUrl]);
 
   const observer = useRef();
@@ -72,15 +73,16 @@ export const GenreRoute = ({ location }) => {
       score,
       language,
     });
-    setUrlToFetch(urlWithFilters);
     setPageNumber(1);
+    setUrlToFetch(urlWithFilters);
   };
 
   if (loadingApi) return <Spinner />;
   if (errorAPi) return <p>Error: {errorAPi}</p>;
+
   return (
     <RouteContainer>
-      <GenreForm
+      <GenreFilters
         genre={genre}
         filters={filters}
         handleFilters={handleFilters}

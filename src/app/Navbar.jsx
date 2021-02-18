@@ -11,7 +11,7 @@ import {
   horrorUrl,
   popularUrl,
   romanceUrl,
-} from './urls';
+} from './shared';
 
 const Nav = styled.nav`
   background-color: rgb(3, 37, 65);

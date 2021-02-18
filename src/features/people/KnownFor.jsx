@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Img } from '../movies/GridCard';
 import { Row } from '../movies/MoviesRow';
-import { KEY, IMAGE_BASE_URL_LOW } from '../../app/urls';
+import { KEY, IMAGE_BASE_URL_LOW } from '../../app/shared';
 
 const ImageWrapper = styled.div`
   width: 200px;
