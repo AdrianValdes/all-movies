@@ -18,7 +18,7 @@ const MovieInfo = styled.div`
   display: flex;
   flex-direction: column;
   width: 60%;
-  margin-top: 50px;
+
   margin-right: 20px;
   max-width: 1600px;
 `;
