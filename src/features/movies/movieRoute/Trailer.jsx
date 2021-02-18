@@ -1,13 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Notice } from './Cast';
-import { TitlesContainer, Title } from './ReviewSection';
+import { TitlesContainer } from './ReviewSection';
 import { IMAGE_BASE_URL_HIGH } from '../../../app/urls';
 
 const Section = styled.section`
   margin-top: 40px;
   margin-left: 40px;
   max-width: 1200px;
+`;
+
+export const Title = styled.h3`
+  margin-right: 20px;
+  margin-bottom: 20px;
 `;
 
 const TrailerPoster = styled.div`

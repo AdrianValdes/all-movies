@@ -53,6 +53,7 @@ const DropDownLi = styled(StyledLi)`
 
 const StyledA = styled.p`
   display: inline-block;
+  font-weight: 600;
   color: white;
   font-size: 16px;
   text-align: center;

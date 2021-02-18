@@ -57,6 +57,9 @@ const FilterButton = styled.button`
     outline: none;
     cursor: pointer;
   }
+  &:focus {
+    outline: none;
+  }
 `;
 const handleGenre = (title) => title[0].toUpperCase() + title.slice(1);
 

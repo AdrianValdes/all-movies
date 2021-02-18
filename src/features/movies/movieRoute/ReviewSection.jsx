@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Section = styled.section`
@@ -14,45 +15,95 @@ export const TitlesContainer = styled.div`
   display: flex;
 `;
 
-export const Title = styled.h4`
+export const TitleLink = styled(Link)`
   margin-right: 20px;
   margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  border-bottom: 6px solid lightgrey;
+  &:hover {
+    color: rgb(52, 60, 63);
+  }
 `;
 
-const ReviewContainer = styled.div`
+export const ReviewContainer = styled.div`
   margin-right: 40px;
   max-width: 1150px;
   border: 1px solid #e3e3e3;
   box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
   border-radius: 10px;
   padding: 20px 40px;
-`;
-const Article = styled.article`
-  line-height: 2;
+  margin-bottom: 20px;
 `;
 
-const Release = styled.h5`
+export const Article = styled.article`
+  line-height: 2;
+  font-size: 18px;
+`;
+
+export const Release = styled.h5`
   color: grey;
   font-weight: 300;
   font-size: 0.9em;
   margin-bottom: 15px;
 `;
-const Author = styled.span`
+
+export const Author = styled.span`
   color: #000;
 `;
-export const ReviewSection = ({ reviews }) => (
+
+const AddLink = styled(Link)`
+  font-weight: 600;
+`;
+
+export const ReviewSection = ({
+  reviews,
+  release_date,
+  title,
+  poster_path,
+}) => (
   <Section>
     <TitlesContainer>
-      <Title>Reviews</Title>
-      <Title>Add review</Title>
+      <TitleLink
+        to={{
+          pathname: '/reviews',
+          state: { reviews, release_date, title, poster_path },
+        }}
+      >
+        Read All Reviews
+      </TitleLink>
+      <TitleLink
+        to={{
+          pathname: '/addReview',
+          state: { release_date, title, poster_path },
+        }}
+      >
+        Add Review
+      </TitleLink>
     </TitlesContainer>
-    <ReviewContainer>
-      <h3>A review by {reviews[0]?.author}</h3>
-      <Release>
-        Written by <Author>{reviews[0]?.author}</Author> on{' '}
-        {new Date(reviews[0]?.created_at).toDateString().slice(4)}{' '}
-      </Release>
-      <Article>{reviews[0]?.content}</Article>
-    </ReviewContainer>
+    {reviews.length > 0 ? (
+      <ReviewContainer>
+        <h3>A review by {reviews[0]?.author}</h3>
+        <Release>
+          Written by <Author>{reviews[0]?.author}</Author> on{' '}
+          {new Date(reviews[0]?.created_at).toDateString().slice(4)}{' '}
+        </Release>
+        <Article>{reviews[0]?.content}</Article>
+      </ReviewContainer>
+    ) : (
+      <Article>
+        We do not have any reviews for {title}, click{' '}
+        <AddLink
+          to={{
+            pathname: '/addReview',
+            state: { release_date, title, poster_path },
+          }}
+        >
+          Add Review
+        </AddLink>{' '}
+        to write one.
+      </Article>
+    )}
   </Section>
 );
