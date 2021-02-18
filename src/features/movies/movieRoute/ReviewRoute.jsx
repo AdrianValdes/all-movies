@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { BsPencil } from 'react-icons/bs';
 import styled from 'styled-components';
+import { RiArrowGoBackFill } from 'react-icons/ri';
 import { AddReviewButton, IMAGE_BASE_URL_LOW } from '../../../app/shared';
 import { ReviewContainer, Release, Author, Article } from './ReviewSection';
 
@@ -33,12 +34,13 @@ const Title = styled.h1`
   margin-bottom: 5px;
 `;
 
-const BackToMain = styled(Link)`
+const BackToMain = styled.a`
   font-size: 20px;
   font-weight: 600;
   color: black;
+  cursor: pointer;
   &:hover {
-    color: grey;
+    color: #1cb8da;
   }
 `;
 
@@ -67,7 +69,8 @@ export const ReviewRoute = ({ location }) => {
             {title} ({new Date(release_date).getFullYear()})
           </Title>
           <BackToMain type='button' onClick={() => history.goBack()}>
-            &#8592;&nbsp;Back to main
+            Go Back
+            <RiArrowGoBackFill />
           </BackToMain>
         </TitleWrapper>
       </ReviewBar>
@@ -85,7 +88,7 @@ export const ReviewRoute = ({ location }) => {
         </Link>
         <ReviewWrapper>
           {reviews.map((review) => (
-            <ReviewContainer>
+            <ReviewContainer key={review.id}>
               <h3>A review by {review.author}</h3>
               <Release>
                 Written by <Author>{review.author}</Author> on{' '}

@@ -44,6 +44,6 @@ a:visited {
 }
 
 .edit-icon {
-  size: 20;
   margin-right: 10px;
+  vertical-align: middle;
 }
