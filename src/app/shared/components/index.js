@@ -1,5 +1,5 @@
 export * from './Banner';
-export * from './Button';
+export * from './Buttons';
 export * from './CircularBar';
 export * from './Form';
 export * from './Grid';

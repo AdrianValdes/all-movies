@@ -88,7 +88,7 @@ export const ReviewSection = ({
         <h3>A review by {reviews[0]?.author}</h3>
         <Release>
           Written by <Author>{reviews[0]?.author}</Author> on{' '}
-          {new Date(reviews[0]?.created_at).toDateString().slice(4)}{' '}
+          {prettifyDate(reviews[0]?.created_at)}{' '}
         </Release>
         <Article>{reviews[0]?.content}</Article>
       </ReviewContainer>

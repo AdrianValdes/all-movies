@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { BsPencil } from 'react-icons/bs';
 import styled from 'styled-components';
-import { IMAGE_BASE_URL_LOW } from '../../../app/urls';
+import { AddReviewButton, IMAGE_BASE_URL_LOW } from '../../../app/shared';
 import { ReviewContainer, Release, Author, Article } from './ReviewSection';
 
 const Review = styled.div`
@@ -47,28 +47,6 @@ const ReviewMain = styled.div`
   flex-direction: row;
 `;
 
-const AddReviewButton = styled.button`
-  width: 180px;
-  height: 45px;
-  margin: 40px 40px 40px 150px;
-  border: none;
-  border-radius: 30px;
-  padding: 10px 15px;
-  cursor: pointer;
-  background-color: #47cfb5;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  &:hover {
-    background-color: rgb(3, 37, 65);
-    outline: none;
-    cursor: pointer;
-  }
-  &:focus {
-    outline: none;
-  }
-`;
-
 const ReviewWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -101,7 +79,7 @@ export const ReviewRoute = ({ location }) => {
           }}
         >
           <AddReviewButton type='button'>
-            <BsPencil style={{ size: 20, marginRight: '10px' }} />
+            <BsPencil className='edit-icon' />
             Write Review
           </AddReviewButton>
         </Link>

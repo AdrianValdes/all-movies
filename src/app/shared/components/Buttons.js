@@ -25,3 +25,24 @@ export const TertiaryButton = styled(Button)`
   border: none;
   color: #030086;
 `;
+export const AddReviewButton = styled.button`
+  width: 180px;
+  height: 45px;
+  margin: 40px 40px 40px 150px;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: #47cfb5;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  &:hover {
+    background-color: rgb(3, 37, 65);
+    outline: none;
+    cursor: pointer;
+  }
+  &:focus {
+    outline: none;
+  }
+`;

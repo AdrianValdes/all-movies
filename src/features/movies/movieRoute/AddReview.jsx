@@ -1,9 +1,6 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { BsPencil } from 'react-icons/bs';
 import styled from 'styled-components';
-import { IMAGE_BASE_URL_MEDIUM } from '../../../app/urls';
-import { ReviewContainer, Release, Author, Article } from './ReviewSection';
+import { IMAGE_BASE_URL_MEDIUM } from '../../../app/shared';
 
 export const AddReview = ({ location }) => {
   const { release_date, title, poster_path } = location.state;
