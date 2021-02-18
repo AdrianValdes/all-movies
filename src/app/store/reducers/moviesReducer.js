@@ -16,7 +16,7 @@ export const moviesReducer = (state = initialState, action) => {
       return { ...state, popular: [...action.payload] };
     case 'FETCH_ACTION':
       return { ...state, action: [...action.payload] };
-    case 'FETCH_ERROR':
+    case 'FETCH_ERROR_MOVIES':
       return { ...state, error: action.payload };
     default:
       return state;

@@ -5,7 +5,7 @@ import { useFetch } from '../../app/hooks';
 
 import { Aside } from './Aside';
 import { KnownFor } from './KnownFor';
-import { KEY } from '../../app/shared';
+import { getPersonUrl } from '../../app/shared';
 
 const Profile = styled.div`
   display: flex;
@@ -14,6 +14,7 @@ const Profile = styled.div`
 
 const ProfileMain = styled.div`
   margin: 20px;
+  width: 920px;
 `;
 
 const Name = styled.h1`
@@ -31,7 +32,7 @@ const Bio = styled.div`
 export const ProfileRoute = ({ location }) => {
   const { id, known_for } = location.state;
 
-  const personUrl = `https://api.themoviedb.org/3/person/${id}?api_key=${KEY}&language=en-US`;
+  const personUrl = getPersonUrl(id);
 
   const { dataApi } = useFetch(personUrl);
   const {

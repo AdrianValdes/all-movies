@@ -1,18 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   KEY,
   IMAGE_BASE_URL_LOW,
   MoviesGridContainer,
   PeopleGrid,
-  handleIntersectionObserver,
+  handleIntersectionPeople,
   Img,
+  peopleUrl,
 } from '../../app/shared';
 import { ImageWrapper } from '../movies/RowCard';
-import { useFetchMoviesOrPeople } from '../../app/hooks';
 
 import { Spinner } from '../../app/shared/components/Spiner';
+import { fetchPeopleAction } from '../../app/store/actions/peopleActions';
 
 const PeopleSection = styled.div`
   width: 100%;
@@ -48,43 +50,55 @@ const KnowFor = styled.p`
 
 export const PeopleRoute = () => {
   const [pageNumber, setPageNumber] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
 
-  const peopleUrl = `https://api.themoviedb.org/3/person/popular?api_key=${KEY}&language=en-US`;
-
-  const [urlToFetch, setUrlToFetch] = useState(peopleUrl);
-  const { dataApi, loadingApi, errorAPi, hasMore } = useFetchMoviesOrPeople(
-    urlToFetch,
-    pageNumber
-  );
+  const { people } = useSelector((state) => state.people);
 
   useEffect(() => {
-    setUrlToFetch(peopleUrl);
-  }, [peopleUrl]);
+    dispatch({ type: 'CLEAR_PEOPLE' });
+  }, []);
+
+  useEffect(() => {
+    const newPeopleUrl = `${peopleUrl}&page=${pageNumber}`;
+
+    async function handleFetch() {
+      setLoading(true);
+      try {
+        dispatch(fetchPeopleAction(newPeopleUrl));
+        setLoading(false);
+      } catch (apiError) {
+        setError(apiError);
+        setLoading(false);
+      }
+    }
+    handleFetch();
+  }, [pageNumber]);
 
   const observer = useRef();
   const lastItem = useRef();
 
   useEffect(() => {
-    handleIntersectionObserver({
-      loadingApi,
+    handleIntersectionPeople({
+      loading,
       setPageNumber,
-      hasMore,
       observer,
       lastItem,
     });
     return observer.unobserve;
-  }, [loadingApi, hasMore]);
+  }, [loading]);
 
-  if (loadingApi) return <Spinner />;
-  if (errorAPi) return <p>Error: {errorAPi}</p>;
+  if (loading) return <Spinner />;
+  if (error) return <p>Error: {error}</p>;
   return (
     <main>
       <PeopleSection>
         <Title>Popular People</Title>
         <MoviesGridContainer>
           <PeopleGrid>
-            {dataApi &&
-              dataApi.map((person) => (
+            {people &&
+              people.map((person) => (
                 <PersonCard
                   key={person.id}
                   to={{
