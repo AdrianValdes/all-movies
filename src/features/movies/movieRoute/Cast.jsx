@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { IMAGE_BASE_URL_LOW } from '../../../app/shared';
 import { Card, ImageWrapper } from '../RowCard';
-import { Row } from '../MoviesRow';
-import { Img } from '../GridCard';
+import { Img, Row } from '../../../app/shared/components';
 
 const Section = styled.section`
   display: flex;
@@ -56,17 +55,14 @@ export const Cast = ({ cast }) => (
             {cast.map((person) => (
               <CastCard key={person.id}>
                 <ImageWrapper>
-                  {person.profile_path ? (
-                    <Img
-                      src={`${IMAGE_BASE_URL_LOW}${person.profile_path}`}
-                      alt={person.name}
-                    />
-                  ) : (
-                    <Img
-                      src='https://via.placeholder.com/150x225?text=no+image'
-                      alt={person.name}
-                    />
-                  )}
+                  <Img
+                    src={
+                      person.profile_path
+                        ? `${IMAGE_BASE_URL_LOW}${person.profile_path}`
+                        : 'https://via.placeholder.com/150x225?text=no+image'
+                    }
+                    alt={person.name}
+                  />
                 </ImageWrapper>
                 <CharacterName>{person.original_name}</CharacterName>
                 <Character>{person.character}</Character>

@@ -7,10 +7,10 @@ import {
   MoviesGridContainer,
   PeopleGrid,
   handleIntersectionObserver,
+  Img,
 } from '../../app/shared';
 import { ImageWrapper } from '../movies/RowCard';
 import { useFetchMoviesOrPeople } from '../../app/hooks';
-import { Img } from '../movies/GridCard';
 
 import { Spinner } from '../../app/shared/components/Spiner';
 

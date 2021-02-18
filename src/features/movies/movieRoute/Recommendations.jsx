@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { IMAGE_BASE_URL_LOW } from '../../../app/shared';
-import { Img } from '../GridCard';
-import { Row } from '../MoviesRow';
+
+import { Img, Row } from '../../../app/shared/components';
 
 const Section = styled.section`
   display: flex;

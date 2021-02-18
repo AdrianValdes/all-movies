@@ -7,19 +7,17 @@ import {
   MoviesGridContainer,
   MoviesGrid,
   Spinner,
-  baseStringCount,
 } from '../../app/shared';
 
 import { GenreFilters } from './GenreFilters';
 
 import { useFetchMoviesOrPeople } from '../../app/hooks';
+import { buildFiltersQuery } from '../../app/shared/helpers/buildFiltersQuery';
 
 const RouteContainer = styled.section`
   display: flex;
   justify-content: center;
 `;
-const buildFiltersQuery = ({ genreUrl, sort, score, language }) =>
-  `${genreUrl.slice(0, baseStringCount)}&${sort}&${score}&language=${language}`;
 
 export const GenreRoute = ({ location }) => {
   const [pageNumber, setPageNumber] = useState(1);

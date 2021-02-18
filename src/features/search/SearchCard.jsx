@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Img } from '../movies/GridCard';
-import { IMAGE_BASE_URL_LOW } from '../../app/shared';
+
+import { IMAGE_BASE_URL_LOW, Img } from '../../app/shared';
 
 const Card = styled.div`
   box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
