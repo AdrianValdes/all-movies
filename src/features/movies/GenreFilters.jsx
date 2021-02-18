@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { parseTitle } from '../../app/shared';
+import { parseTitle, FilterButton } from '../../app/shared';
 
 const FilterContainer = styled.section`
   width: 380px;
@@ -39,27 +39,6 @@ const Select = styled.select`
   }
   &:option {
     padding: 20px;
-  }
-`;
-
-const FilterButton = styled.button`
-  margin-top: 10px;
-  border: none;
-  border-radius: 30px;
-  padding: 10px 15px;
-  cursor: pointer;
-  height: 45px;
-  font-size: 20px;
-  font-weight: bold;
-  background-color: ${(props) => (props.disabled ? 'gray' : '#1cb8da')};
-  color: white;
-  &:hover {
-    background-color: rgb(3, 37, 65);
-    outline: none;
-    cursor: pointer;
-  }
-  &:focus {
-    outline: none;
   }
 `;
 
@@ -114,7 +93,7 @@ export const GenreFilters = ({
         <Select name='score' value={score} onChange={handleFilters}>
           <option value=''>user score</option>
           <option value='vote_average.lte=5'> Less than 50% </option>
-          <option value='vote_average.gte=5'>over 50% </option>
+          <option value='vote_average.gte=5'>Over 50% </option>
           <option value='vote_average.gte=7'>Over 70%</option>
           <option value='vote_average.gte=8'>Over 80%</option>
           <option value='vote_average.gte=9'>Over 90%</option>

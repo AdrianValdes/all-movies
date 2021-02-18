@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import ShowMoreText from 'react-show-more-text';
 import { prettifyDate } from '../../../app/shared/helpers';
 
 const Section = styled.section`
   margin-top: 40px;
   margin-left: 40px;
   overflow: hidden;
-  max-height: 350px;
   border-top: 1px solid #d7d7d7;
   padding-top: 20px;
 `;
@@ -41,6 +41,7 @@ export const ReviewContainer = styled.div`
 export const Article = styled.article`
   line-height: 2;
   font-size: 18px;
+  padding-bottom: 20px;
 `;
 
 export const Release = styled.h5`
@@ -90,7 +91,11 @@ export const ReviewSection = ({
           Written by <Author>{reviews[0]?.author}</Author> on{' '}
           {prettifyDate(reviews[0]?.created_at)}{' '}
         </Release>
-        <Article>{reviews[0]?.content}</Article>
+        <Article>
+          <ShowMoreText lines={3} more='(Read more)' less='(Show Less)'>
+            {reviews[0]?.content}
+          </ShowMoreText>
+        </Article>
       </ReviewContainer>
     ) : (
       <Article>

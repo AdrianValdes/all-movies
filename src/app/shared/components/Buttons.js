@@ -1,41 +1,12 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
-  padding: 12px 14px;
-  border-radius: 2px;
-  min-width: 100px;
-  cursor: pointer;
-  font-family: 'Roboto Mono', monospace;
-`;
-
-export const PrimaryButton = styled(Button)`
-  border: none;
   color: white;
-  background-color: #030086;
-`;
-
-export const SecondaryButton = styled(Button)`
-  background-color: none;
-  border: 2px solid #030086;
-  color: #030086;
-`;
-
-export const TertiaryButton = styled(Button)`
-  background-color: none;
-  border: none;
-  color: #030086;
-`;
-export const AddReviewButton = styled.button`
-  width: 180px;
-  height: 45px;
-  margin: 40px 40px 40px 150px;
   border: none;
   border-radius: 30px;
-  padding: 10px 15px;
   cursor: pointer;
-  background-color: #47cfb5;
-  color: white;
-  font-size: 18px;
+  font-size: 20px;
+  height: 46px;
   font-weight: bold;
   &:hover {
     background-color: rgb(3, 37, 65);
@@ -45,4 +16,42 @@ export const AddReviewButton = styled.button`
   &:focus {
     outline: none;
   }
+`;
+
+export const SearchButton = styled(Button)`
+  position: absolute;
+  right: -3px;
+  top: 1px;
+  height: 49px;
+  background-color: #47cfb5;
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  padding: 10px 26px;
+  background: linear-gradient(
+    to right,
+    rgba(30, 213, 169, 1) 0%,
+    rgba(1, 180, 228, 1) 100%
+  );
+  &:a {
+    color: white;
+  }
+`;
+
+export const AddReviewButton = styled(Button)`
+  width: 180px;
+  margin: 40px 40px 40px 150px;
+  padding: 10px 15px;
+  background-color: ${(props) => (props.disabled ? 'gray' : '#1cb8da')};
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+export const FilterButton = styled(Button)`
+  margin-top: 10px;
+  padding: 10px 15px;
+  height: 45px;
+  background-color: ${(props) => (props.disabled ? 'gray' : '#1cb8da')};
 `;
