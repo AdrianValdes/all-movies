@@ -12,7 +12,7 @@ import {
 import { GenreFilters } from './GenreFilters';
 
 import { useFetchMoviesOrPeople } from '../../app/hooks';
-import { buildFiltersQuery } from '../../app/shared/helpers/buildFiltersQuery';
+import { buildFiltersQuery } from '../../app/shared/helpers';
 
 const RouteContainer = styled.section`
   display: flex;

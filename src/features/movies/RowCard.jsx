@@ -4,13 +4,8 @@ import styled from 'styled-components';
 
 import 'react-circular-progressbar/dist/styles.css';
 import { IMAGE_BASE_URL_LOW } from '../../app/shared';
-import { CircularBar, Img } from '../../app/shared/components';
-
-export const Card = styled.div`
-  width: 150px;
-  min-width: 150px;
-  margin-left: 40px;
-`;
+import { Card, CircularBar, Img } from '../../app/shared/components';
+import { prettifyDate } from '../../app/shared/helpers/prettifyDate';
 
 export const ImageWrapper = styled.div`
   box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
@@ -55,9 +50,7 @@ export const RowCard = ({ movie }) => (
       </ImageWrapper>
       <CardContent>
         <CardTitle>{movie.title}</CardTitle>
-        <CardDate>
-          {new Date(movie.release_date).toDateString().slice(4)}
-        </CardDate>
+        <CardDate>{prettifyDate(movie.release_date)}</CardDate>
         <RatingCircle>
           <CircularBar
             className='row-card-icon'

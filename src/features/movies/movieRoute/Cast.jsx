@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { IMAGE_BASE_URL_LOW } from '../../../app/shared';
-import { Card, ImageWrapper } from '../RowCard';
-import { Img, Row } from '../../../app/shared/components';
+import { ImageWrapper } from '../RowCard';
+import { CastCard, Img, Row } from '../../../app/shared/components';
 
 const Section = styled.section`
   display: flex;
@@ -12,17 +12,12 @@ const Section = styled.section`
 const CastContainer = styled.div`
   display: flex;
   flex-direction: row;
+  max-width: 1200px;
 `;
 
 const CastTitle = styled.h3`
   margin-left: 40px;
   margin-bottom: 20px;
-`;
-
-const CastCard = styled(Card)`
-  border: 1px solid #e3e3e3;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
-  border-radius: 10px;
 `;
 
 export const Notice = styled.p`
@@ -48,7 +43,7 @@ const Wrapper = styled.div`
 export const Cast = ({ cast }) => (
   <Wrapper>
     {cast.length > 0 ? (
-      <Row style={{ maxWidth: '1200px' }}>
+      <Row>
         <Section>
           <CastTitle>Top Billed Cast</CastTitle>
           <CastContainer>

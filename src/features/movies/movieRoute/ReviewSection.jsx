@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { prettifyDate } from '../../../app/shared/helpers/prettifyDate';
 
 const Section = styled.section`
   margin-top: 40px;

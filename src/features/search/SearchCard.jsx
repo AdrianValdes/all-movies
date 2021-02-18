@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { IMAGE_BASE_URL_LOW, Img } from '../../app/shared';
+import { prettifyDate } from '../../app/shared/helpers/prettifyDate';
 
 const Card = styled.div`
   box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
@@ -76,9 +77,7 @@ export const SearchCard = ({ movie, language = 'language=en-US' }) => (
       </ImgWrapper>
       <Details>
         <Title>{movie.title}</Title>
-        <Release>
-          {new Date(movie.release_date).toDateString().slice(4)}
-        </Release>
+        <Release>{prettifyDate(movie.release_date)}</Release>
         <Overview>{movie?.overview}</Overview>
       </Details>
     </Card>

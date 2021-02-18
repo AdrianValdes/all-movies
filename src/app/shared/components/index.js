@@ -6,3 +6,4 @@ export * from './Grid';
 export * from './Spiner';
 export * from './Row';
 export * from './Img';
+export * from './Card';

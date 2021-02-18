@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { IMAGE_BASE_URL_LOW } from '../../app/shared';
 import { CircularBar, Img } from '../../app/shared/components';
+import { prettifyDate } from '../../app/shared/helpers/prettifyDate';
 
 const Card = styled.div`
   width: 180px;
@@ -61,9 +62,7 @@ export const GridCard = ({ movie, language = 'language=en-US' }) => (
       </ImageWrapper>
       <CardContent>
         <CardTitle>{movie.title}</CardTitle>
-        <CardDate>
-          {new Date(movie.release_date).toDateString().slice(4)}
-        </CardDate>
+        <CardDate>{prettifyDate(movie.release_date)}</CardDate>
         <RatingCircle>
           <CircularBar
             vote_average={movie.vote_average}
