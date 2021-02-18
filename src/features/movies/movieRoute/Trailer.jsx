@@ -57,7 +57,14 @@ export const Trailer = ({ trailerKey, poster_path }) => (
         )}
       </TrailerContainer>
       <PostContainer>
-        <ImgPoster alt='movie' src={`${IMAGE_BASE_URL_HIGH}${poster_path}`} />
+        <ImgPoster
+          alt='movie'
+          src={
+            poster_path
+              ? `${IMAGE_BASE_URL_HIGH}${poster_path}`
+              : 'https://via.placeholder.com/300?text=No+Image'
+          }
+        />
       </PostContainer>
     </TrailerPoster>
   </Section>

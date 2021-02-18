@@ -62,7 +62,14 @@ export const MovieBanner = ({
   <MovieBannerStyle imageUrl={bannerImage}>
     <IndividualPageCard>
       <ImageWrapper>
-        <Img alt='movie' src={`${IMAGE_BASE_URL_LOW}${poster_path}`} />
+        <Img
+          alt='movie'
+          src={
+            poster_path
+              ? `${IMAGE_BASE_URL_LOW}${poster_path}`
+              : 'https://via.placeholder.com/250x350/1cb8da/000000?text=No+Image'
+          }
+        />
       </ImageWrapper>
     </IndividualPageCard>
     <MovieInfo>
