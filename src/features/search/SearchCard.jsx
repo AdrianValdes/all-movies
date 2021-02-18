@@ -55,12 +55,12 @@ const Overview = styled.p`
   margin: 0;
 `;
 
-export const SearchCard = ({ movie }) => (
+export const SearchCard = ({ movie, language = 'language=en-US' }) => (
   <Link
     key={movie.id}
     to={{
       pathname: `/movie/${movie.id}`,
-      state: { id: movie.id },
+      state: { id: movie.id, language },
     }}
   >
     <Card>

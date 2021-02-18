@@ -10,7 +10,7 @@ import {
   MoviesGrid,
 } from '../../app/shared';
 import { Spinner } from '../../app/shared/components/Spiner';
-import { GenreForm } from './GenreForm';
+import { GenreForm } from './GenreFilters';
 import { baseStringCount } from '../../app/urls';
 import { useFetchMoviesOrPeople } from '../../app/hooks';
 
