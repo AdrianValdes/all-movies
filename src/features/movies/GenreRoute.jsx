@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { GridCard } from './GridCard';
+import { MovieCard } from './MovieCard';
 import {
   handleIntersectionObserver,
   MoviesGridContainer,
@@ -92,7 +92,7 @@ export const GenreRoute = ({ location }) => {
         <MoviesGrid>
           {dataApi &&
             dataApi.map((movie) => (
-              <GridCard
+              <MovieCard
                 key={movie.id}
                 movie={movie}
                 language={`language=${filters.language}`}
