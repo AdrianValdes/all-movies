@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { BannerHome } from './shared/components';
-import { IMAGE_BASE_URL_HIGH } from './shared';
+import { IMAGE_BASE_URL_HIGH, SearchButton } from './shared';
 
 const FormStyle = styled.div`
   width: 90%;
@@ -29,41 +29,13 @@ const StyleH3 = styled.h3`
 const Input = styled.input`
   border: none;
   width: 90%;
-  height: 45px;
+  height: 50px;
   padding: 10px 20px;
-  font-size: 15px;
+  font-size: 20px;
   border-radius: 30px;
   &:focus {
     outline: none;
   }
-`;
-
-const SearchButton = styled(Link)`
-  border: none;
-  border-radius: 30px;
-  position: absolute;
-  right: -2px;
-  top: -0.5px;
-  font-weight: 700;
-  background-color: #47cfb5;
-  color: white;
-  display: inline-flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  height: 46px;
-  padding: 10px 26px;
-  border: none;
-  &:hover {
-    background-color: rgb(3, 37, 65);
-    outline: none;
-    cursor: pointer;
-  }
-  background: linear-gradient(
-    to right,
-    rgba(30, 213, 169, 1) 0%,
-    rgba(1, 180, 228, 1) 100%
-  );
 `;
 
 export const HomeBanner = ({ headerImageId }) => {
@@ -98,9 +70,9 @@ export const HomeBanner = ({ headerImageId }) => {
             }
           }}
         />
-        <SearchButton to={{ pathname: `/search/${query}`, state: { query } }}>
-          Search
-        </SearchButton>
+        <Link to={{ pathname: `/search/${query}`, state: { query } }}>
+          <SearchButton>Search</SearchButton>
+        </Link>
       </FormStyle>
     </BannerHome>
   );
