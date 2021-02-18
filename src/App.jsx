@@ -10,8 +10,6 @@ import { Navbar } from './app/Navbar';
 import { Home } from './app/Home';
 import { Login } from './app/Login';
 import { SignUp } from './app/SignUp';
-/* import { PopularRoute } from './features/movies/Routes/PopularRoute'; */
-
 import {
   fetchAnimationsAction,
   fetchComediesAction,

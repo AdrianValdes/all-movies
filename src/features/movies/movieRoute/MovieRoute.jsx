@@ -62,6 +62,7 @@ export const MovieRoute = ({ location }) => {
   if (credits !== undefined) {
     if (credits.cast && credits.cast.length > 0) {
       cast = credits.cast.slice(0, 10);
+      console.log(cast);
     }
   }
   useEffect(() => {
