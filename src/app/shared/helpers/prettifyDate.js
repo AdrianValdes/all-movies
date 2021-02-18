@@ -1,1 +1,5 @@
-export const prettifyDate = (date) => new Date(date).toDateString().slice(4);
+export function prettifyDate(date) {
+  return date === undefined
+    ? new Date(date).toDateString().slice(4)
+    : 'No date available';
+}
