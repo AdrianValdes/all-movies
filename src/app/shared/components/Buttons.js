@@ -34,9 +34,6 @@ export const SearchButton = styled(Button)`
     rgba(30, 213, 169, 1) 0%,
     rgba(1, 180, 228, 1) 100%
   );
-  &:a {
-    color: white;
-  }
 `;
 
 export const AddReviewButton = styled(Button)`
