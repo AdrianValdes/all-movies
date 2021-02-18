@@ -48,7 +48,6 @@ export const ProfileRoute = ({ location }) => {
   } = dataApi;
 
   const known_for = prepareKnownFor(combined_credits?.cast);
-
   return (
     <main>
       <Profile>
