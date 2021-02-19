@@ -2,17 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { IMAGE_BASE_URL_LOW, Img } from '../../app/shared';
+import {
+  IMAGE_BASE_URL_LOW,
+  Img,
+  SearchCard,
+  SearchCardImgWrapper,
+} from '../../app/shared';
 import { prettifyDate } from '../../app/shared/helpers/prettifyDate';
-
-const Card = styled.div`
-  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
-  border: 1px solid rgba(227, 227, 227, 1);
-  background-color: #fff;
-  display: flex;
-  margin: 20px 0;
-  color: #000;
-`;
 
 const Details = styled.div`
   width: 100%;
@@ -23,11 +19,6 @@ const Details = styled.div`
   justify-content: start;
 `;
 
-const ImgWrapper = styled.div`
-  min-width: 94px;
-  width: 94px;
-  height: 141px;
-`;
 const Title = styled.h2`
   font-size: 1.2em;
   line-height: 1.2em;
@@ -56,7 +47,7 @@ const Overview = styled.p`
   margin: 0;
 `;
 
-export const SearchCard = ({ movie, language = 'language=en-US' }) => (
+export const MovieCardSearch = ({ movie, language = 'language=en-US' }) => (
   <Link
     key={movie.id}
     to={{
@@ -64,8 +55,8 @@ export const SearchCard = ({ movie, language = 'language=en-US' }) => (
       state: { id: movie.id, language },
     }}
   >
-    <Card>
-      <ImgWrapper>
+    <SearchCard>
+      <SearchCardImgWrapper>
         <Img
           src={
             movie.poster_path
@@ -74,12 +65,12 @@ export const SearchCard = ({ movie, language = 'language=en-US' }) => (
           }
           alt={movie.title}
         />
-      </ImgWrapper>
+      </SearchCardImgWrapper>
       <Details>
         <Title>{movie.title}</Title>
         <Release>{prettifyDate(movie.release_date)}</Release>
         <Overview>{movie?.overview}</Overview>
       </Details>
-    </Card>
+    </SearchCard>
   </Link>
 );

@@ -74,7 +74,11 @@ export const MovieBanner = ({
     </IndividualPageCard>
     <MovieInfo>
       <MovieTitle>
-        {title} ({new Date(release_date).getFullYear()})
+        {title} (
+        {release_date
+          ? new Date(release_date).getFullYear()
+          : 'No date available'}
+        )
       </MovieTitle>
       <Facts
         certification={certification}

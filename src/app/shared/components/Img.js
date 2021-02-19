@@ -6,3 +6,9 @@ export const Img = styled.img`
   border-radius: 10px;
   object-fit: cover;
 `;
+
+export const SearchCardImgWrapper = styled.div`
+  min-width: 94px;
+  width: 94px;
+  height: 141px;
+`;
