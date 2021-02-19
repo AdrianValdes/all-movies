@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
+import { Search } from '@styled-icons/boxicons-regular';
+
 import logo from '../assets/images/logo.png';
+
 import {
   actionUrl,
   animationUrl,
@@ -23,17 +26,23 @@ const Nav = styled.nav`
 
 const SubNav = styled.div`
   display: flex;
-  width: 1400px;
+  width: 1300px;
 `;
 
 const StyledUl = styled.ul`
   display: flex;
-  list-style: none;
   align-items: center;
+  width: 100%;
 `;
 
 const StyledLi = styled.div`
   padding: 0 5px;
+`;
+
+const NavSearch = styled(Search)`
+  color: white;
+  height: 30px;
+  width: 25px;
 `;
 
 const DropDownContent = styled.div`
@@ -169,7 +178,7 @@ export const Navbar = () => (
             </Link>
           </DropDownContent>
         </DropDownLi>
-        <StyledLi>
+        <StyledLi className='push'>
           <Link to='/people'>
             <StyledA>People</StyledA>
           </Link>
@@ -178,6 +187,9 @@ export const Navbar = () => (
           <Link to='/login'>
             <StyledA>Login</StyledA>
           </Link>
+        </StyledLi>
+        <StyledLi>
+          <NavSearch />
         </StyledLi>
       </StyledUl>
     </SubNav>
