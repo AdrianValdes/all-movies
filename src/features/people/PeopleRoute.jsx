@@ -102,7 +102,7 @@ export const PeopleRoute = () => {
                   key={person.id}
                   to={{
                     pathname: `/profile/${person.id}`,
-                    state: { id: person.id, known_for: person.known_for },
+                    state: { id: person.id },
                   }}
                 >
                   <ImageWrapper>

@@ -22,3 +22,12 @@ export const MovieGridCard = styled.div`
   border-radius: 10px;
   height: 100%;
 `;
+
+export const SearchCard = styled.div`
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+  border: 1px solid rgba(227, 227, 227, 1);
+  background-color: #fff;
+  display: flex;
+  margin: 20px 0;
+  color: #000;
+`;

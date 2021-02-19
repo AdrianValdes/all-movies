@@ -6,6 +6,7 @@ import { useFetch } from '../../app/hooks';
 import { urlMultiQuery } from '../../app/shared';
 
 import { MovieCardSearch } from './MovieCardSearch';
+import { PersonCardSearch } from './PersonCardSearch';
 
 const SearchContent = styled.div`
   max-width: 1100px;
@@ -26,6 +27,9 @@ export const SearchResults = ({ location }) => {
           dataApi.results.map((item) => {
             if (item.media_type === 'movie') {
               return <MovieCardSearch key={item.id} movie={item} />;
+            }
+            if (item.media_type === 'person') {
+              return <PersonCardSearch key={item.id} person={item} />;
             }
             return <MovieCardSearch key={item.id} movie={item} />;
           })}
