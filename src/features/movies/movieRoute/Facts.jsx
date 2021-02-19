@@ -35,12 +35,11 @@ export const Facts = ({
   release_date,
   genresString,
   runtime,
-  tagline,
 }) => (
   <FactsWrapper>
     <Certification>{certification}</Certification>
     <span>{release_date} (US)</span>
     <Genres> {genresString}</Genres>
-    <Genres>{runtime} min</Genres>
+    <Genres>{runtime ? `${runtime} min` : ''}</Genres>
   </FactsWrapper>
 );
