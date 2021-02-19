@@ -62,7 +62,7 @@ export const HomeBanner = ({ headerImageId }) => {
           type='text'
           ref={inputRef}
           value={query}
-          placeholder='Search for a movie or person...'
+          placeholder='Search for a movie, tv show, or person...'
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {

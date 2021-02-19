@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 import { useFetch } from '../../../app/hooks/useFetch';
 import {
   KEY,
   SINGLE_MOVIE_BASE_URL,
   IMAGE_BASE_URL_HIGH,
+  SINGLE_SHOW_BASE_URL,
 } from '../../../app/shared';
 import { Spinner } from '../../../app/shared/components';
 import { MovieBanner } from './MovieBanner';
@@ -11,11 +13,13 @@ import { Recommendations } from './Recommendations';
 import { Cast } from './Cast';
 import { ReviewSection } from './ReviewSection';
 import { Trailer } from './Trailer';
+import { pickShowOrMovie } from '../../../app/shared/helpers/pickShowOrMovie';
 
 export const MovieRoute = ({ location }) => {
   const { id, language } = location.state;
+  const { pathname } = useLocation();
 
-  const urLSingleMovieWithAll = `${SINGLE_MOVIE_BASE_URL}/${id}?api_key=${KEY}&append_to_response=videos,credits,similar_movies,recommendations,release_dates,reviews,keywords&${language}`;
+  const urLSingleMovieWithAll = pickShowOrMovie({ pathname, id, language });
 
   const { dataApi, loadingApi, errorApi } = useFetch(urLSingleMovieWithAll);
   const {
@@ -23,9 +27,9 @@ export const MovieRoute = ({ location }) => {
     credits,
     recommendations,
     videos,
-    similar_movies,
     release_dates,
     runtime,
+    first_air_date,
     tagline,
     reviews,
     poster_path,
@@ -83,7 +87,7 @@ export const MovieRoute = ({ location }) => {
         imageUrl={bannerImage}
         poster_path={poster_path}
         title={title}
-        release_date={release_date}
+        release_date={release_date || first_air_date}
         vote_average={vote_average}
         overview={overview}
         trailerKey={trailerKey}
@@ -99,7 +103,7 @@ export const MovieRoute = ({ location }) => {
         <ReviewSection
           reviews={reviews.results}
           title={title}
-          release_date={release_date}
+          release_date={release_date || first_air_date}
           poster_path={poster_path}
         />
         <Trailer trailerKey={trailerKey} poster_path={poster_path} />
