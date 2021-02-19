@@ -56,7 +56,7 @@ const Overview = styled.p`
   margin: 0;
 `;
 
-export const SearchCard = ({ movie, language = 'language=en-US' }) => (
+export const MovieCardSearch = ({ movie, language = 'language=en-US' }) => (
   <Link
     key={movie.id}
     to={{
