@@ -14,15 +14,10 @@ const Details = styled.div`
   padding: 15px 15px;
 `;
 
-const Title = styled.h2`
+const Name = styled.h2`
   font-size: 1.2em;
   line-height: 1.2em;
   margin-bottom: 20px;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow: hidden;
 `;
 
 const Movies = styled.span`
@@ -62,10 +57,10 @@ export const PersonCardSearch = ({
           }
           alt={name}
         />
-      </SearchCardImgWrapper>{' '}
+      </SearchCardImgWrapper>
     </Link>
     <Details>
-      <Title>{name}</Title>
+      <Name>{name}</Name>
       <Department>{known_for_department}</Department>
       {known_for.map((movie) => (
         <Link
