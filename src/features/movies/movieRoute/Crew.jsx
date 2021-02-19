@@ -39,7 +39,7 @@ const Job = styled.p`
 
 export const Crew = ({ crew }) => {
   const selectedCrew = selectCrew(crew);
-  console.log(crew);
+
   return (
     <People>
       {selectedCrew &&

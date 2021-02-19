@@ -41,6 +41,7 @@ export const MovieRoute = ({ location }) => {
     overview,
     vote_average,
     content_ratings,
+    episode_run_time,
   } = dataApi;
 
   const bannerImage = `${IMAGE_BASE_URL_HIGH}/${backdrop_path}`;
@@ -86,6 +87,7 @@ export const MovieRoute = ({ location }) => {
         runtime={runtime}
         tagline={tagline}
         crew={crew}
+        episode_run_time={episode_run_time}
       />
       <div>
         <Cast cast={cast} />
