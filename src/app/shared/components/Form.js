@@ -1,19 +1,34 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import star from '../../../assets/images/star.jpg';
 
 export const LoginPageStyle = styled.div`
-    width: 80%;
-    margin: 50px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid gray;
-    box-shadow: 0px 2px 34px 2px rgba(8, 48, 82, 0.73);
-    padding: 10px;
+width: 100%;
+height: 82vh;
+background-image: url(${star});
+background-size: cover;
+background-repeat: no-repeat;
+background-position: top center;
+display: flex;
+flex-direction: column;
+position: relative;
+`;
 
-    @media (min-width: 768px) {
-      width: 50%;
-    }
+export const Form = styled.div`
+width: 80%;
+margin: 80px auto;
+position: absolute;
+right: 40px;
+display: flex;
+flex-direction: column;
+align-items: center;
+border-radius: 20px;
+box-shadow: 0px 2px 34px 2px rgba(8, 48, 82, 0.73);
+padding: 10px;
+
+@media (min-width: 768px) {
+  width: 50%;
+}
 `;
 
 export const StyleH2 = styled.h2`
@@ -23,7 +38,12 @@ export const StyleH2 = styled.h2`
 
 export const StyleNotes = styled.p`
     margin: 10px 20px 20px 20px;
-    line-height: 22px;
+    line-height: 30px;
+    font-size: 20px;
+`;
+
+export const Label = styled.p`
+font-size: 20px;
 `;
 
 export const StyleLink = styled(Link)`
@@ -45,10 +65,12 @@ export const StyleForm = styled.form`
 
 export const StyleInput = styled.input`
     width: 100%;
-    height: 30px;
-    padding-left: 10px;
+    height: 50px;
+    padding: 15px;
     margin: 10px 0;
+    border: 1px solid lightgrey;
     border-radius: 10px;
+    font-size: 20px;
     &:focus {
       outline: none;
     }
@@ -56,9 +78,10 @@ export const StyleInput = styled.input`
 
 export const StyleButton = styled.button`
     width: 100%;
-    height: 30px;
+    height: 50px;
     background-color: rgb(8, 48, 82);
     color: white;
+    font-size: 20px;
     border: none;
     border-radius: 10px;
     margin-top: 10px;
@@ -67,4 +90,7 @@ export const StyleButton = styled.button`
         background-color: rgba(8, 48, 82, 0.8);
         outline: none;  
     }
+    &:focus {
+        outline: none;
+      }
 `;
