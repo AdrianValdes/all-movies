@@ -7,3 +7,4 @@ export * from './prettifyDate';
 export * from './getPersonUrl';
 export * from './makeParagraphs';
 export * from './prepareKnownFor';
+export * from './getCertification';
