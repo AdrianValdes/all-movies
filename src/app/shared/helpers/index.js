@@ -10,3 +10,4 @@ export * from './prepareKnownFor';
 export * from './getCertification';
 export * from './getGenresString';
 export * from './getTrailerKey';
+export * from './getCast';

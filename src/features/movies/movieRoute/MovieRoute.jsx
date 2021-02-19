@@ -7,6 +7,7 @@ import {
   getCertificationShow,
   getGenresString,
   getTrailerKey,
+  getCast,
 } from '../../../app/shared';
 import { Spinner } from '../../../app/shared/components';
 import { MovieBanner } from './MovieBanner';
@@ -51,17 +52,11 @@ export const MovieRoute = ({ location }) => {
   const genresString = getGenresString(genres);
 
   const trailerKey = getTrailerKey(videos?.results);
-  let crew;
-  if (credits !== undefined) {
-    crew = credits.crew.slice(0, 50);
-  }
 
-  let cast = [];
-  if (credits !== undefined) {
-    if (credits.cast && credits.cast.length > 0) {
-      cast = credits.cast.slice(0, 10);
-    }
-  }
+  const crew = credits && credits.crew.slice(0, 50);
+
+  const cast = getCast(credits?.cast);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [urLSingleMovieWithAll]);
