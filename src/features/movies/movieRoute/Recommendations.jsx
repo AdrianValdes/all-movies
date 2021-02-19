@@ -46,32 +46,35 @@ export const Recommendations = ({
     <Title>Recommendations</Title>
     <MoviesRow>
       {recommendations.map(
-        ({ id, backdrop_path, title, name, vote_average }) => (
-          <Link
-            key={id}
-            to={{
-              pathname: `/movie/${id}`,
-              state: { id, language },
-            }}
-          >
-            <Card>
-              <ImageWrapper>
-                <Img
-                  alt='movie'
-                  src={
-                    backdrop_path
-                      ? `${IMAGE_BASE_URL_LOW}${backdrop_path}`
-                      : 'https://via.placeholder.com/250x150?text=no+image'
-                  }
-                />
-              </ImageWrapper>
-              <CardContent>
-                <p>{title || name}</p>
-                <p> {`${vote_average * 10}%`}</p>
-              </CardContent>
-            </Card>
-          </Link>
-        )
+        ({ id, backdrop_path, title, name, vote_average }) => {
+          const pathname = title ? `/movie/${id}` : `/show/${id}`;
+          return (
+            <Link
+              key={id}
+              to={{
+                pathname: `${pathname}`,
+                state: { id, language },
+              }}
+            >
+              <Card>
+                <ImageWrapper>
+                  <Img
+                    alt='movie'
+                    src={
+                      backdrop_path
+                        ? `${IMAGE_BASE_URL_LOW}${backdrop_path}`
+                        : 'https://via.placeholder.com/250x150?text=no+image'
+                    }
+                  />
+                </ImageWrapper>
+                <CardContent>
+                  <p>{title || name}</p>
+                  <p> {`${vote_average * 10}%`}</p>
+                </CardContent>
+              </Card>
+            </Link>
+          );
+        }
       )}
     </MoviesRow>
   </Section>
