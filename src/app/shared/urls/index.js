@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { pickGenre } from '../helpers';
 
 export const KEY = process.env.REACT_APP_KEY;
@@ -14,7 +15,8 @@ export const documentaryUrl = pickGenre(99);
 export const dramaUrl = pickGenre(18);
 export const horrorUrl = pickGenre(27);
 export const romanceUrl = pickGenre(10749);
-export const popularUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&sort_by=popularity.desc`;
+export const popularUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}`;
+export const showsUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${KEY}`;
 
 export const peopleUrl = `https://api.themoviedb.org/3/person/popular?api_key=${KEY}&language=en-US`;
 

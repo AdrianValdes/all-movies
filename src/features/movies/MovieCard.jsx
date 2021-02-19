@@ -31,34 +31,48 @@ const CardContent = styled.div`
   position: relative;
 `;
 
-export const MovieCard = ({ movie, language = 'language=en-US' }) => (
-  <Link
-    to={{
-      pathname: `/movie/${movie.id}`,
-      state: { id: movie.id, language },
-    }}
-  >
-    <MovieGridCard>
-      <ImageWrapper>
-        <Img
-          alt='movie'
-          src={
-            movie.poster_path
-              ? `${IMAGE_BASE_URL_LOW}${movie.poster_path}`
-              : 'https://via.placeholder.com/150x225?text=no+image'
-          }
-        />
-      </ImageWrapper>
-      <CardContent>
-        <CardTitle>{movie.title}</CardTitle>
-        <CardDate>{prettifyDate(movie.release_date)}</CardDate>
-        <RatingCircle>
-          <CircularBar
-            vote_average={movie.vote_average}
-            className='row-card-icon'
+export const MovieCard = ({
+  language = 'language=en-US',
+  item: {
+    first_air_date,
+    name,
+    title,
+    id,
+    poster_path,
+    vote_average,
+    release_date,
+  },
+}) => {
+  const pathname = first_air_date ? `/show/${id}` : `/movie/${id}`;
+  return (
+    <Link
+      to={{
+        pathname: `${pathname}`,
+        state: { id, language },
+      }}
+    >
+      <MovieGridCard>
+        <ImageWrapper>
+          <Img
+            alt='movie'
+            src={
+              poster_path
+                ? `${IMAGE_BASE_URL_LOW}${poster_path}`
+                : 'https://via.placeholder.com/150x225?text=no+image'
+            }
           />
-        </RatingCircle>
-      </CardContent>
-    </MovieGridCard>
-  </Link>
-);
+        </ImageWrapper>
+        <CardContent>
+          <CardTitle>{title || name}</CardTitle>
+          <CardDate>{prettifyDate(release_date || first_air_date)}</CardDate>
+          <RatingCircle>
+            <CircularBar
+              vote_average={vote_average}
+              className='row-card-icon'
+            />
+          </RatingCircle>
+        </CardContent>
+      </MovieGridCard>
+    </Link>
+  );
+};

@@ -25,6 +25,7 @@ export const GenreRoute = ({ location }) => {
     sort: 'popularity.desc',
     language: 'en-US',
     score: '',
+    original_language: 'en',
   });
 
   const { genre } = useParams();
@@ -41,7 +42,7 @@ export const GenreRoute = ({ location }) => {
       sort: 'popularity.desc',
       language: 'en-US',
       score: '',
-      original_language: '',
+      original_language: 'en',
     });
     setPageNumber(1);
   }, [genreUrl]);
@@ -66,6 +67,7 @@ export const GenreRoute = ({ location }) => {
     e.preventDefault();
 
     const { sort, score, language, original_language } = filters;
+
     const urlWithFilters = buildFiltersQuery({
       genreUrl,
       sort,
@@ -94,7 +96,7 @@ export const GenreRoute = ({ location }) => {
             dataApi.map((movie) => (
               <MovieCard
                 key={movie.id}
-                movie={movie}
+                item={movie}
                 language={`language=${filters.language}`}
               />
             ))}
