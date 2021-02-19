@@ -72,7 +72,7 @@ export const GenreRoute = ({ location }) => {
   const handleSearch = (e) => {
     e.preventDefault();
     const { sort, score, language, original_language } = filters;
-    const queryGenres = buildGenresQuery();
+    const queryGenres = buildGenresQuery(allGenres);
     const urlWithFilters = buildFiltersQuery({
       genreUrl,
       sort,
