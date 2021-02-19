@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useFetch } from '../../../app/hooks/useFetch';
-import { IMAGE_BASE_URL_HIGH, getCertification } from '../../../app/shared';
+import {
+  IMAGE_BASE_URL_HIGH,
+  getCertificationMovie,
+  getCertificationShow,
+} from '../../../app/shared';
 import { Spinner } from '../../../app/shared/components';
 import { MovieBanner } from './MovieBanner';
 import { Recommendations } from './Recommendations';
@@ -33,10 +37,14 @@ export const MovieRoute = ({ location }) => {
     backdrop_path,
     overview,
     vote_average,
+    content_ratings,
   } = dataApi;
 
   const bannerImage = `${IMAGE_BASE_URL_HIGH}/${backdrop_path}`;
-  const certification = getCertification(release_dates?.results);
+
+  const certification = content_ratings
+    ? getCertificationShow(content_ratings?.results)
+    : getCertificationMovie(release_dates?.results);
 
   let genresString;
   if (genres !== undefined) {
