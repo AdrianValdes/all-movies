@@ -39,7 +39,7 @@ export const MovieRoute = ({ location }) => {
     overview,
     vote_average,
   } = dataApi;
-  console.log(recommendations);
+
   const bannerImage = `${IMAGE_BASE_URL_HIGH}/${backdrop_path}`;
   const certification =
     release_dates?.results[0]?.release_dates[0]?.certification;
