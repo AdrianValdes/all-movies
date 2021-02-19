@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { GrInstagram } from 'react-icons/gr';
-import { FiFacebook, FiTwitter } from 'react-icons/fi';
+import { Instagram, Facebook, Twitter } from '@styled-icons/boxicons-logos';
 import logo from '../assets/images/logo.png';
 import { LogoStyle } from './Navbar';
 
@@ -16,7 +15,7 @@ const StyledFooter = styled.footer`
 `;
 
 const StyleP = styled.p`
-  padding-top: 30px;
+  padding-top: 35px;
 `;
 
 const SocialButton = styled.div`
@@ -24,6 +23,21 @@ const SocialButton = styled.div`
   padding: 30px 15px;
 `;
 
+const InstagramLogo = styled(Instagram)`
+  margin-right: '10px';
+  width: 30px;
+  height: 30px;
+`;
+const FacebookLogo = styled(Facebook)`
+  margin-right: '10px';
+  width: 30px;
+  height: 30px;
+`;
+const TwitterLogo = styled(Twitter)`
+  margin-right: '10px';
+  width: 30px;
+  height: 30px;
+`;
 export const Footer = () => (
   <StyledFooter>
     <Link to='/'>
@@ -31,9 +45,9 @@ export const Footer = () => (
     </Link>
     <StyleP>Follow us on</StyleP>
     <SocialButton>
-      <GrInstagram size={20} style={{ marginRight: '10px' }} />
-      <FiFacebook size={20} style={{ marginRight: '10px' }} />
-      <FiTwitter size={20} style={{ marginRight: '10px' }} />
+      <InstagramLogo />
+      <FacebookLogo />
+      <TwitterLogo />
     </SocialButton>
   </StyledFooter>
 );

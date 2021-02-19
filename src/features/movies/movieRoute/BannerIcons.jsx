@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { AiFillStar } from 'react-icons/ai';
-import { BsFlagFill, BsListTask, BsFillPlayFill } from 'react-icons/bs';
-import { FaHeart } from 'react-icons/fa';
 
+import { Heart, Star, Flag } from '@styled-icons/boxicons-solid';
+import { ListUl, Play } from '@styled-icons/boxicons-regular';
 import styled from 'styled-components';
 import { CircularBar } from '../../../app/shared/components';
 
@@ -63,6 +62,25 @@ const IFrame = styled.iframe`
   border: none;
   margin-top: 100px;
 `;
+
+const IconHeart = styled(Heart)`
+  width: 16px;
+`;
+const IconStar = styled(Star)`
+  width: 16px;
+`;
+
+const IconFlag = styled(Flag)`
+  width: 16px;
+`;
+
+const IconList = styled(ListUl)`
+  width: 16px;
+`;
+const IconPlay = styled(Play)`
+  width: 35px;
+`;
+
 export const BannerIcons = ({ vote_average, trailerKey }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -78,19 +96,19 @@ export const BannerIcons = ({ vote_average, trailerKey }) => {
         Score
       </Score>
       <Icons>
-        <BsListTask />
+        <IconList />
       </Icons>
       <Icons>
-        <FaHeart />
+        <IconHeart />
       </Icons>
       <Icons>
-        <BsFlagFill />
+        <IconFlag />
       </Icons>
       <Icons>
-        <AiFillStar />
+        <IconStar />
       </Icons>
       <Trailer>
-        <BsFillPlayFill size={25} />
+        <IconPlay />
         <div
           aria-hidden='true'
           role='button'

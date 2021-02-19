@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { BsPencil } from 'react-icons/bs';
+
+import { Pencil } from '@styled-icons/boxicons-solid';
+import { ArrowBack } from '@styled-icons/boxicons-regular';
+
 import styled from 'styled-components';
-import { RiArrowGoBackFill } from 'react-icons/ri';
+
 import { AddReviewButton, IMAGE_BASE_URL_LOW } from '../../../app/shared';
 import { ReviewContainer, Release, Author, Article } from './ReviewSection';
 
@@ -56,6 +59,16 @@ const ReviewWrapper = styled.div`
   align-self: flex-end;
 `;
 
+const PencilIcon = styled(Pencil)`
+  width: 20px;
+  margin-right: 5px;
+`;
+
+const ArrowBackIcon = styled(ArrowBack)`
+  width: 20px;
+  margin-right: 5px;
+`;
+
 export const ReviewRoute = ({ location }) => {
   const { reviews, release_date, title, poster_path } = location.state;
   const history = useHistory();
@@ -69,8 +82,8 @@ export const ReviewRoute = ({ location }) => {
             {title} ({new Date(release_date).getFullYear()})
           </Title>
           <BackToMain type='button' onClick={() => history.goBack()}>
+            <ArrowBackIcon />
             Go Back
-            <RiArrowGoBackFill />
           </BackToMain>
         </TitleWrapper>
       </ReviewBar>
@@ -82,7 +95,7 @@ export const ReviewRoute = ({ location }) => {
           }}
         >
           <AddReviewButton type='button'>
-            <BsPencil className='pencil-icon' />
+            <PencilIcon />
             Write Review
           </AddReviewButton>
         </Link>
