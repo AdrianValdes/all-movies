@@ -6,6 +6,7 @@ import { useFetch } from '../../app/hooks';
 import { urlMultiQuery } from '../../app/shared';
 
 import { MovieCardSearch } from './MovieCardSearch';
+import { NoResults } from './NoResults';
 import { PersonCardSearch } from './PersonCardSearch';
 import { TvShowCardSearch } from './TvShowCardSearch';
 
@@ -19,13 +20,17 @@ export const SearchResults = ({ location }) => {
   const { query } = location.state;
   const url = `${urlMultiQuery}${buildQuery(query.trim())}`;
 
-  const { dataApi } = useFetch(url);
+  const {
+    dataApi: { results },
+  } = useFetch(url);
+
+  if (!results || results.length === 0) return <NoResults />;
 
   return (
     <main>
       <SearchContent>
-        {dataApi.results &&
-          dataApi.results.map((item) => {
+        {results &&
+          results.map((item) => {
             if (item.media_type === 'movie') {
               return <MovieCardSearch key={item.id} movie={item} />;
             }
