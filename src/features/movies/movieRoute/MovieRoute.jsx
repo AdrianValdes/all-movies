@@ -1,7 +1,14 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useFetch } from '../../../app/hooks/useFetch';
-import { IMAGE_BASE_URL_HIGH, getCertification } from '../../../app/shared';
+import {
+  IMAGE_BASE_URL_HIGH,
+  getCertificationMovie,
+  getCertificationShow,
+  getGenresString,
+  getTrailerKey,
+  getCast,
+} from '../../../app/shared';
 import { Spinner } from '../../../app/shared/components';
 import { MovieBanner } from './MovieBanner';
 import { Recommendations } from './Recommendations';
@@ -33,35 +40,24 @@ export const MovieRoute = ({ location }) => {
     backdrop_path,
     overview,
     vote_average,
+    content_ratings,
+    episode_run_time,
   } = dataApi;
 
   const bannerImage = `${IMAGE_BASE_URL_HIGH}/${backdrop_path}`;
-  const certification = getCertification(release_dates?.results);
 
-  let genresString;
-  if (genres !== undefined) {
-    genresString = genres.map((genre) => genre.name).join(', ');
-  }
+  const certification = content_ratings
+    ? getCertificationShow(content_ratings?.results)
+    : getCertificationMovie(release_dates?.results);
 
-  let trailerKey;
-  if (videos !== undefined) {
-    if (videos.results !== undefined && videos.results.length > 0) {
-      const [trailer] = videos.results;
-      trailerKey = trailer.key;
-    }
-  }
+  const genresString = getGenresString(genres);
 
-  let crew;
-  if (credits !== undefined) {
-    crew = credits.crew.slice(0, 50);
-  }
+  const trailerKey = getTrailerKey(videos?.results);
 
-  let cast = [];
-  if (credits !== undefined) {
-    if (credits.cast && credits.cast.length > 0) {
-      cast = credits.cast.slice(0, 10);
-    }
-  }
+  const crew = credits && credits.crew.slice(0, 50);
+
+  const cast = getCast(credits?.cast);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [urLSingleMovieWithAll]);
@@ -91,6 +87,7 @@ export const MovieRoute = ({ location }) => {
         runtime={runtime}
         tagline={tagline}
         crew={crew}
+        episode_run_time={episode_run_time}
       />
       <div>
         <Cast cast={cast} />

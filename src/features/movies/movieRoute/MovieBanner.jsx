@@ -58,6 +58,7 @@ export const MovieBanner = ({
   runtime,
   tagline,
   crew,
+  episode_run_time,
 }) => (
   <MovieBannerStyle imageUrl={bannerImage}>
     <IndividualPageCard>
@@ -85,6 +86,7 @@ export const MovieBanner = ({
         release_date={release_date}
         genresString={genresString}
         runtime={runtime}
+        episode_run_time={episode_run_time}
       />
       <BannerIcons vote_average={vote_average} trailerKey={trailerKey} />
       <Tagline>{tagline} </Tagline>

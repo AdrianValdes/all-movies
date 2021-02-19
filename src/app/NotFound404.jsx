@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import { AddReviewButton } from './shared';
 import poster from '../assets/images/poster1.png';
 
@@ -22,10 +23,13 @@ const GoHomeButton = styled(AddReviewButton)`
   width: 300px;
 `;
 
-export const NotFound404 = (props) => (
-  <Main>
-    <GoHomeButton type='button' onClick={() => props.history.push('/')}>
-      Take Me Home!
-    </GoHomeButton>
-  </Main>
-);
+export const NotFound404 = () => {
+  const history = useHistory();
+  return (
+    <Main>
+      <GoHomeButton type='button' onClick={() => history.push('/')}>
+        Take Me Home!
+      </GoHomeButton>
+    </Main>
+  );
+};

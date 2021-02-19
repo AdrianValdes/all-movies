@@ -2,6 +2,7 @@
 /* eslint-disable no-param-reassign */
 import React from 'react';
 import styled from 'styled-components';
+import { selectCrew } from '../../../app/shared';
 
 const People = styled.ol`
   margin-top: 20px;
@@ -35,31 +36,6 @@ const Name = styled.p`
 const Job = styled.p`
   font-size: 0.9em;
 `;
-const dictToArray = (dict) =>
-  Object.keys(dict).map((name) => ({ name, jobs: dict[name] }));
-
-const buildSelectedCrew = (selectedCrew, person) => {
-  if (selectedCrew[person.name] === undefined) {
-    selectedCrew[person.name] = [person.job];
-  }
-  selectedCrew[person.name] = [...selectedCrew[person.name], person.job];
-};
-
-const selectCrew = (crew) => {
-  const selectedCrew = {};
-  crew.forEach((person) => {
-    if (person.job === 'Director') {
-      buildSelectedCrew(selectedCrew, person);
-    }
-    if (person.job === 'Screenplay') {
-      buildSelectedCrew(selectedCrew, person);
-    }
-    if (person.job === 'Story') {
-      buildSelectedCrew(selectedCrew, person);
-    }
-  });
-  return dictToArray(selectedCrew);
-};
 
 export const Crew = ({ crew }) => {
   const selectedCrew = selectCrew(crew);

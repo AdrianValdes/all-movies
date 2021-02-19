@@ -11,6 +11,7 @@ export const CastCard = styled(Card)`
   box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
   border-radius: 10px;
   color: black;
+  height: 100%;
 `;
 export const MovieGridCard = styled.div`
   width: 180px;

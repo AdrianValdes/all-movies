@@ -8,3 +8,7 @@ export * from './getPersonUrl';
 export * from './makeParagraphs';
 export * from './prepareKnownFor';
 export * from './getCertification';
+export * from './getGenresString';
+export * from './getTrailerKey';
+export * from './getCast';
+export * from './selectCrew';
