@@ -20,14 +20,13 @@ export const MovieRoute = ({ location }) => {
   const { pathname } = useLocation();
 
   const urLSingleMovieWithAll = pickShowOrMovie({ pathname, id, language });
-  console.log(urLSingleMovieWithAll);
+
   const { dataApi, loadingApi, errorApi } = useFetch(urLSingleMovieWithAll);
   const {
     genres,
     credits,
     recommendations,
     videos,
-    similar_movies,
     release_dates,
     runtime,
     first_air_date,
