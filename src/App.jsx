@@ -36,6 +36,7 @@ export const App = () => {
       <Switch>
         <Route path='/search/:query' component={SearchResults} />
         <Route exact path='/movie/:id' component={MovieRoute} />
+        <Route exact path='/show/:id' component={MovieRoute} />
         <Route path='/genre/:genre' component={GenreRoute} />
         <Route exact path='/people' component={PeopleRoute} />
         <Route path='/profile/:id' component={ProfileRoute} />

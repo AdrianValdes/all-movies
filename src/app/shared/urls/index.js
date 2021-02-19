@@ -5,6 +5,7 @@ export const IMAGE_BASE_URL_LOW = 'https://image.tmdb.org/t/p/w185';
 export const IMAGE_BASE_URL_MEDIUM = 'https://image.tmdb.org/t/p/w500';
 export const IMAGE_BASE_URL_HIGH = 'https://image.tmdb.org/t/p/w1280';
 export const SINGLE_MOVIE_BASE_URL = 'https://api.themoviedb.org/3/movie';
+export const SINGLE_SHOW_BASE_URL = 'https://api.themoviedb.org/3/tv';
 
 export const actionUrl = pickGenre(28);
 export const animationUrl = pickGenre(16);
