@@ -3,7 +3,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useFetch } from '../../app/hooks';
-import { urlMultiQuery } from '../../app/shared';
+import { Spinner, urlMultiQuery } from '../../app/shared';
 
 import { MovieCardSearch } from './MovieCardSearch';
 import { NoResults } from './NoResults';
@@ -22,8 +22,10 @@ export const SearchResults = ({ location }) => {
 
   const {
     dataApi: { results },
+    loadingApi,
   } = useFetch(url);
 
+  if (loadingApi) return <Spinner />;
   if (!results || results.length === 0) return <NoResults />;
 
   return (
