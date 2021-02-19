@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
-import { Search } from '@styled-icons/boxicons-regular';
-import img from '../assets/images/search-regular-24.png';
+
 import logo from '../assets/images/logo.png';
 
 import {
@@ -16,6 +15,7 @@ import {
   romanceUrl,
   showsUrl,
 } from './shared';
+import { NavSearch } from './NavSearch';
 
 const Nav = styled.nav`
   background-color: rgb(3, 37, 65);
@@ -85,23 +85,6 @@ export const LogoStyle = styled.img`
   width: 100px;
   padding-top: 10px;
   margin: 0 15px;
-`;
-
-const Input = styled.input`
-  padding: 5px 20px 5px 20px;
-  width: 20px;
-  border: none;
-  outline: none;
-  border-radius: 5px;
-  background-image: url(${img});
-  background-repeat: no-repeat;
-  background-position: right;
-  transition: width 0.4s ease;
-  background-color: #032541;
-  &:focus {
-    width: 300px;
-    background-color: white;
-  }
 `;
 
 export const Navbar = () => (
@@ -196,7 +179,7 @@ export const Navbar = () => (
         </StyledLi>
 
         <StyledLi>
-          <Input type='search' placeholder='Search...' />
+          <NavSearch />
         </StyledLi>
         <StyledLi>
           <Link to='/login'>
