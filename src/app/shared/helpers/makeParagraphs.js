@@ -12,6 +12,6 @@ export const makeParagraphs = (text) => {
       counter = 0;
     }
   }
-  console.log(dividedText);
+
   return dividedText;
 };
