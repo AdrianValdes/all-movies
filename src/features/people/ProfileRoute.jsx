@@ -6,6 +6,7 @@ import { useFetch } from '../../app/hooks';
 import { Aside } from './Aside';
 import { KnownFor } from './KnownFor';
 import { getPersonUrl } from '../../app/shared';
+import { prepareKnownFor } from '../../app/shared/helpers/prepareKnownFor';
 
 const Profile = styled.div`
   display: flex;
@@ -30,7 +31,7 @@ const Bio = styled.div`
 `;
 
 export const ProfileRoute = ({ location }) => {
-  const { id, known_for } = location.state;
+  const { id } = location.state;
 
   const personUrl = getPersonUrl(id);
 
@@ -43,7 +44,10 @@ export const ProfileRoute = ({ location }) => {
     known_for_department,
     place_of_birth,
     profile_path,
+    combined_credits,
   } = dataApi;
+
+  const known_for = prepareKnownFor(combined_credits?.cast);
 
   return (
     <main>

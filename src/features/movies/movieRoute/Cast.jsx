@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { IMAGE_BASE_URL_LOW } from '../../../app/shared';
 import { ImageWrapper } from '../RowCard';
 import { CastCard, Img, Row } from '../../../app/shared/components';
@@ -48,20 +49,28 @@ export const Cast = ({ cast }) => (
           <CastTitle>Top Billed Cast</CastTitle>
           <CastContainer>
             {cast.map((person) => (
-              <CastCard key={person.id}>
-                <ImageWrapper>
-                  <Img
-                    src={
-                      person.profile_path
-                        ? `${IMAGE_BASE_URL_LOW}${person.profile_path}`
-                        : 'https://via.placeholder.com/150x225?text=no+image'
-                    }
-                    alt={person.name}
-                  />
-                </ImageWrapper>
-                <CharacterName>{person.original_name}</CharacterName>
-                <Character>{person.character}</Character>
-              </CastCard>
+              <Link
+                key={person.id}
+                to={{
+                  pathname: `/profile/${person.id}`,
+                  state: { id: person.id },
+                }}
+              >
+                <CastCard>
+                  <ImageWrapper>
+                    <Img
+                      src={
+                        person.profile_path
+                          ? `${IMAGE_BASE_URL_LOW}${person.profile_path}`
+                          : 'https://via.placeholder.com/150x225?text=no+image'
+                      }
+                      alt={person.name}
+                    />
+                  </ImageWrapper>
+                  <CharacterName>{person.original_name}</CharacterName>
+                  <Character>{person.character}</Character>
+                </CastCard>
+              </Link>
             ))}
           </CastContainer>
         </Section>

@@ -61,18 +61,6 @@ export const GenreFilters = ({
         </Select>
       </Label>
       <Label>
-        <h3>Language</h3>
-        <Select name='language' value={language} onChange={handleFilters}>
-          <option value='en-US'>English</option>
-          <option value='fr'>French</option>
-          <option value='de'>German</option>
-          <option value='es'>Spanish</option>
-          <option value='it'>Italian</option>
-          <option value='ja'>Japanese</option>
-          <option value='zh'>Chinese</option>
-        </Select>
-      </Label>
-      <Label>
         <h3>Original Language</h3>
         <Select
           name='original_language'
@@ -88,6 +76,19 @@ export const GenreFilters = ({
           <option value='zh'>Chinese</option>
         </Select>
       </Label>
+      <Label>
+        <h3>Dubbing</h3>
+        <Select name='language' value={language} onChange={handleFilters}>
+          <option value='en-US'>English</option>
+          <option value='fr'>French</option>
+          <option value='de'>German</option>
+          <option value='es'>Spanish</option>
+          <option value='it'>Italian</option>
+          <option value='ja'>Japanese</option>
+          <option value='zh'>Chinese</option>
+        </Select>
+      </Label>
+
       <Label>
         <h3>User Score</h3>
         <Select name='score' value={score} onChange={handleFilters}>

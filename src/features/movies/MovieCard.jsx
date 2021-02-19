@@ -2,19 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { IMAGE_BASE_URL_LOW } from '../../app/shared';
-import { CircularBar, Img } from '../../app/shared/components';
+import { CircularBar, Img, MovieGridCard } from '../../app/shared/components';
 import { prettifyDate } from '../../app/shared/helpers/prettifyDate';
-
-const Card = styled.div`
-  width: 180px;
-  min-width: 160px;
-  margin-left: 40px;
-  color: black;
-  border: 1px solid #e3e3e3;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
-  border-radius: 10px;
-  height: 100%;
-`;
 
 export const ImageWrapper = styled.div`
   border-radius: 10px;
@@ -42,14 +31,14 @@ const CardContent = styled.div`
   position: relative;
 `;
 
-export const GridCard = ({ movie, language = 'language=en-US' }) => (
+export const MovieCard = ({ movie, language = 'language=en-US' }) => (
   <Link
     to={{
       pathname: `/movie/${movie.id}`,
       state: { id: movie.id, language },
     }}
   >
-    <Card>
+    <MovieGridCard>
       <ImageWrapper>
         <Img
           alt='movie'
@@ -70,6 +59,6 @@ export const GridCard = ({ movie, language = 'language=en-US' }) => (
           />
         </RatingCircle>
       </CardContent>
-    </Card>
+    </MovieGridCard>
   </Link>
 );

@@ -37,7 +37,7 @@ export const SearchButton = styled(Button)`
 `;
 
 export const AddReviewButton = styled(Button)`
-  width: 180px;
+  width: 170px;
   margin: 40px 40px 40px 150px;
   padding: 10px 15px;
   background-color: ${(props) => (props.disabled ? 'gray' : '#1cb8da')};
