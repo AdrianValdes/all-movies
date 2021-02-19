@@ -5,6 +5,8 @@ import {
   IMAGE_BASE_URL_HIGH,
   getCertificationMovie,
   getCertificationShow,
+  getGenresString,
+  getTrailerKey,
 } from '../../../app/shared';
 import { Spinner } from '../../../app/shared/components';
 import { MovieBanner } from './MovieBanner';
@@ -46,19 +48,9 @@ export const MovieRoute = ({ location }) => {
     ? getCertificationShow(content_ratings?.results)
     : getCertificationMovie(release_dates?.results);
 
-  let genresString;
-  if (genres !== undefined) {
-    genresString = genres.map((genre) => genre.name).join(', ');
-  }
+  const genresString = getGenresString(genres);
 
-  let trailerKey;
-  if (videos !== undefined) {
-    if (videos.results !== undefined && videos.results.length > 0) {
-      const [trailer] = videos.results;
-      trailerKey = trailer.key;
-    }
-  }
-
+  const trailerKey = getTrailerKey(videos?.results);
   let crew;
   if (credits !== undefined) {
     crew = credits.crew.slice(0, 50);
