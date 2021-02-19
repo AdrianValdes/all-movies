@@ -43,7 +43,11 @@ a:visited {
   width: 35px;
 }
 
-.edit-icon {
+.pencil-icon {
   margin-right: 10px;
   vertical-align: middle;
+}
+
+.push {
+  margin-right: auto;
 }

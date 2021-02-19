@@ -82,7 +82,7 @@ export const ReviewRoute = ({ location }) => {
           }}
         >
           <AddReviewButton type='button'>
-            <BsPencil className='edit-icon' />
+            <BsPencil className='pencil-icon' />
             Write Review
           </AddReviewButton>
         </Link>
