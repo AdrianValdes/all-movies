@@ -1,8 +1,4 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable import/no-cycle */
-import { popularUrl, showsUrl } from '../urls';
-
-const baseStringCount = 99;
 
 export const buildFiltersQuery = ({
   genreUrl,
@@ -10,5 +6,9 @@ export const buildFiltersQuery = ({
   score,
   language,
   original_language,
-}) =>
-  `${genreUrl}&${sort}&${score}&language=${language}&with_original_language=${original_language}`;
+  queryGenres,
+}) => {
+  const genresQuery =
+    queryGenres.length > 0 ? `&with_genres=${queryGenres.join(',')}` : '';
+  return `${genreUrl}&${sort}&${score}&language=${language}&with_original_language=${original_language}${genresQuery}`;
+};

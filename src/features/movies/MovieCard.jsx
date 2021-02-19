@@ -36,7 +36,7 @@ export const MovieCard = ({
   item: {
     first_air_date,
     name,
-    title,
+    original_title,
     id,
     poster_path,
     vote_average,
@@ -63,7 +63,7 @@ export const MovieCard = ({
           />
         </ImageWrapper>
         <CardContent>
-          <CardTitle>{title || name}</CardTitle>
+          <CardTitle>{original_title || name}</CardTitle>
           <CardDate>{prettifyDate(release_date || first_air_date)}</CardDate>
           <RatingCircle>
             <CircularBar
