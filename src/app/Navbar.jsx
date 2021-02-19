@@ -11,6 +11,7 @@ import {
   horrorUrl,
   popularUrl,
   romanceUrl,
+  showsUrl,
 } from './shared';
 
 const Nav = styled.nav`
@@ -98,6 +99,16 @@ export const Navbar = () => (
             }}
           >
             <StyledA>Popular</StyledA>
+          </Link>
+        </StyledLi>
+        <StyledLi>
+          <Link
+            to={{
+              pathname: '/genre/tvshows',
+              state: { genreUrl: showsUrl },
+            }}
+          >
+            <StyledA>TV Shows</StyledA>
           </Link>
         </StyledLi>
         <DropDownLi>

@@ -94,7 +94,7 @@ export const GenreRoute = ({ location }) => {
             dataApi.map((movie) => (
               <MovieCard
                 key={movie.id}
-                movie={movie}
+                item={movie}
                 language={`language=${filters.language}`}
               />
             ))}
