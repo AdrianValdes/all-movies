@@ -37,10 +37,10 @@ export const NoResults = () => {
         <Title>
           Ups, there are no results :(. Maybe you want to try{' '}
           <GoBack
-            onKeyPress={() => history.goBack()}
+            onKeyPress={() => history.push('/')}
             role='button'
             tabIndex='0'
-            onClick={() => history.goBack()}
+            onClick={() => history.push('/')}
           >
             another{' '}
           </GoBack>
