@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
-import { Search } from '@styled-icons/boxicons-regular';
 
 import logo from '../assets/images/logo.png';
 
@@ -16,6 +15,7 @@ import {
   romanceUrl,
   showsUrl,
 } from './shared';
+import { NavSearch } from './NavSearch';
 
 const Nav = styled.nav`
   background-color: rgb(3, 37, 65);
@@ -37,12 +37,6 @@ const StyledUl = styled.ul`
 
 const StyledLi = styled.div`
   padding: 0 5px;
-`;
-
-const NavSearch = styled(Search)`
-  color: white;
-  height: 30px;
-  width: 25px;
 `;
 
 const DropDownContent = styled.div`
@@ -183,13 +177,14 @@ export const Navbar = () => (
             <StyledA>People</StyledA>
           </Link>
         </StyledLi>
+
+        <StyledLi>
+          <NavSearch />
+        </StyledLi>
         <StyledLi>
           <Link to='/login'>
             <StyledA>Login</StyledA>
           </Link>
-        </StyledLi>
-        <StyledLi>
-          <NavSearch />
         </StyledLi>
       </StyledUl>
     </SubNav>
