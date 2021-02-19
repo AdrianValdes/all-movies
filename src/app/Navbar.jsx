@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
 import { Search } from '@styled-icons/boxicons-regular';
-
+import img from '../assets/images/search-regular-24.png';
 import logo from '../assets/images/logo.png';
 
 import {
@@ -37,12 +37,6 @@ const StyledUl = styled.ul`
 
 const StyledLi = styled.div`
   padding: 0 5px;
-`;
-
-const NavSearch = styled(Search)`
-  color: white;
-  height: 30px;
-  width: 25px;
 `;
 
 const DropDownContent = styled.div`
@@ -91,6 +85,23 @@ export const LogoStyle = styled.img`
   width: 100px;
   padding-top: 10px;
   margin: 0 15px;
+`;
+
+const Input = styled.input`
+  padding: 5px 20px 5px 20px;
+  width: 20px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-image: url(${img});
+  background-repeat: no-repeat;
+  background-position: right;
+  transition: width 0.4s ease;
+  background-color: #032541;
+  &:focus {
+    width: 300px;
+    background-color: white;
+  }
 `;
 
 export const Navbar = () => (
@@ -183,13 +194,14 @@ export const Navbar = () => (
             <StyledA>People</StyledA>
           </Link>
         </StyledLi>
+
+        <StyledLi>
+          <Input type='search' placeholder='Search...' />
+        </StyledLi>
         <StyledLi>
           <Link to='/login'>
             <StyledA>Login</StyledA>
           </Link>
-        </StyledLi>
-        <StyledLi>
-          <NavSearch />
         </StyledLi>
       </StyledUl>
     </SubNav>
