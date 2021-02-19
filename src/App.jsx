@@ -21,6 +21,7 @@ import { GenreRoute } from './features/movies/GenreRoute';
 import { ProfileRoute } from './features/people/ProfileRoute';
 
 import { SearchResults } from './features/search/SearchResults';
+import { NotFound404 } from './app/NotFound404';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ export const App = () => {
         <Route path='/login' component={Login} />
         <Route path='/signup' component={SignUp} />
         <Route exact path='/' component={Home} />
+        <Route path='*' component={NotFound404} />
       </Switch>
       <Footer />
     </Router>
