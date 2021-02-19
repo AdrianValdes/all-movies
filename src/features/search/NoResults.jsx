@@ -10,41 +10,46 @@ const GoBack = styled.span`
 `;
 
 const NoResultImg = styled(NoResultsSVG)`
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
 `;
 
 const Main = styled.main`
   flex-direction: column;
   align-content: center;
-  justify-content: space-evenly;
+  justify-content: start;
 `;
 
 const SvgContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
+const Title = styled.h1`
+  margin: 50px 0;
+`;
 
 export const NoResults = () => {
   const history = useHistory();
 
   return (
-    <Main>
-      <h1>
-        Ups, there are no results :(. Maybe you want to try{' '}
-        <GoBack
-          onKeyPress={() => history.goBack()}
-          role='button'
-          tabIndex='0'
-          onClick={() => history.goBack()}
-        >
-          another{' '}
-        </GoBack>
-        search
-      </h1>
-      <SvgContainer>
-        <NoResultImg />
-      </SvgContainer>
-    </Main>
+    <main>
+      <Main>
+        <Title>
+          Ups, there are no results :(. Maybe you want to try{' '}
+          <GoBack
+            onKeyPress={() => history.goBack()}
+            role='button'
+            tabIndex='0'
+            onClick={() => history.goBack()}
+          >
+            another{' '}
+          </GoBack>
+          search
+        </Title>
+        <SvgContainer>
+          <NoResultImg />
+        </SvgContainer>
+      </Main>
+    </main>
   );
 };
