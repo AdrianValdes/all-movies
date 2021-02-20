@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { MovieCard } from './MovieCard';
 import {
@@ -22,6 +22,9 @@ const RouteContainer = styled.section`
 `;
 
 export const GenreRoute = ({ location }) => {
+  if (!location.state) {
+    return <Redirect to='/404' />;
+  }
   const [pageNumber, setPageNumber] = useState(1);
 
   const [filters, setFilters] = useState({
@@ -32,6 +35,7 @@ export const GenreRoute = ({ location }) => {
   });
   const [allGenres, setAllGenres] = useState(genresJSON.genres);
   const { genre } = useParams();
+
   const { genreUrl } = location.state;
   const [urlToFetch, setUrlToFetch] = useState(genreUrl);
 
