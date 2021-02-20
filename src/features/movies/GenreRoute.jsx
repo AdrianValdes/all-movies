@@ -13,6 +13,7 @@ import {
 import genresJSON from '../../app/shared/urls/genres.json';
 import { useFetchMoviesOrPeople } from '../../app/hooks';
 import { Filters } from './Filters';
+import { NoResults } from '../search/NoResults';
 
 const RouteContainer = styled.section`
   display: flex;
@@ -38,7 +39,7 @@ export const GenreRoute = ({ location }) => {
 
   const { genreUrl } = location.state;
   const [urlToFetch, setUrlToFetch] = useState(genreUrl);
-
+  console.log(urlToFetch);
   const { dataApi, loadingApi, errorAPi, hasMore } = useFetchMoviesOrPeople(
     urlToFetch,
     pageNumber
@@ -86,12 +87,13 @@ export const GenreRoute = ({ location }) => {
       queryGenres,
     });
     setPageNumber(1);
+    console.log(urlWithFilters);
     setUrlToFetch(urlWithFilters);
   };
-
+  console.log(filters.language);
   if (loadingApi) return <Spinner />;
   if (errorAPi) return <p>Error: {errorAPi}</p>;
-
+  if (dataApi.length === 0) return <NoResults />;
   return (
     <main>
       <RouteContainer>

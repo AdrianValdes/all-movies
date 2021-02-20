@@ -18,7 +18,9 @@ import { Trailer } from './Trailer';
 import { pickShowOrMovie } from '../../../app/shared/helpers/pickShowOrMovie';
 
 export const MovieRoute = ({ location }) => {
-  const language = location?.state?.language && 'language=en-US';
+  const language = location?.state?.language
+    ? location?.state?.language
+    : 'language=en-US';
   const { id } = useParams();
   const { pathname } = useLocation();
 
