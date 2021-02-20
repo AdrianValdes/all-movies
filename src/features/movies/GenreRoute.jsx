@@ -13,13 +13,18 @@ import {
 import genresJSON from '../../app/shared/urls/genres.json';
 import { useFetchMoviesOrPeople } from '../../app/hooks';
 import { Filters } from './Filters';
-import { NoResults } from '../search/NoResults';
 
 const RouteContainer = styled.section`
   display: flex;
   justify-content: center;
   max-width: 1600px;
   padding: 20px;
+`;
+
+const NoResultsContainer = styled.div`
+  font-size: 24px;
+  position: absolute;
+  right: 30%;
 `;
 
 export const GenreRoute = ({ location }) => {
@@ -39,7 +44,6 @@ export const GenreRoute = ({ location }) => {
 
   const { genreUrl } = location.state;
   const [urlToFetch, setUrlToFetch] = useState(genreUrl);
-  console.log(urlToFetch);
   const { dataApi, loadingApi, errorAPi, hasMore } = useFetchMoviesOrPeople(
     urlToFetch,
     pageNumber
@@ -107,14 +111,19 @@ export const GenreRoute = ({ location }) => {
         />
         <MoviesGridContainer>
           <MoviesGrid>
-            {dataApi &&
+            {dataApi.length > 0 ? (
               dataApi.map((movie) => (
                 <MovieCard
                   key={movie.id}
                   item={movie}
                   language={`language=${filters.language}`}
                 />
-              ))}
+              ))
+            ) : (
+              <NoResultsContainer>
+                There is no results for your search :(. Try again, please.
+              </NoResultsContainer>
+            )}
             <div ref={lastItem} />
           </MoviesGrid>
         </MoviesGridContainer>
