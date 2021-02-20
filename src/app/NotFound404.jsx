@@ -5,22 +5,20 @@ import { AddReviewButton } from './shared';
 import poster from '../assets/images/poster1.png';
 
 const Main = styled.div`
-  width: 100%;
-  height: 82vh;
+  height: 100vh;
   background-image: url(${poster});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
-  display: flex;
-  flex-direction: column;
 `;
 
 const GoHomeButton = styled(AddReviewButton)`
-  margin: 0 auto;
-  align-self: center;
   background-color: rgb(61, 20, 15);
-  margin-top: 650px;
   width: 300px;
+  position: absolute;
+  bottom: 10%;
+  right: 50%;
+  transform: translate(-calc(50% - 300px), -50%);
 `;
 
 export const NotFound404 = () => {
@@ -28,7 +26,7 @@ export const NotFound404 = () => {
   return (
     <Main>
       <GoHomeButton type='button' onClick={() => history.push('/')}>
-        Take Me Home!
+        Go back Home
       </GoHomeButton>
     </Main>
   );
