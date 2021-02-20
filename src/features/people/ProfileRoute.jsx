@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ShowMoreText from 'react-show-more-text';
+import { Redirect, useParams } from 'react-router-dom';
 import { useFetch } from '../../app/hooks';
 
 import { Aside } from './Aside';
@@ -31,11 +32,11 @@ const Bio = styled.div`
 `;
 
 export const ProfileRoute = ({ location }) => {
-  const { id } = location.state;
+  const { id } = useParams();
 
   const personUrl = getPersonUrl(id);
 
-  const { dataApi } = useFetch(personUrl);
+  const { dataApi, errorApi } = useFetch(personUrl);
   const {
     name,
     biography,
@@ -48,7 +49,7 @@ export const ProfileRoute = ({ location }) => {
   } = dataApi;
 
   const known_for = prepareKnownFor(combined_credits?.cast);
-
+  if (errorApi || dataApi.success === false) return <Redirect to='/404' />;
   return (
     <main>
       <Profile>

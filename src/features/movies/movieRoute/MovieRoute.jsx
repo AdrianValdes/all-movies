@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Redirect, useLocation, useParams } from 'react-router-dom';
 import { useFetch } from '../../../app/hooks/useFetch';
 import {
   IMAGE_BASE_URL_HIGH,
@@ -18,7 +18,8 @@ import { Trailer } from './Trailer';
 import { pickShowOrMovie } from '../../../app/shared/helpers/pickShowOrMovie';
 
 export const MovieRoute = ({ location }) => {
-  const { id, language } = location.state;
+  const language = location?.state?.language && 'language=en-US';
+  const { id } = useParams();
   const { pathname } = useLocation();
 
   const urLSingleMovieWithAll = pickShowOrMovie({ pathname, id, language });
@@ -39,6 +40,7 @@ export const MovieRoute = ({ location }) => {
     release_date,
     backdrop_path,
     overview,
+    name,
     vote_average,
     content_ratings,
     episode_run_time,
@@ -63,20 +65,14 @@ export const MovieRoute = ({ location }) => {
   }, [urLSingleMovieWithAll]);
 
   if (loadingApi) return <Spinner />;
+  if (errorApi || dataApi.success === false) return <Redirect to='/404' />;
 
-  if (errorApi || dataApi.success === false) {
-    return (
-      <main>
-        <p>There has been an error: {errorApi || dataApi.status_message} </p>
-      </main>
-    );
-  }
   return (
     <main>
       <MovieBanner
         imageUrl={bannerImage}
         poster_path={poster_path}
-        title={title}
+        title={title || name}
         release_date={release_date || first_air_date}
         vote_average={vote_average}
         overview={overview}
@@ -93,7 +89,7 @@ export const MovieRoute = ({ location }) => {
         <Cast cast={cast} />
         <ReviewSection
           reviews={reviews.results}
-          title={title}
+          title={title || name}
           release_date={release_date || first_air_date}
           poster_path={poster_path}
         />
