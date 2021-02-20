@@ -8,26 +8,29 @@ import {
   MoviesGrid,
   Spinner,
   buildFiltersQuery,
+  buildGenresQuery,
 } from '../../app/shared';
-
-import { GenreFilters } from './GenreFilters';
-
+import genresJSON from '../../app/shared/urls/genres.json';
 import { useFetchMoviesOrPeople } from '../../app/hooks';
+import { Filters } from './Filters';
 
 const RouteContainer = styled.section`
   display: flex;
   justify-content: center;
+  max-width: 1600px;
+  padding: 20px;
 `;
 
 export const GenreRoute = ({ location }) => {
   const [pageNumber, setPageNumber] = useState(1);
+
   const [filters, setFilters] = useState({
     sort: 'popularity.desc',
     language: 'en-US',
     score: '',
     original_language: 'en',
   });
-
+  const [allGenres, setAllGenres] = useState(genresJSON.genres);
   const { genre } = useParams();
   const { genreUrl } = location.state;
   const [urlToFetch, setUrlToFetch] = useState(genreUrl);
@@ -36,7 +39,9 @@ export const GenreRoute = ({ location }) => {
     urlToFetch,
     pageNumber
   );
+
   useEffect(() => {
+    /* Handle when the route changes  */
     setUrlToFetch(genreUrl);
     setFilters({
       sort: 'popularity.desc',
@@ -45,6 +50,7 @@ export const GenreRoute = ({ location }) => {
       original_language: 'en',
     });
     setPageNumber(1);
+    setAllGenres(genresJSON.genres);
   }, [genreUrl]);
 
   const observer = useRef();
@@ -65,15 +71,15 @@ export const GenreRoute = ({ location }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-
     const { sort, score, language, original_language } = filters;
-
+    const queryGenres = buildGenresQuery(allGenres);
     const urlWithFilters = buildFiltersQuery({
       genreUrl,
       sort,
       score,
       language,
       original_language,
+      queryGenres,
     });
     setPageNumber(1);
     setUrlToFetch(urlWithFilters);
@@ -83,26 +89,30 @@ export const GenreRoute = ({ location }) => {
   if (errorAPi) return <p>Error: {errorAPi}</p>;
 
   return (
-    <RouteContainer>
-      <GenreFilters
-        genre={genre}
-        filters={filters}
-        handleFilters={handleFilters}
-        handleSearch={handleSearch}
-      />
-      <MoviesGridContainer>
-        <MoviesGrid>
-          {dataApi &&
-            dataApi.map((movie) => (
-              <MovieCard
-                key={movie.id}
-                item={movie}
-                language={`language=${filters.language}`}
-              />
-            ))}
-          <div ref={lastItem} />
-        </MoviesGrid>
-      </MoviesGridContainer>
-    </RouteContainer>
+    <main>
+      <RouteContainer>
+        <Filters
+          genre={genre}
+          filters={filters}
+          handleFilters={handleFilters}
+          handleSearch={handleSearch}
+          allGenres={allGenres}
+          setAllGenres={setAllGenres}
+        />
+        <MoviesGridContainer>
+          <MoviesGrid>
+            {dataApi &&
+              dataApi.map((movie) => (
+                <MovieCard
+                  key={movie.id}
+                  item={movie}
+                  language={`language=${filters.language}`}
+                />
+              ))}
+            <div ref={lastItem} />
+          </MoviesGrid>
+        </MoviesGridContainer>
+      </RouteContainer>
+    </main>
   );
 };

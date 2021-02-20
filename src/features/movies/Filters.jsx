@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { parseTitle, FilterButton } from '../../app/shared';
+import { GenreFilter } from './GenreFilter';
 
 const FilterContainer = styled.section`
   width: 380px;
@@ -42,11 +43,13 @@ const Select = styled.select`
   }
 `;
 
-export const GenreFilters = ({
+export const Filters = ({
   genre,
   filters: { sort, language, original_language, score },
   handleFilters,
   handleSearch,
+  setAllGenres,
+  allGenres,
 }) => (
   <FilterContainer>
     <GenreTitle>{parseTitle(genre)}</GenreTitle>
@@ -100,6 +103,7 @@ export const GenreFilters = ({
           <option value='vote_average.gte=9'>Over 90%</option>
         </Select>
       </Label>
+      <GenreFilter allGenres={allGenres} setAllGenres={setAllGenres} />
       <FilterButton type='submit'>Search</FilterButton>
     </Form>
   </FilterContainer>

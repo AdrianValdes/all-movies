@@ -26,7 +26,8 @@ const Nav = styled.nav`
 
 const SubNav = styled.div`
   display: flex;
-  width: 1300px;
+  width: 1400px;
+  padding: 0 40px;
 `;
 
 const StyledUl = styled.ul`

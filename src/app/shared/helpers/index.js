@@ -12,3 +12,4 @@ export * from './getGenresString';
 export * from './getTrailerKey';
 export * from './getCast';
 export * from './selectCrew';
+export * from './buildGenresQuery';
