@@ -36,11 +36,14 @@ export const Facts = ({
   genresString,
   runtime,
   episode_run_time,
-}) => (
-  <FactsWrapper>
-    <Certification>{certification}</Certification>
-    <span>{release_date} (US)</span>
-    <Genres> {genresString}</Genres>
-    <Genres>{runtime ? `${runtime} min` : `${episode_run_time[0]} min`}</Genres>
-  </FactsWrapper>
-);
+}) => {
+  const episodeRunTime = episode_run_time ? `${episode_run_time[0]} min` : '';
+  return (
+    <FactsWrapper>
+      {certification ? <Certification>{certification}</Certification> : ''}
+      {release_date ? <span>{release_date} (US)</span> : ''}
+      <Genres> {genresString}</Genres>
+      <Genres>{runtime ? `${runtime} min` : episodeRunTime}</Genres>
+    </FactsWrapper>
+  );
+};

@@ -46,6 +46,7 @@ export const MovieRoute = ({ location }) => {
 
   const bannerImage = `${IMAGE_BASE_URL_HIGH}/${backdrop_path}`;
 
+  console.log(dataApi);
   const certification = content_ratings
     ? getCertificationShow(content_ratings?.results)
     : getCertificationMovie(release_dates?.results);
