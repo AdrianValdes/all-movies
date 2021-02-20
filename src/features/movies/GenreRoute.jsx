@@ -87,13 +87,13 @@ export const GenreRoute = ({ location }) => {
       queryGenres,
     });
     setPageNumber(1);
-    console.log(urlWithFilters);
+
     setUrlToFetch(urlWithFilters);
   };
-  console.log(filters.language);
+
   if (loadingApi) return <Spinner />;
   if (errorAPi) return <p>Error: {errorAPi}</p>;
-  if (dataApi.length === 0) return <NoResults />;
+
   return (
     <main>
       <RouteContainer>
