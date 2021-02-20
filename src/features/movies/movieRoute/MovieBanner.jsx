@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { usePalette } from 'react-palette';
 
 import { Img, MovieBannerStyle } from '../../../app/shared/components';
 import { ImageWrapper } from '../RowCard';
@@ -59,40 +60,48 @@ export const MovieBanner = ({
   tagline,
   crew,
   episode_run_time,
-}) => (
-  <MovieBannerStyle imageUrl={bannerImage}>
-    <IndividualPageCard>
-      <ImageWrapper>
-        <Img
-          alt='movie'
-          src={
-            poster_path
-              ? `${IMAGE_BASE_URL_LOW}${poster_path}`
-              : 'https://via.placeholder.com/250x350/1cb8da/000000?text=No+Image'
-          }
+}) => {
+  const { data: filterColor, loading, error } = usePalette(
+    `${IMAGE_BASE_URL_LOW}${poster_path}`
+  );
+  return (
+    <MovieBannerStyle
+      filterColor={filterColor.darkVibrant}
+      imageUrl={bannerImage}
+    >
+      <IndividualPageCard>
+        <ImageWrapper>
+          <Img
+            alt='movie'
+            src={
+              poster_path
+                ? `${IMAGE_BASE_URL_LOW}${poster_path}`
+                : 'https://via.placeholder.com/250x350/1cb8da/000000?text=No+Image'
+            }
+          />
+        </ImageWrapper>
+      </IndividualPageCard>
+      <MovieInfo>
+        <MovieTitle>
+          {title} (
+          {release_date
+            ? new Date(release_date).getFullYear()
+            : 'No date available'}
+          )
+        </MovieTitle>
+        <Facts
+          certification={certification}
+          release_date={release_date}
+          genresString={genresString}
+          runtime={runtime}
+          episode_run_time={episode_run_time}
         />
-      </ImageWrapper>
-    </IndividualPageCard>
-    <MovieInfo>
-      <MovieTitle>
-        {title} (
-        {release_date
-          ? new Date(release_date).getFullYear()
-          : 'No date available'}
-        )
-      </MovieTitle>
-      <Facts
-        certification={certification}
-        release_date={release_date}
-        genresString={genresString}
-        runtime={runtime}
-        episode_run_time={episode_run_time}
-      />
-      <BannerIcons vote_average={vote_average} trailerKey={trailerKey} />
-      <Tagline>{tagline} </Tagline>
-      <Overview>Overview</Overview>
-      <OverviewPara>{overview}</OverviewPara>
-      <Crew crew={crew} />
-    </MovieInfo>
-  </MovieBannerStyle>
-);
+        <BannerIcons vote_average={vote_average} trailerKey={trailerKey} />
+        <Tagline>{tagline} </Tagline>
+        <Overview>Overview</Overview>
+        <OverviewPara>{overview}</OverviewPara>
+        <Crew crew={crew} />
+      </MovieInfo>
+    </MovieBannerStyle>
+  );
+};
