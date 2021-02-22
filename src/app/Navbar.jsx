@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
 
-import logo from '../assets/images/logo.png';
+import logo from '../assets/images/logo1.png';
 
 import {
   actionUrl,
@@ -21,7 +21,7 @@ const Nav = styled.nav`
   background-color: rgb(3, 37, 65);
   display: flex;
   justify-content: center;
-  height: 80px;
+  height: 115px;
 `;
 
 const SubNav = styled.div`
@@ -62,7 +62,8 @@ const StyledA = styled.p`
   color: white;
   font-size: 16px;
   text-align: center;
-  padding: 14px 16px;
+  padding: 0px 16px;
+  margin-top: 5px;
   cursor: pointer;
   vertical-align: middle;
   &:hover {
@@ -72,6 +73,7 @@ const StyledA = styled.p`
 
 const SubA = styled.div`
   color: rgb(3, 37, 65);
+  font-size: 16px;
   padding: 10px 12px;
   text-decoration: none;
   display: block;
@@ -83,8 +85,7 @@ const SubA = styled.div`
 `;
 
 export const LogoStyle = styled.img`
-  width: 100px;
-  padding-top: 10px;
+  width: 280px;
   margin: 0 15px;
 `;
 

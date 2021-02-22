@@ -5,10 +5,12 @@ import styled from 'styled-components';
 import img from '../assets/images/search-regular-24.png';
 
 const Input = styled.input`
-  padding: 5px 20px 5px 20px;
-  width: 20px;
+  padding: 10px 20px 10px 20px;
+  width: 25px;
   border: none;
   outline: none;
+  margin-top: 20px;
+  font-size: 20px;
   border-radius: 5px;
   background-image: url(${img});
   background-repeat: no-repeat;
