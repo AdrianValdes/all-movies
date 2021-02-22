@@ -34,7 +34,14 @@ export const Aside = ({
 }) => (
   <ProfileSide>
     <ImageProfile>
-      <Img src={`${IMAGE_BASE_URL_MEDIUM}${profile_path}`} alt={name} />
+      <Img
+        alt={name}
+        src={
+          profile_path
+            ? `${IMAGE_BASE_URL_MEDIUM}${profile_path}`
+            : 'https://via.placeholder.com/250?text=no+image'
+        }
+      />
     </ImageProfile>
     <Personal>Personal Info</Personal>
     <Info>Known for</Info>

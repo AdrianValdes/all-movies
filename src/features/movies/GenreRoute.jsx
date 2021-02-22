@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { MovieCard } from './MovieCard';
 import {
@@ -21,7 +21,16 @@ const RouteContainer = styled.section`
   padding: 20px;
 `;
 
+const NoResultsContainer = styled.div`
+  font-size: 24px;
+  position: absolute;
+  right: 30%;
+`;
+
 export const GenreRoute = ({ location }) => {
+  if (!location.state) {
+    return <Redirect to='/404' />;
+  }
   const [pageNumber, setPageNumber] = useState(1);
 
   const [filters, setFilters] = useState({
@@ -32,9 +41,9 @@ export const GenreRoute = ({ location }) => {
   });
   const [allGenres, setAllGenres] = useState(genresJSON.genres);
   const { genre } = useParams();
+
   const { genreUrl } = location.state;
   const [urlToFetch, setUrlToFetch] = useState(genreUrl);
-
   const { dataApi, loadingApi, errorAPi, hasMore } = useFetchMoviesOrPeople(
     urlToFetch,
     pageNumber
@@ -82,6 +91,7 @@ export const GenreRoute = ({ location }) => {
       queryGenres,
     });
     setPageNumber(1);
+
     setUrlToFetch(urlWithFilters);
   };
 
@@ -101,14 +111,19 @@ export const GenreRoute = ({ location }) => {
         />
         <MoviesGridContainer>
           <MoviesGrid>
-            {dataApi &&
+            {dataApi.length > 0 ? (
               dataApi.map((movie) => (
                 <MovieCard
                   key={movie.id}
                   item={movie}
                   language={`language=${filters.language}`}
                 />
-              ))}
+              ))
+            ) : (
+              <NoResultsContainer>
+                There is no results for your search :(. Try again, please.
+              </NoResultsContainer>
+            )}
             <div ref={lastItem} />
           </MoviesGrid>
         </MoviesGridContainer>
