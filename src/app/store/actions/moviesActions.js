@@ -1,10 +1,4 @@
-import {
-  animationUrl,
-  comediesUrl,
-  popularUrl,
-  actionUrl,
-  peopleUrl,
-} from '../../shared';
+import { animationUrl, comediesUrl, popularUrl, actionUrl } from '../../shared';
 import { helpFetchMoviesOrPeople } from '../helpers';
 
 export const fetchComediesAction = () => async (dispatch) => {

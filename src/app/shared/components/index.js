@@ -7,3 +7,4 @@ export * from './Spiner';
 export * from './Row';
 export * from './Img';
 export * from './Card';
+export * from './Icons';

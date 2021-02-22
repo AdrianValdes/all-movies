@@ -10,8 +10,8 @@ import {
   StyleForm,
   StyleInput,
   StyleButton,
-} from './shared/components';
-import { signUpUser } from './store/actions/authActions';
+} from '../../app/shared/components';
+import { signUpUser } from '../../app/store/actions';
 
 export const SignUp = () => {
   const [name, setName] = useState('');
@@ -55,7 +55,7 @@ export const SignUp = () => {
             />
           </Label>
           <Label htmlFor='password'>
-            <p>Password (4 characters minimum)</p>
+            <p>Password (6 characters minimum)</p>
             <StyleInput
               id='password'
               type='password'

@@ -8,14 +8,16 @@ import { ReviewRoute } from './features/movies/movieRoute/ReviewRoute';
 import { AddReview } from './features/movies/movieRoute/AddReview';
 import { Navbar } from './app/Navbar';
 import { Home } from './app/Home';
-import { Login } from './app/Login';
-import { SignUp } from './app/SignUp';
-import { Watchlist } from './features/user/Watchlist';
+
+import { Login } from './features/user/Login';
+import { SignUp } from './features/user/SignUp';
+
 import {
   fetchAnimationsAction,
   fetchComediesAction,
+  fetchFavorites,
   fetchPopularsAction,
-} from './app/store/actions/moviesActions';
+} from './app/store/actions';
 
 import { GenreRoute } from './features/movies/GenreRoute';
 
@@ -25,6 +27,7 @@ import { SearchResults } from './features/search/SearchResults';
 import { NotFound404 } from './app/NotFound404';
 import { auth } from './firebase';
 import { logout } from './app/store/actions/authActions';
+import { Favorites } from './features/user/Favorites';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -38,6 +41,7 @@ export const App = () => {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         dispatch({ type: 'LOGIN_USER', payload: authUser });
+        dispatch(fetchFavorites());
       } else {
         dispatch(logout());
       }
@@ -55,6 +59,7 @@ export const App = () => {
         <Route path='/profile/:id' component={ProfileRoute} />
         <Route exact path='/reviews' component={ReviewRoute} />
         <Route exact path='/addReview' component={AddReview} />
+        <Route exact path='/favorites' component={Favorites} />
         <Route path='/login' component={Login} />
         <Route path='/signup' component={SignUp} />
         <Route exact path='/' component={Home} />

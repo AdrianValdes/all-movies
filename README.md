@@ -1,5 +1,8 @@
 # ShowMe - Movies and TV shows
 
+![GitHub](https://img.shields.io/github/license/AdrianValdes/all-movies?style=plastic)
+![GitHub contributors](https://img.shields.io/github/contributors/AdrianValdes/all-movies?style=plastic)
+
 An open source project that is for all movie and TV show lovers. Here you will be able to find information about movies, TV shows and your favorite actors, read reviews, watch trailers and many more...
 
 ![ShowMe site](./src/assets/images/site.png)
@@ -20,13 +23,13 @@ This project was created for Web Development Course in Digital Career Institute.
 
 It was built with:
 
-- React
-- React-route-dom
-- Redux
-- Styled-components
-- Firebase
+- `create-react-app`
+- `react-route-dom`
+- `redux`
+- `styled-components`
+- `firebase`
 
-## Installation
+## 🚀 Installation
 
 1. Clone the repo:
 
@@ -44,7 +47,7 @@ It was built with:
 
 4. Get a free Firebase API Key. In order to accomplish this task you have to create an firebase account on https://firebase.google.com/ and add a new project or use a existing API you already may have.
 
-5. Create a .env file on the root of your project and enter both you APIs keys there:
+5. Create a `.env` file on the root of your project and enter both you APIs keys there:
 
    ```sh
    REACT_APP_KEY=<THEMOVIEDB-API-KEY>
