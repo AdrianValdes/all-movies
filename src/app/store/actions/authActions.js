@@ -24,3 +24,16 @@ export const logout = () => async (dispatch) => {
     dispatch({ type: 'AUTH_ERROR', payload: error });
   }
 };
+
+export const signInUser = ({ email, password }) => async (dispatch) => {
+  try {
+    const userCredentials = await auth.signInWithEmailAndPassword(
+      email,
+      password
+    );
+    const { user } = userCredentials;
+    dispatch({ type: 'SIGNUP_USER', payload: user });
+  } catch (error) {
+    dispatch({ type: 'AUTH_ERROR', payload: error });
+  }
+};

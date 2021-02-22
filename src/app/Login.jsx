@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {
   Form,
   Label,
@@ -10,13 +12,18 @@ import {
   StyleInput,
   StyleButton,
 } from './shared/components';
+import { signInUser } from './store/actions/authActions';
 
 export const Login = () => {
-  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(signInUser({ email, password }));
+    history.push('/');
   };
 
   return (
@@ -34,10 +41,10 @@ export const Login = () => {
           <Label htmlFor='user-name'>
             <p>Username</p>
             <StyleInput
-              id='user-name'
-              type='userName'
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
+              id='email'
+              type='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </Label>
           <Label htmlFor='password'>
