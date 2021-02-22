@@ -13,6 +13,7 @@ import { SignUp } from './features/user/SignUp';
 import {
   fetchAnimationsAction,
   fetchComediesAction,
+  fetchFavorites,
   fetchPopularsAction,
 } from './app/store/actions';
 
@@ -38,6 +39,7 @@ export const App = () => {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         dispatch({ type: 'LOGIN_USER', payload: authUser });
+        dispatch(fetchFavorites());
       } else {
         dispatch(logout());
       }

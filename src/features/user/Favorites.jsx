@@ -7,7 +7,6 @@ export const Favorites = () => {
   const user = useSelector((state) => state.user.user);
   const [moviesIds, setMoviesIds] = useState([]);
 
-  console.log(moviesIds);
   useEffect(() => {
     if (user) {
       db.collection('users')
