@@ -2,7 +2,7 @@
 
 An open source project that is for all movie and TV show lovers. Here you will be able to find information about movies, TV shows and your favorite actors, read reviews, watch trailers and many more...
 
-![ShowMe site](/assets/images/site.png)
+![ShowMe site](./src/assets/images/site.png)
 
 ## Table of contents
 
@@ -26,27 +26,32 @@ It was built with:
 - Styled-components
 - Firebase
 
-## Setup
+## Installation
 
-To run this project, install it locally using npm:
+1. Clone the repo:
 
-- get a free API Key at <https://developers.themoviedb.org>
-- git clone the repo [ShowMe](https://github.com/AdrianValdes/all-movies)
-- npm install
-- npm start
-- npm install firebase
+   ```sh
+   git clone https://github.com/AdrianValdes/all-movies.git
+   ```
 
-```
-  firebase.initializeApp({
-  apiKey: '<YOUR_OWN_KEY>',
-  authDomain: 'showme-f171b.firebaseapp.com',
-  projectId: 'showme-f171b',
-  storageBucket: 'showme-f171b.appspot.com',
-  messagingSenderId: '827032492503',
-  appId: '1:827032492503:web:d9d121a7c243220c6a1392',
-  measurementId: 'G-MEHPJL67EC',
-  });
-```
+2. Install NPM packages:
+
+   ```sh
+   npm install
+   ```
+
+3. Get a free API Key from the project The Movie Database [here](https://developers.themoviedb.org)
+
+4. Get a free Firebase API Key. In order to accomplish this task you have to create an firebase account on https://firebase.google.com/ and add a new project or use a existing API you already may have.
+
+5. Create a .env file on the root of your project and enter both you APIs keys there:
+
+   ```sh
+   REACT_APP_KEY=<THEMOVIEDB-API-KEY>
+   REACT_APP_FIREBASE_KEY=<FIREBASE-API-KEY>
+   ```
+
+6. run `npm start`
 
 ## Sources
 

@@ -60,6 +60,7 @@ export const MovieBanner = ({
   tagline,
   crew,
   episode_run_time,
+  movieId,
 }) => {
   const { data: filterColor, loading, error } = usePalette(
     `${IMAGE_BASE_URL_LOW}${poster_path}`
@@ -93,7 +94,11 @@ export const MovieBanner = ({
           runtime={runtime}
           episode_run_time={episode_run_time}
         />
-        <BannerIcons vote_average={vote_average} trailerKey={trailerKey} />
+        <BannerIcons
+          vote_average={vote_average}
+          trailerKey={trailerKey}
+          movieId={movieId}
+        />
         <Tagline>{tagline} </Tagline>
         <Overview>Overview</Overview>
         <OverviewPara>{overview}</OverviewPara>

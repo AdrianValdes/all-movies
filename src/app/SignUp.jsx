@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {
   Form,
   Label,
@@ -17,7 +18,8 @@ export const SignUp = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const dispatch = useDispatch();
-
+  const user = useSelector((state) => state.user.user);
+  const history = useHistory();
   const validateForm = () => name.length > 0 && password.length > 4;
 
   const handleSubmit = (e) => {
@@ -27,6 +29,11 @@ export const SignUp = () => {
     setPassword('');
     setName('');
   };
+  useEffect(() => {
+    if (user) {
+      history.push('/');
+    }
+  }, [user]);
 
   return (
     <LoginPageStyle>

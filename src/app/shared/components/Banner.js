@@ -28,8 +28,8 @@ export const BannerHome = styled(Banner)`
 export const MovieBannerStyle = styled(Banner)`
   background-image: linear-gradient(
       to right,
-      ${(props) => props.filterColor},
-      rgba(3, 37, 65, 0.8) 100%
+      ${(props) => `${props.filterColor}E6`},
+      ${(props) => `${props.filterColor}CC`} 100%
     ),
     url(${(props) => props.imageUrl});
   padding: 30px 0;

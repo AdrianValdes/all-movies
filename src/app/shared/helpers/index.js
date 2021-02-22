@@ -13,3 +13,4 @@ export * from './getTrailerKey';
 export * from './getCast';
 export * from './selectCrew';
 export * from './buildGenresQuery';
+export * from './firebaseHelpers';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { logout } from '../../app/store/actions/authActions';
 
@@ -63,15 +63,14 @@ const Info = styled.div`
   border-bottom: 1px solid lightgray;
 `;
 
-const Hr = styled.hr`
-  color: red;
-`;
-export const Avatar = ({ user }) => {
+export const Avatar = () => {
   const [showOptions, setShowOptions] = useState(false);
+  const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
+
   return (
     <UserAvatar onClick={() => setShowOptions(!showOptions)}>
-      {user?.displayName[0]}{' '}
+      {user?.displayName && user?.displayName[0]}{' '}
       <DropDownUser className={showOptions ? 'show' : "don't show"}>
         <Content>
           <Info>
