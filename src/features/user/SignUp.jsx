@@ -10,8 +10,8 @@ import {
   StyleForm,
   StyleInput,
   StyleButton,
-} from './shared/components';
-import { signUpUser } from './store/actions/authActions';
+} from '../../app/shared/components';
+import { signUpUser } from '../../app/store/actions';
 
 export const SignUp = () => {
   const [name, setName] = useState('');

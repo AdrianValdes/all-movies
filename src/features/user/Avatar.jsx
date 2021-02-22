@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { logout } from '../../app/store/actions/authActions';
 
@@ -79,7 +80,11 @@ export const Avatar = () => {
               <strong>{user.displayName}</strong>
             </p>
           </Info>
-
+          <Info>
+            <Link to='/favorites'>
+              <SubA>Your Favorites</SubA>
+            </Link>
+          </Info>
           <SubA onClick={() => dispatch(logout())}>Sign Out</SubA>
         </Content>
       </DropDownUser>

@@ -11,8 +11,8 @@ import {
   StyleForm,
   StyleInput,
   StyleButton,
-} from './shared/components';
-import { signInUser } from './store/actions/authActions';
+} from '../../app/shared/components';
+import { signInUser } from '../../app/store/actions/authActions';
 
 export const Login = () => {
   const [email, setEmail] = useState('');

@@ -13,7 +13,7 @@ import {
 import { ImageWrapper } from '../movies/RowCard';
 
 import { Spinner } from '../../app/shared/components/Spiner';
-import { fetchPeopleAction } from '../../app/store/actions/peopleActions';
+import { fetchPeopleAction } from '../../app/store/actions';
 
 const PeopleSection = styled.div`
   display: flex;
