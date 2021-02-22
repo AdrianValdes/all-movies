@@ -45,7 +45,7 @@ export const Login = () => {
 
         <StyleForm autoComplete='off' onSubmit={handleSubmit}>
           <Label htmlFor='user-name'>
-            <p>Username</p>
+            <p>Email</p>
             <StyleInput
               id='email'
               type='email'

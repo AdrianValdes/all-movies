@@ -21,8 +21,8 @@ const UserAvatar = styled.div`
   vertical-align: middle;
   cursor: pointer;
   background-color: #c33c5b;
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   display: flex;
   justify-content: center;

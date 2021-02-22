@@ -1,31 +1,21 @@
 /* eslint-disable function-paren-newline */
 import React, { useEffect, useState } from 'react';
-import { Heart, Star, Flag } from '@styled-icons/boxicons-solid';
-import { ListUl, Play } from '@styled-icons/boxicons-regular';
+
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { db } from '../../../firebase';
 
-import { CircularBar } from '../../../app/shared/components';
+import {
+  CircularBar,
+  IconFlag,
+  IconHeart,
+  IconList,
+  IconPlay,
+  Icons,
+  IconStar,
+  IconContainer,
+} from '../../../app/shared/components';
 import { addToFavorites } from '../../../app/shared/helpers/firebaseHelpers';
-
-const IconContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 10px;
-`;
-const Icons = styled.div`
-  width: 45px;
-  height: 45px;
-  background-color: rgb(3, 37, 65);
-  border-radius: 50%;
-  display: inline-block;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 8px;
-  cursor: pointer;
-`;
 
 const Score = styled.div`
   margin-top: 10px;
@@ -65,25 +55,6 @@ const Close = styled.p`
 const IFrame = styled.iframe`
   border: none;
   margin-top: 100px;
-`;
-
-const IconHeart = styled(Heart)`
-  width: 16px;
-  color: ${(props) => (props.className === 'favorite' ? 'crimson' : 'white')};
-`;
-const IconStar = styled(Star)`
-  width: 16px;
-`;
-
-const IconFlag = styled(Flag)`
-  width: 16px;
-`;
-
-const IconList = styled(ListUl)`
-  width: 16px;
-`;
-const IconPlay = styled(Play)`
-  width: 35px;
 `;
 
 export const BannerIcons = ({ vote_average, trailerKey, movieId }) => {
@@ -130,7 +101,7 @@ export const BannerIcons = ({ vote_average, trailerKey, movieId }) => {
       <Icons>
         <IconList />
       </Icons>
-      <Icons>
+      <Icons onClick={handleAddToFavorites}>
         <IconHeart
           className={isFavorite ? 'favorite' : ''}
           onClick={handleAddToFavorites}
