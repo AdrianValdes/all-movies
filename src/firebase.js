@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 firebase.initializeApp({
-  apiKey: 'AIzaSyDJI-yljUV1fFFAEItpXykBUwoKfqTwXwM',
+  apiKey: process.env.REACT_APP_FIREBASE_KEY,
   authDomain: 'showme-f171b.firebaseapp.com',
   projectId: 'showme-f171b',
   storageBucket: 'showme-f171b.appspot.com',
