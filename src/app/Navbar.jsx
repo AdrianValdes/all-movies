@@ -21,7 +21,11 @@ const Nav = styled.nav`
   background-color: rgb(3, 37, 65);
   display: flex;
   justify-content: center;
+<<<<<<< HEAD
   height: 115px;
+=======
+  height: 60px;
+>>>>>>> 6f5da2eaf9c95c0edecce5becdcf4a3040488223
 `;
 
 const SubNav = styled.div`
@@ -85,8 +89,13 @@ const SubA = styled.div`
 `;
 
 export const LogoStyle = styled.img`
+<<<<<<< HEAD
   width: 280px;
   margin: 0 15px;
+=======
+  width: 200px;
+  margin: 3px 15px 0 15px;
+>>>>>>> 6f5da2eaf9c95c0edecce5becdcf4a3040488223
 `;
 
 export const Navbar = () => (

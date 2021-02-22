@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Instagram, Facebook, Twitter } from '@styled-icons/boxicons-logos';
-import logo from '../assets/images/logo.png';
+import logo from '../assets/images/logo1.png';
 import { LogoStyle } from './Navbar';
 
 const StyledFooter = styled.footer`
@@ -15,12 +15,12 @@ const StyledFooter = styled.footer`
 `;
 
 const StyleP = styled.p`
-  padding-top: 35px;
+  padding-top: 25px;
 `;
 
 const SocialButton = styled.div`
   display: flex;
-  padding: 30px 15px;
+  padding: 20px 15px;
 `;
 
 const InstagramLogo = styled(Instagram)`
