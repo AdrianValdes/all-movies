@@ -9,7 +9,8 @@ An open source project that is for all movie and TV show lovers. Here you will b
 - [General info](#general-info)
 - [Technologies](#technologies)
 - [Setup](#setup)
-- [Contact](#contact)
+- [Sources](#sources)
+- [Contacts](#contacts)
 
 ## General info
 
@@ -17,23 +18,27 @@ This project was created for Web Development Course in Digital Career Institute.
 
 ## Technologies
 
-Project is created with:
+It was built with:
 
 - React
+- React-route-dom
+- Redux
 - Styled-components
-- Styled Icons
+- Firebase
 
 ## Setup
 
-This project is based on The Movie Database and its API.
+To run this project, install it locally using npm:
 
-```
-$ cd ../lorem
-$ npm install
-$ npm start
-```
+- git clone [ShowMe](#https://github.com/AdrianValdes/all-movies)
+- npm install
+- npm start
 
-## Contact
+## Sources
 
-Adrian Valdes -(https://github.com/AdrianValdes)
-Joyce Sosaya -(https://github.com/Winkel2019)
+This project is based on The Movie Database and its [API](#https://developers.themoviedb.org/3).
+
+## Contacts
+
+- Adrian Valdes -https://github.com/AdrianValdes
+- Joyce Sosaya -https://github.com/Winkel2019
