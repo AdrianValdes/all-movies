@@ -4,7 +4,7 @@ import star from '../../../assets/images/star.jpg';
 
 export const LoginPageStyle = styled.div`
   width: 100%;
-  height: 82vh;
+  height: calc(100vh - 190px);
   background-image: url(${star});
   background-size: cover;
   background-repeat: no-repeat;

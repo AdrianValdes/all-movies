@@ -193,7 +193,7 @@ export const Navbar = () => {
           </StyledLi>
           <StyledLi>
             {user ? (
-              <Avatar user={user} />
+              <Avatar />
             ) : (
               <Link to='/login'>
                 <StyledA>Login</StyledA>

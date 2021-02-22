@@ -2,7 +2,7 @@
 
 An open source project that is for all movie and TV show lovers. Here you will be able to find information about movies, TV shows and your favorite actors, read reviews, watch trailers and many more...
 
-![ShowMe site](/assets/images/site.png)
+![ShowMe site](./src/assets/images/site.png)
 
 ## Table of contents
 
