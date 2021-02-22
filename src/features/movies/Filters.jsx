@@ -70,7 +70,7 @@ export const Filters = ({
           value={original_language}
           onChange={handleFilters}
         >
-          <option value='en-US'>English</option>
+          <option value='en'>English</option>
           <option value='fr'>French</option>
           <option value='de'>German</option>
           <option value='es'>Spanish</option>
