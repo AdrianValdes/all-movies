@@ -2,7 +2,7 @@
 
 An open source project that is for all movie and TV show lovers. Here you will be able to find information about movies, TV shows and your favorite actors, read reviews, watch trailers and many more...
 
-![ShowMe site](./assets/images/site.png)
+![ShowMe site](/assets/images/site.png)
 
 ## Table of contents
 
@@ -30,13 +30,27 @@ It was built with:
 
 To run this project, install it locally using npm:
 
-- git clone [ShowMe](#https://github.com/AdrianValdes/all-movies)
+- get a free API Key at <https://developers.themoviedb.org>
+- git clone the repo [ShowMe](https://github.com/AdrianValdes/all-movies)
 - npm install
 - npm start
+- npm install firebase
+
+```
+  firebase.initializeApp({
+  apiKey: '<YOUR_OWN_KEY>',
+  authDomain: 'showme-f171b.firebaseapp.com',
+  projectId: 'showme-f171b',
+  storageBucket: 'showme-f171b.appspot.com',
+  messagingSenderId: '827032492503',
+  appId: '1:827032492503:web:d9d121a7c243220c6a1392',
+  measurementId: 'G-MEHPJL67EC',
+  });
+```
 
 ## Sources
 
-This project is based on The Movie Database and its [API](#https://developers.themoviedb.org/3).
+This project is based on The Movie Database and its [API](https://developers.themoviedb.org/3).
 
 ## Contacts
 
