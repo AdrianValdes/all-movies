@@ -8,8 +8,10 @@ import { ReviewRoute } from './features/movies/movieRoute/ReviewRoute';
 import { AddReview } from './features/movies/movieRoute/AddReview';
 import { Navbar } from './app/Navbar';
 import { Home } from './app/Home';
+
 import { Login } from './features/user/Login';
 import { SignUp } from './features/user/SignUp';
+
 import {
   fetchAnimationsAction,
   fetchComediesAction,
@@ -62,6 +64,7 @@ export const App = () => {
         <Route path='/signup' component={SignUp} />
         <Route exact path='/' component={Home} />
         <Route path='*' component={NotFound404} />
+        <Route path='/watchlist' component={Watchlist} />
       </Switch>
       <Footer />
     </Router>

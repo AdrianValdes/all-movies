@@ -41,6 +41,13 @@ const UserAvatar = styled.div`
     right: -15px;
   }
 `;
+
+const Watch = styled.p`
+  text-align: left;
+  padding: 10px 12px;
+  color: black;
+  font-weight: 600;
+`;
 const SubA = styled.div`
   color: rgb(3, 37, 65);
   font-size: 16px;
@@ -80,11 +87,13 @@ export const Avatar = () => {
               <strong>{user.displayName}</strong>
             </p>
           </Info>
+
           <Info>
             <Link to='/favorites'>
               <SubA>Your Favorites</SubA>
             </Link>
           </Info>
+
           <SubA onClick={() => dispatch(logout())}>Sign Out</SubA>
         </Content>
       </DropDownUser>
