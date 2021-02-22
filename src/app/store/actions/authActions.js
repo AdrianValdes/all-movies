@@ -32,7 +32,7 @@ export const signInUser = ({ email, password }) => async (dispatch) => {
       password
     );
     const { user } = userCredentials;
-    dispatch({ type: 'SIGNUP_USER', payload: user });
+    dispatch({ type: 'LOGIN_USER', payload: user });
   } catch (error) {
     dispatch({ type: 'AUTH_ERROR', payload: error });
   }
