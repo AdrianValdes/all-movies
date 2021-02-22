@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { logout } from '../../app/store/actions/authActions';
 
@@ -40,6 +41,13 @@ const UserAvatar = styled.div`
     right: -15px;
   }
 `;
+
+const Watch = styled.p`
+  text-align: left;
+  padding: 10px 12px;
+  color: black;
+  font-weight: 600;
+`;
 const SubA = styled.div`
   color: rgb(3, 37, 65);
   font-size: 16px;
@@ -79,7 +87,9 @@ export const Avatar = () => {
               <strong>{user.displayName}</strong>
             </p>
           </Info>
-
+          <Link to={{ pathname: '/watchlist', state: { user } }}>
+            <Watch>Watchlist</Watch>
+          </Link>
           <SubA onClick={() => dispatch(logout())}>Sign Out</SubA>
         </Content>
       </DropDownUser>

@@ -10,6 +10,7 @@ import { Navbar } from './app/Navbar';
 import { Home } from './app/Home';
 import { Login } from './app/Login';
 import { SignUp } from './app/SignUp';
+import { Watchlist } from './features/user/Watchlist';
 import {
   fetchAnimationsAction,
   fetchComediesAction,
@@ -58,6 +59,7 @@ export const App = () => {
         <Route path='/signup' component={SignUp} />
         <Route exact path='/' component={Home} />
         <Route path='*' component={NotFound404} />
+        <Route path='/watchlist' component={Watchlist} />
       </Switch>
       <Footer />
     </Router>
