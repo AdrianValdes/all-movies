@@ -55,8 +55,8 @@ export const HomeBanner = ({ headerImageId }) => {
 
   return (
     <BannerHome imageUrl={imageUrl}>
-      <StyleH1>Welcome to MOVIES!</StyleH1>
-      <StyleH3>Explore millions of movies and people now.</StyleH3>
+      <StyleH1>Welcome to ShowMe!</StyleH1>
+      <StyleH3>Explore millions of movies, TV shows and people now.</StyleH3>
       <FormStyle>
         <Input
           type='text'
