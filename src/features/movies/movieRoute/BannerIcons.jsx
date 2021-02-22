@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { db } from '../../../firebase';
 
 import { CircularBar } from '../../../app/shared/components';
+import { addToFavorites } from '../../../app/shared/helpers/firebaseHelpers';
 
 const IconContainer = styled.div`
   display: flex;
@@ -96,25 +97,12 @@ export const BannerIcons = ({ vote_average, trailerKey, movieId }) => {
     : `https://www.youtube.com/embed/${trailerKey}`;
 
   const handleAddToFavorites = () => {
-    setIsFavorite(!isFavorite);
-    const updateCollection = async () => {
-      if (!isFavorite) {
-        await db
-          .collection('users')
-          .doc(user?.uid)
-          .collection('favorites')
-          .doc(movieId)
-          .set({ id: movieId });
-      } else {
-        await db
-          .collection('users')
-          .doc(user?.uid)
-          .collection('favorites')
-          .doc(movieId)
-          .delete();
-      }
-    };
-    updateCollection();
+    addToFavorites({
+      isFavorite,
+      setIsFavorite,
+      user,
+      movieId,
+    });
   };
 
   useEffect(() => {
