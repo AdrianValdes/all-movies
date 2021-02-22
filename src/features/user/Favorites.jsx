@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import styled from 'styled-components';
 import { db } from '../../firebase';
 import { SINGLE_MOVIE_BASE_URL, KEY } from '../../app/shared/urls';
+import { MovieCardSearch } from '../search/MovieCardSearch';
+
+const SearchContent = styled.div`
+  max-width: 1100px;
+`;
 
 export const Favorites = () => {
   const user = useSelector((state) => state.user.user);
   const [moviesIds, setMoviesIds] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     if (user) {
@@ -34,14 +41,19 @@ export const Favorites = () => {
         arrayOfResults.map((response) => response.json())
       );
 
-      console.log(arrayOfData);
+      setFavorites([...favorites, ...arrayOfData]);
     };
     fetchAllMovies();
-  });
+  }, [moviesIds]);
 
   return (
-    <div>
-      <h1>Favorites</h1>
-    </div>
+    <main>
+      <SearchContent>
+        {favorites &&
+          favorites.map((movie) => (
+            <MovieCardSearch key={movie.id} movie={movie} />
+          ))}
+      </SearchContent>
+    </main>
   );
 };

@@ -41,7 +41,6 @@ export const App = () => {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         dispatch({ type: 'LOGIN_USER', payload: authUser });
-        dispatch(fetchFavorites());
       } else {
         dispatch(logout());
       }
@@ -64,7 +63,6 @@ export const App = () => {
         <Route path='/signup' component={SignUp} />
         <Route exact path='/' component={Home} />
         <Route path='*' component={NotFound404} />
-        <Route path='/watchlist' component={Watchlist} />
       </Switch>
       <Footer />
     </Router>
