@@ -17,6 +17,7 @@ import {
   showsUrl,
 } from './shared';
 import { NavSearch } from './NavSearch';
+import { Avatar } from '../features/user/Avatar';
 
 const Nav = styled.nav`
   background-color: rgb(3, 37, 65);
@@ -89,8 +90,6 @@ export const LogoStyle = styled.img`
   width: 200px;
   margin: 3px 15px 0 15px;
 `;
-
-const Avatar = styled(StyledA)``;
 
 export const Navbar = () => {
   const user = useSelector((state) => state.user.user);
@@ -194,7 +193,7 @@ export const Navbar = () => {
           </StyledLi>
           <StyledLi>
             {user ? (
-              <Avatar>{user?.displayName}</Avatar>
+              <Avatar user={user} />
             ) : (
               <Link to='/login'>
                 <StyledA>Login</StyledA>
