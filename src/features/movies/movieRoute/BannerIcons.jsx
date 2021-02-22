@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-
+/* eslint-disable function-paren-newline */
+import React, { useEffect, useState } from 'react';
 import { Heart, Star, Flag } from '@styled-icons/boxicons-solid';
 import { ListUl, Play } from '@styled-icons/boxicons-regular';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { db } from '../../../firebase';
+
 import { CircularBar } from '../../../app/shared/components';
 
 const IconContainer = styled.div`
@@ -65,6 +68,7 @@ const IFrame = styled.iframe`
 
 const IconHeart = styled(Heart)`
   width: 16px;
+  color: ${(props) => (props.className === 'favorite' ? 'crimson' : 'white')};
 `;
 const IconStar = styled(Star)`
   width: 16px;
@@ -81,12 +85,52 @@ const IconPlay = styled(Play)`
   width: 35px;
 `;
 
-export const BannerIcons = ({ vote_average, trailerKey }) => {
+export const BannerIcons = ({ vote_average, trailerKey, movieId }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const user = useSelector((state) => state.user.user);
+
   const url = isPlaying
     ? `https://www.youtube.com/embed/${trailerKey}?autoplay=1`
     : `https://www.youtube.com/embed/${trailerKey}`;
+
+  const handleAddToFavorites = () => {
+    setIsFavorite(!isFavorite);
+    const updateCollection = async () => {
+      if (!isFavorite) {
+        await db
+          .collection('users')
+          .doc(user?.uid)
+          .collection('favorites')
+          .doc(movieId)
+          .set({ id: movieId });
+      } else {
+        await db
+          .collection('users')
+          .doc(user?.uid)
+          .collection('favorites')
+          .doc(movieId)
+          .delete();
+      }
+    };
+    updateCollection();
+  };
+
+  useEffect(() => {
+    if (user) {
+      db.collection('users')
+        .doc(user.uid)
+        .collection('favorites')
+        .onSnapshot((querySnapshot) => {
+          querySnapshot.forEach((movie) => {
+            if (movie.id === movieId) {
+              setIsFavorite(true);
+            }
+          });
+        });
+    }
+  }, [isFavorite, user]);
 
   return (
     <IconContainer>
@@ -99,7 +143,10 @@ export const BannerIcons = ({ vote_average, trailerKey }) => {
         <IconList />
       </Icons>
       <Icons>
-        <IconHeart />
+        <IconHeart
+          className={isFavorite ? 'favorite' : ''}
+          onClick={handleAddToFavorites}
+        />
       </Icons>
       <Icons>
         <IconFlag />

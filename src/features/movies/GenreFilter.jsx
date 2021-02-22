@@ -1,8 +1,7 @@
 /* eslint-disable function-paren-newline */
 /* eslint-disable no-confusing-arrow */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import genresJSON from '../../app/shared/urls/genres.json';
 
 const Container = styled.div`
   display: flex;

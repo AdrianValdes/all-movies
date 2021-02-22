@@ -6,6 +6,7 @@ import { animationUrl, comediesUrl, popularUrl } from '../../app/shared';
 import { MoviesRow } from './MoviesRow';
 
 const RowWrapper = styled.div`
+  width: 100%;
   padding-top: 30px;
   max-width: 1300px;
 `;

@@ -72,6 +72,7 @@ export const MovieRoute = ({ location }) => {
   return (
     <main>
       <MovieBanner
+        movieId={id}
         imageUrl={bannerImage}
         poster_path={poster_path}
         title={title || name}

@@ -16,7 +16,6 @@ import { Spinner } from '../../app/shared/components/Spiner';
 import { fetchPeopleAction } from '../../app/store/actions/peopleActions';
 
 const PeopleSection = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
   margin: 20px;
