@@ -21,8 +21,8 @@ const Button = styled.button`
 export const SearchButton = styled(Button)`
   position: absolute;
   right: -3px;
-  top: 1px;
-  height: 49px;
+  top: 0px;
+  height: 50px;
   background-color: #47cfb5;
   display: inline-flex;
   justify-content: center;

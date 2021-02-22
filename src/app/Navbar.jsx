@@ -45,6 +45,7 @@ const DropDownContent = styled.div`
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
+  border-radius: 5px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 `;
@@ -79,8 +80,7 @@ const SubA = styled.div`
   display: block;
   text-align: left;
   &:hover {
-    color: white;
-    background-color: rgba(3, 37, 65, 0.7);
+    background-color: rgba(3, 3, 3, 0.1);
   }
 `;
 

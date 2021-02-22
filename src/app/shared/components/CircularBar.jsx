@@ -2,7 +2,8 @@ import React from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 
 const selectColor = (vote_average) => {
-  if (vote_average > 6.9) return '78,187,111';
+  if (vote_average > 8.5) return '97,225,128';
+  if (vote_average >= 7) return '78,187,111';
   if (vote_average > 5) return '203,206,48';
   if (vote_average > 3) return '199,60,89';
   return '247,75,82';
