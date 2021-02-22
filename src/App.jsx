@@ -36,7 +36,7 @@ export const App = () => {
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
-        dispatch({ type: 'SIGNUP_USER', payload: authUser });
+        dispatch({ type: 'LOGIN_USER', payload: authUser });
       } else {
         dispatch(logout());
       }
