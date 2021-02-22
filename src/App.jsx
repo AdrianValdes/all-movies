@@ -14,7 +14,7 @@ import {
   fetchAnimationsAction,
   fetchComediesAction,
   fetchPopularsAction,
-} from './app/store/actions/moviesAction';
+} from './app/store/actions/moviesActions';
 
 import { GenreRoute } from './features/movies/GenreRoute';
 
@@ -22,6 +22,8 @@ import { ProfileRoute } from './features/people/ProfileRoute';
 
 import { SearchResults } from './features/search/SearchResults';
 import { NotFound404 } from './app/NotFound404';
+import { auth } from './firebase';
+import { logout } from './app/store/actions/authActions';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -31,6 +33,15 @@ export const App = () => {
     dispatch(fetchPopularsAction());
   }, []);
 
+  useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        dispatch({ type: 'SIGNUP_USER', payload: authUser });
+      } else {
+        dispatch(logout());
+      }
+    });
+  });
   return (
     <Router>
       <Navbar />

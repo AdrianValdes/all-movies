@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   Form,
   Label,
@@ -9,15 +10,23 @@ import {
   StyleInput,
   StyleButton,
 } from './shared/components';
+import { signUpUser } from './store/actions/authActions';
 
 export const SignUp = () => {
-  const [userName, setUserName] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const dispatch = useDispatch();
 
-  const validateForm = () => userName.length > 0 && password.length > 4;
+  const validateForm = () => name.length > 0 && password.length > 4;
 
-  const handleSubmit = (e) => e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(signUpUser({ email, password, displayName: name }));
+    setEmail('');
+    setPassword('');
+    setName('');
+  };
 
   return (
     <LoginPageStyle>
@@ -34,21 +43,12 @@ export const SignUp = () => {
             <StyleInput
               id='user-name'
               type='userName'
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </Label>
           <Label htmlFor='password'>
             <p>Password (4 characters minimum)</p>
-            <StyleInput
-              id='password'
-              type='password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Label>
-          <Label htmlFor='password'>
-            <p>Password Confirm</p>
             <StyleInput
               id='password'
               type='password'

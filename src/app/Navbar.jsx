@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -16,6 +17,7 @@ import {
   showsUrl,
 } from './shared';
 import { NavSearch } from './NavSearch';
+import { Avatar } from '../features/user/Avatar';
 
 const Nav = styled.nav`
   background-color: rgb(3, 37, 65);
@@ -89,106 +91,117 @@ export const LogoStyle = styled.img`
   margin: 3px 15px 0 15px;
 `;
 
-export const Navbar = () => (
-  <Nav>
-    <SubNav>
-      <Link to='/'>
-        <LogoStyle src={logo} alt='logo' />
-      </Link>
-      <StyledUl>
-        <StyledLi>
-          <Link
-            to={{
-              pathname: '/genre/popular',
-              state: { genreUrl: popularUrl },
-            }}
-          >
-            <StyledA>Popular</StyledA>
-          </Link>
-        </StyledLi>
-        <StyledLi>
-          <Link
-            to={{
-              pathname: '/genre/tvshows',
-              state: { genreUrl: showsUrl },
-            }}
-          >
-            <StyledA>TV Shows</StyledA>
-          </Link>
-        </StyledLi>
-        <DropDownLi>
-          <StyledA>Genres</StyledA>
-          <DropDownContent>
-            <Link
-              to={{ pathname: '/genre/action', state: { genreUrl: actionUrl } }}
-            >
-              <SubA>Action</SubA>
-            </Link>
-            <Link
-              to={{
-                pathname: '/genre/animation',
-                state: { genreUrl: animationUrl },
-              }}
-            >
-              <SubA>Animation</SubA>
-            </Link>
-            <Link
-              to={{
-                pathname: '/genre/comedy',
-                state: { genreUrl: comediesUrl },
-              }}
-            >
-              <SubA>Comedy</SubA>
-            </Link>
-            <Link
-              to={{
-                pathname: '/genre/documentary',
-                state: { genreUrl: documentaryUrl },
-              }}
-            >
-              <SubA>Documentary</SubA>
-            </Link>
-            <Link
-              to={{
-                pathname: '/genre/drama',
-                state: { genreUrl: dramaUrl },
-              }}
-            >
-              <SubA>Drama </SubA>
-            </Link>
-            <Link
-              to={{
-                pathname: '/genre/horror',
-                state: { genreUrl: horrorUrl },
-              }}
-            >
-              <SubA>Horror </SubA>
-            </Link>
-            <Link
-              to={{
-                pathname: '/genre/romance',
-                state: { genreUrl: romanceUrl },
-              }}
-            >
-              <SubA>Romance </SubA>
-            </Link>
-          </DropDownContent>
-        </DropDownLi>
-        <StyledLi className='push'>
-          <Link to='/people'>
-            <StyledA>People</StyledA>
-          </Link>
-        </StyledLi>
+export const Navbar = () => {
+  const user = useSelector((state) => state.user.user);
 
-        <StyledLi>
-          <NavSearch />
-        </StyledLi>
-        <StyledLi>
-          <Link to='/login'>
-            <StyledA>Login</StyledA>
-          </Link>
-        </StyledLi>
-      </StyledUl>
-    </SubNav>
-  </Nav>
-);
+  return (
+    <Nav>
+      <SubNav>
+        <Link to='/'>
+          <LogoStyle src={logo} alt='logo' />
+        </Link>
+        <StyledUl>
+          <StyledLi>
+            <Link
+              to={{
+                pathname: '/genre/popular',
+                state: { genreUrl: popularUrl },
+              }}
+            >
+              <StyledA>Popular</StyledA>
+            </Link>
+          </StyledLi>
+          <StyledLi>
+            <Link
+              to={{
+                pathname: '/genre/tvshows',
+                state: { genreUrl: showsUrl },
+              }}
+            >
+              <StyledA>TV Shows</StyledA>
+            </Link>
+          </StyledLi>
+          <DropDownLi>
+            <StyledA>Genres</StyledA>
+            <DropDownContent>
+              <Link
+                to={{
+                  pathname: '/genre/action',
+                  state: { genreUrl: actionUrl },
+                }}
+              >
+                <SubA>Action</SubA>
+              </Link>
+              <Link
+                to={{
+                  pathname: '/genre/animation',
+                  state: { genreUrl: animationUrl },
+                }}
+              >
+                <SubA>Animation</SubA>
+              </Link>
+              <Link
+                to={{
+                  pathname: '/genre/comedy',
+                  state: { genreUrl: comediesUrl },
+                }}
+              >
+                <SubA>Comedy</SubA>
+              </Link>
+              <Link
+                to={{
+                  pathname: '/genre/documentary',
+                  state: { genreUrl: documentaryUrl },
+                }}
+              >
+                <SubA>Documentary</SubA>
+              </Link>
+              <Link
+                to={{
+                  pathname: '/genre/drama',
+                  state: { genreUrl: dramaUrl },
+                }}
+              >
+                <SubA>Drama </SubA>
+              </Link>
+              <Link
+                to={{
+                  pathname: '/genre/horror',
+                  state: { genreUrl: horrorUrl },
+                }}
+              >
+                <SubA>Horror </SubA>
+              </Link>
+              <Link
+                to={{
+                  pathname: '/genre/romance',
+                  state: { genreUrl: romanceUrl },
+                }}
+              >
+                <SubA>Romance </SubA>
+              </Link>
+            </DropDownContent>
+          </DropDownLi>
+          <StyledLi className='push'>
+            <Link to='/people'>
+              <StyledA>People</StyledA>
+            </Link>
+          </StyledLi>
+
+          <StyledLi>
+            <NavSearch />
+          </StyledLi>
+          <StyledLi>
+            {user ? (
+              <Avatar user={user} />
+            ) : (
+              <Link to='/login'>
+                <StyledA>Login</StyledA>
+              </Link>
+            )}
+          </StyledLi>
+        </StyledUl>
+      </SubNav>
+    </Nav>
+  );
+};
