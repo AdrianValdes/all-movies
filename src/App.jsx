@@ -24,6 +24,7 @@ import { SearchResults } from './features/search/SearchResults';
 import { NotFound404 } from './app/NotFound404';
 import { auth } from './firebase';
 import { logout } from './app/store/actions/authActions';
+import { Favorites } from './features/user/Favorites';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -54,6 +55,7 @@ export const App = () => {
         <Route path='/profile/:id' component={ProfileRoute} />
         <Route exact path='/reviews' component={ReviewRoute} />
         <Route exact path='/addReview' component={AddReview} />
+        <Route exact path='/favorites' component={Favorites} />
         <Route path='/login' component={Login} />
         <Route path='/signup' component={SignUp} />
         <Route exact path='/' component={Home} />
