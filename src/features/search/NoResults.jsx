@@ -1,55 +1,50 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { ReactComponent as NoResultsSVG } from '../../assets/images/no_results.svg';
+import { useHistory } from 'react-router-dom';
+import { AddReviewButton } from '../../app/shared';
+import looking from '../../assets/images/looking.jpg';
 
-const GoBack = styled.span`
-  cursor: pointer;
-  font-style: italic;
-  color: #36344a;
+const Main = styled.div`
+  height: 100vh;
+  background-image: url(${looking});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
 `;
 
-const NoResultImg = styled(NoResultsSVG)`
-  width: 400px;
-  height: 400px;
-`;
-
-const Main = styled.main`
-  flex-direction: column;
-  align-content: center;
-  justify-content: start;
-`;
-
-const SvgContainer = styled.div`
+const Container = styled.div`
+  width: 60%;
+  position: absolute;
+  top: 20%;
+  right: 10%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 `;
-const Title = styled.h1`
-  margin: 50px 0;
+
+const Note = styled.h1`
+  font-size: 75px;
+  color: rgb(8, 48, 82);
+  margin-bottom: 40px;
+  text-align: center;
+`;
+
+const GoHomeButton = styled(AddReviewButton)`
+  background-color: rgb(8, 48, 82);
+  width: 250px;
+  transform: translate(-calc(50% - 300px), -50%);
+  align-self: center;
 `;
 
 export const NoResults = () => {
   const history = useHistory();
-
   return (
-    <main>
-      <Main>
-        <Title>
-          Ups, there are no results :(. Maybe you want to try{' '}
-          <GoBack
-            onKeyPress={() => history.push('/')}
-            role='button'
-            tabIndex='0'
-            onClick={() => history.push('/')}
-          >
-            another{' '}
-          </GoBack>
-          search
-        </Title>
-        <SvgContainer>
-          <NoResultImg />
-        </SvgContainer>
-      </Main>
-    </main>
+    <Main>
+      <Container>
+        <Note>Oops! We can not find what you are looking for.</Note>
+        <GoHomeButton type='button' onClick={() => history.push('/')}>
+          Try Again
+        </GoHomeButton>
+      </Container>
+    </Main>
   );
 };
