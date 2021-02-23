@@ -20,6 +20,4 @@ export const showsUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${KEY}
 
 export const peopleUrl = `https://api.themoviedb.org/3/person/popular?api_key=${KEY}&language=en-US`;
 
-const urLSingleMovieWithAll = `${SINGLE_MOVIE_BASE_URL}/$<id>?api_key=${KEY}&append_to_response=videos,credits,similar_movies,recommendations,release_dates,keywords`;
-const urlQueryMovies = `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&query=<Movie>`;
 export const urlMultiQuery = `https://api.themoviedb.org/3/search/multi?api_key=${KEY}&query=`;

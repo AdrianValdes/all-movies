@@ -36,7 +36,6 @@ export const MovieCard = ({
   item: {
     first_air_date,
     name,
-    original_title,
     title,
     id,
     poster_path,
