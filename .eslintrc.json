@@ -35,6 +35,7 @@
         "jsx-a11y/label-has-for":"off",
         "function-paren-newline":"off",
         "arrow-body-style":"off",
+        "consistent-return":"off",
         "jsx-a11y/anchor-is-valid": [
             "error",
             {
