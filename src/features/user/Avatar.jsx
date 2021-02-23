@@ -42,12 +42,6 @@ const UserAvatar = styled.div`
   }
 `;
 
-const Watch = styled.p`
-  text-align: left;
-  padding: 10px 12px;
-  color: black;
-  font-weight: 600;
-`;
 const SubA = styled.div`
   color: rgb(3, 37, 65);
   font-size: 16px;

@@ -31,7 +31,7 @@ const Bio = styled.div`
   line-height: 30px;
 `;
 
-export const ProfileRoute = ({ location }) => {
+export const ProfileRoute = () => {
   const { id } = useParams();
 
   const personUrl = getPersonUrl(id);

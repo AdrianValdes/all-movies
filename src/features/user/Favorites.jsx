@@ -16,7 +16,8 @@ export const Favorites = () => {
 
   useEffect(() => {
     if (user) {
-      db.collection('users')
+      const unsubscribe = db
+        .collection('users')
         .doc(user.uid)
         .collection('favorites')
         .onSnapshot((querySnapshot) => {
@@ -26,6 +27,7 @@ export const Favorites = () => {
           });
           setMoviesIds([...ids]);
         });
+      return unsubscribe;
     }
   }, [user]);
 

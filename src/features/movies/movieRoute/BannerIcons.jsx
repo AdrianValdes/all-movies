@@ -78,7 +78,8 @@ export const BannerIcons = ({ vote_average, trailerKey, movieId }) => {
 
   useEffect(() => {
     if (user) {
-      db.collection('users')
+      const unsubscribe = db
+        .collection('users')
         .doc(user.uid)
         .collection('favorites')
         .onSnapshot((querySnapshot) => {
@@ -88,6 +89,7 @@ export const BannerIcons = ({ vote_average, trailerKey, movieId }) => {
             }
           });
         });
+      return unsubscribe;
     }
   }, [isFavorite, user]);
 
