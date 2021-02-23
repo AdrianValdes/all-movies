@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 import {
   Form,
   Label,
@@ -14,12 +15,17 @@ import {
 } from '../../app/shared/components';
 import { signInUser } from '../../app/store/actions/authActions';
 
+export const FormError = styled.p`
+  color: red;
+`;
+
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
-  const user = useSelector((state) => state.user.user);
+  const { user } = useSelector((state) => state.user);
+  const { error } = useSelector((state) => state.user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,6 +59,9 @@ export const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </Label>
+          <FormError>
+            {error?.code === 'auth/user-not-found' && error?.message}
+          </FormError>
           <Label htmlFor='password'>
             <p>Password</p>
             <StyleInput
@@ -62,6 +71,9 @@ export const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </Label>
+          <FormError>
+            {error?.code === 'auth/wrong-password' && error?.message}
+          </FormError>
           <StyleButton type='submit'>Login</StyleButton>
         </StyleForm>
       </Form>
