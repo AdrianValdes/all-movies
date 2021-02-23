@@ -36,6 +36,7 @@
         "function-paren-newline":"off",
         "arrow-body-style":"off",
         "consistent-return":"off",
+        "no-confusing-arrow": "off",
         "jsx-a11y/anchor-is-valid": [
             "error",
             {

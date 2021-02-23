@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import star from '../../../assets/images/star.jpg';
@@ -79,7 +80,8 @@ export const StyleInput = styled.input`
 export const StyleButton = styled.button`
   width: 100%;
   height: 50px;
-  background-color: rgb(8, 48, 82);
+  background-color: ${(props) =>
+    props.disabled ? 'darkgray' : 'rgb(8, 48, 82)'};
   color: white;
   font-size: 20px;
   border: none;
@@ -88,7 +90,8 @@ export const StyleButton = styled.button`
   margin-bottom: 60px;
   cursor: pointer;
   &:hover {
-    background-color: rgba(8, 48, 82, 0.8);
+    background-color: ${(props) =>
+      props.disabled ? 'none' : 'rgba(8, 48, 82, 0.8)'};
     outline: none;
   }
   &:focus {

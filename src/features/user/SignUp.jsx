@@ -12,22 +12,24 @@ import {
   StyleButton,
 } from '../../app/shared/components';
 import { signUpUser } from '../../app/store/actions';
+import { FormError } from './Login';
+
+const validateForm = ({ name, password, email }) =>
+  name.length > 1 && password.length > 6 && email.length > 4;
 
 export const SignUp = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
+  const { user } = useSelector((state) => state.user);
+  const { error } = useSelector((state) => state.user);
   const history = useHistory();
-  const validateForm = () => name.length > 0 && password.length > 4;
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     dispatch(signUpUser({ email, password, displayName: name }));
-    setEmail('');
-    setPassword('');
-    setName('');
   };
   useEffect(() => {
     if (user) {
@@ -72,7 +74,13 @@ export const SignUp = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </Label>
-          <StyleButton type='submit' disabled={!validateForm()}>
+          <FormError>
+            {error?.code === 'auth/email-already-in-use' && error.message}
+          </FormError>
+          <StyleButton
+            type='submit'
+            disabled={!validateForm({ name, password, email })}
+          >
             Sign Up
           </StyleButton>
         </StyleForm>

@@ -67,12 +67,12 @@ const Info = styled.div`
 
 export const Avatar = () => {
   const [showOptions, setShowOptions] = useState(false);
-  const user = useSelector((state) => state.user.user);
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   return (
     <UserAvatar onClick={() => setShowOptions(!showOptions)}>
-      {user?.displayName && user?.displayName[0]}{' '}
+      {user?.displayName && user?.displayName[0]}
       <DropDownUser className={showOptions ? 'show' : "don't show"}>
         <Content>
           <Info>
