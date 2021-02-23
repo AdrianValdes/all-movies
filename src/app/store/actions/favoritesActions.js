@@ -1,26 +1,9 @@
 import { auth, db } from '../../../firebase';
 import { SINGLE_MOVIE_BASE_URL, KEY } from '../../shared/urls';
 
-const fetchMoviesIds = () => {
-  const idsArray = [];
-
-  db.collection('users')
-    .doc(auth.currentUser.uid)
-    .collection('favorites')
-    .onSnapshot((querySnapshot) => {
-      const tempArray = [];
-      querySnapshot.forEach((movie) => {
-        tempArray.push(movie.id);
-      });
-    });
-
-  return idsArray;
-};
-
-const fetchAllMovies = async () => {
-  const array = fetchMoviesIds();
+const fetchMovies = async (array) => {
   const arrayOfPromises = array.map((id) =>
-    fetch(`${SINGLE_MOVIE_BASE_URL}/${id}?api_key=${KEY}&append_to_response`)
+    fetch(`${SINGLE_MOVIE_BASE_URL}/${id}?api_key=${KEY}`)
   );
   const arrayOfResults = await Promise.all(arrayOfPromises);
   const arrayOfData = await Promise.all(
@@ -30,13 +13,16 @@ const fetchAllMovies = async () => {
   return arrayOfData;
 };
 
-export const fetchFavorites = () => async (dispatch) => {
-  if (auth?.currentUser?.uid) {
-    const movies = await fetchAllMovies();
-    try {
+export const fetchFavoritesMovies = () => async (dispatch) => {
+  db.collection('users')
+    .doc(auth.currentUser.uid)
+    .collection('favorites')
+    .onSnapshot(async (querySnapshot) => {
+      const tempArray = [];
+      querySnapshot.forEach((movie) => {
+        tempArray.push(movie.id);
+      });
+      const movies = await fetchMovies(tempArray);
       dispatch({ type: 'FETCH_FAVORITES', payload: movies });
-    } catch (error) {
-      dispatch({ type: 'FETCH_FAVORITES_ERROR', payload: error });
-    }
-  }
+    });
 };

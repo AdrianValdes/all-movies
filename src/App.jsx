@@ -13,6 +13,7 @@ import { SignUp } from './features/user/SignUp';
 import {
   fetchAnimationsAction,
   fetchComediesAction,
+  fetchFavoritesMovies,
   fetchPopularsAction,
 } from './app/store/actions';
 import { GenreRoute } from './features/movies/GenreRoute';
@@ -35,11 +36,12 @@ export const App = () => {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         dispatch({ type: 'LOGIN_USER', payload: authUser });
+        dispatch(fetchFavoritesMovies());
       } else {
         dispatch(logout());
       }
     });
-  });
+  }, [auth.currentUser]);
   return (
     <Router>
       <Navbar />
