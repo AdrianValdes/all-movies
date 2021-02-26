@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { logout } from '../../app/store/actions/authActions';
+import { logout } from './userSlice';
 
 const DropDownUser = styled.div`
   display: ${(props) => (props.className === 'show' ? 'block' : 'none')};
