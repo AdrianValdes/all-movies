@@ -21,8 +21,9 @@ import { ProfileRoute } from './features/people/ProfileRoute';
 import { SearchResults } from './features/search/SearchResults';
 import { NotFound404 } from './app/NotFound404';
 import { auth } from './firebase';
-import { logout } from './app/store/actions/authActions';
+
 import { Favorites } from './features/user/Favorites';
+import { login, logout } from './features/user/userSlice';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,9 @@ export const App = () => {
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
-        dispatch({ type: 'LOGIN_USER', payload: authUser });
+        const { uid, displayName, email } = authUser;
+
+        dispatch(login({ uid, displayName, email }));
         dispatch(fetchFavoritesMovies());
       } else {
         dispatch(logout());

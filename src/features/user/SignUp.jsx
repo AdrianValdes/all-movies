@@ -11,8 +11,9 @@ import {
   StyleInput,
   StyleButton,
 } from '../../app/shared/components';
-import { signUpUser } from '../../app/store/actions';
+
 import { FormError } from './Login';
+import { signUpUser } from './thunk';
 
 const validateForm = ({ name, password, email }) =>
   name.length > 1 && password.length > 6 && email.length > 4;
@@ -28,7 +29,6 @@ export const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     dispatch(signUpUser({ email, password, displayName: name }));
   };
   useEffect(() => {

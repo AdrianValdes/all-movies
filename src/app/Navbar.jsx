@@ -92,7 +92,7 @@ export const LogoStyle = styled.img`
 `;
 
 export const Navbar = () => {
-  const user = useSelector((state) => state.user.user);
+  const { user } = useSelector((state) => state.user);
 
   return (
     <Nav>

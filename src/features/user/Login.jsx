@@ -13,7 +13,7 @@ import {
   StyleInput,
   StyleButton,
 } from '../../app/shared/components';
-import { signInUser } from '../../app/store/actions/authActions';
+import { signInUser } from './thunk';
 
 export const FormError = styled.p`
   color: red;
@@ -29,6 +29,7 @@ export const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    /*  dispatch(signInUser({ email, password })); */
     dispatch(signInUser({ email, password }));
   };
 
