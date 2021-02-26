@@ -25,7 +25,6 @@ export const signUpUser = createAsyncThunk(
         email,
         password
       );
-
       const { user } = userCredentials;
       await user.updateProfile({ displayName });
       return user;
